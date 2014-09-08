@@ -40,9 +40,21 @@
     box-shadow: none;
     padding-left: 10px;
 }
+.firstcharactergreen { float: left; color: #4fb950; font-size: 3em; line-height: 1em; padding-right: 4px}
+.firstcharacterblue { float: left; color: #4f9fd6; font-size: 3em; line-height: 1em; padding-right: 4px}
+.firstcharacterviolet { float: left; color: #444d9f; font-size: 3em; line-height: 1em; padding-right: 4px}
+.firstcharacterred { float: left; color: #d01729; font-size: 3em; line-height: 1em; padding-right: 4px}
+.secondaryphoto{
+    width: 100%;
+    border: 2px solid lightgrey;
+}
+.item-rubrika{
+    color: #4fb950;
+}
+
 
 /*IPAD STYLE*/
-.list-block .time-line-content .item-content {
+/*.list-block .time-line-content .item-content {
     width: 50%;
     float: left;
-}
+}*/

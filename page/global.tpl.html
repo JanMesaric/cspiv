@@ -7,7 +7,8 @@
                 <img data-avatarid="{{img.photoMain}}" src="{{img.photoMain}}">
             </div>
             <div class="detail">
-                <p class="nickname">{{title}}</p>
+                <p class="nickname">{{{title}}}</p>
+                <p class="item-rubrika">{{{catDes}}}</p>
                 <p data-time="{{created_at}}" class="create-time"></p>
             </div>
         </div>
@@ -15,10 +16,14 @@
         <div class="click-content">
 
             <div class="item-subtitle">
-                {{titleDesc}}
+                {{{titleDesc}}}
             </div>
+            <!-- SKRITI ELEMENTI KER JIH RABIM V ITEM VIEW -->
             <div class="item-content" style="display:none">
-                {{content}}
+                {{{content}}}
+            </div>
+            <div class="item-author" style="display:none">
+                {{{author}}}
             </div>
 
             {{#image}}
@@ -52,7 +57,8 @@
         </div>
         <div class="detail">
             <p class="nickname">{{nickname}}</p>
-            <p data-time="{{created_at}}" class="create-time">{{time}}</p>
+            <p class="item-author">Avtor: {{author}}</p>
+            <p class="item-rubrika">{{{rubrika}}}</p>
         </div>
     </div>
 <div class="item-subtitle">

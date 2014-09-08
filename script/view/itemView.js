@@ -21,6 +21,10 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
             item.time = appFunc.timeFormat($this.find('.item-header .detail .create-time').data('time'));
             item.text = $this.find('.item-subtitle').html();
             item.content = $this.find('.item-content').html();
+            item.author = $this.find('.item-author').html();
+            item.rubrika = $this.find('.item-rubrika').html();
+
+
 
             if($this.find('.item-image img')[0])
                 item.image = $this.find('.item-image img').attr('src');
