@@ -36,7 +36,13 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 selector: '.time-line-content .item-content .click-content',
                 event: 'click',
                 handler: VM.module('timelineView').openItemPage
-            }];
+            },{
+                element: '#ourView',
+                selector: '.time-line-content .item-content .share-article',
+                event: 'click',
+                handler: VM.module('timelineView').shareArticle
+              }
+            ];
 
             appFunc.bindEvents(bindings);
 

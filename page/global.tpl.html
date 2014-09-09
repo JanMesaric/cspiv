@@ -1,13 +1,13 @@
 <script id="timelineTemplate" type="text/template" >
 {{#weibo}}
-<li data-id="{{id}}" data-mid="{{mid}}" class="item-content card-content">
+<li data-id="{{id}}" data-mid="{{mid}}" data-title="{{title}}" data-titleDesc="{{titleDesc}}" class="item-content card-content">
     <div class="item-inner">
         <div class="item-header">
             <div class="avatar">
                 <img data-avatarid="{{img.photoMain}}" src="{{img.photoMain}}">
             </div>
             <div class="detail">
-                <p class="nickname">{{{title}}}</p>
+                <p data-title="{{title}}" class="nickname">{{{title}}}</p>
                 <p class="item-rubrika">{{{catDes}}}</p>
                 <p data-time="{{created_at}}" class="create-time"></p>
             </div>
@@ -37,7 +37,7 @@
 
         <div class="item-tools">
             <ul>
-                <li><i class="icon ios7-redo-outline"></i><span class="text">{{i18n.forward}}</span></li>
+                <li class="share-article"><i class="icon ios7-redo-outline"></i><span class="text">{{i18n.forward}}</span></li>
                 <li class="tool-line"></li>
                 <li><a href="page/item.html?id={{id}}"><i class="icon ios7-chatbubble-outline"></i><span class="text">{{i18n.comment}}</span></a></li>
                 <li class="tool-line"></li>
@@ -55,6 +55,7 @@
         <div class="avatar">
             <img src="{{avatar}}">
         </div>
+
         <div class="detail">
             <p class="nickname">{{nickname}}</p>
             <p class="item-author">Avtor: {{author}}</p>
@@ -64,6 +65,15 @@
 <div class="item-subtitle">
 {{&text}}
 </div>
+    <div class="item-tools">
+        <ul>
+            <li class="share-article"><i class="icon ios7-redo-outline"></i><span class="text">Deli</span></li>
+            <li class="tool-line"></li>
+            <li><i class="icon ios7-chatbubble-outline"></i><span class="text">Komentiraj</span></li>
+            <li class="tool-line"></li>
+            <li><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
+        </ul>
+    </div>
 <div class="item-content">
 {{&content}}
 </div>

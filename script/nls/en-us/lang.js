@@ -51,9 +51,9 @@ define({
         login: 'Loading, please wait...'
     },
     timeline:{
-        forward:'Forward',
+        forward:'Deli',
         comment:'Komentiraj',
-        like:'Like'
+        like:'Shrani'
     },
     item:{
         title:'Članek'
@@ -63,7 +63,7 @@ define({
         reply_comment:'Reply',
         copy_comment:'Copy',
         placeholder:'Write a comment ...',
-        empty_comment:'No one comments',
+        empty_comment:'Ni komentarjev',
         commenting:'Submitting...'
     },
     chat:{

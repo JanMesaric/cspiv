@@ -1,3 +1,11 @@
+@font-face {
+    font-family: 'NeutraBold';
+    src: url('../fonts/NeutraDispBold.ttf'); format('ttf');
+}
+@font-face {
+    font-family: 'NeutraMedium';
+    src: url('../fonts/NeutraDispMedium.ttf'); format('ttf');
+}
 .card-content .item-header .avatar {
     float: left;
     width: 100%;
@@ -45,16 +53,69 @@
 .firstcharacterviolet { float: left; color: #444d9f; font-size: 3em; line-height: 1em; padding-right: 4px}
 .firstcharacterred { float: left; color: #d01729; font-size: 3em; line-height: 1em; padding-right: 4px}
 .secondaryphoto{
-    width: 100%;
+    width: 50%;
     border: 2px solid lightgrey;
+    float: left;
+    margin: 0 10px 5px 0;
 }
 .item-rubrika{
     color: #4fb950;
 }
-
+.card-content .item-header .detail .nickname {
+    font-family: 'NeutraMedium';
+    font-size:24px;
+}
+/*.navbar .center {
+    font-family: 'NeutraBold';
+    text-transform:uppercase;
+    font-size:24px;
+}
+.navbar{
+    background: #4fb950;
+    color:white;
+}*/
+.navbar a.link{
+    color:#4fb950;
+}
+.item-tools{
+    background-color: #f9f9f9;
+    color: #909090;
+    height: 35px;
+    line-height: 35px;
+    border-top: 1px solid #f0f0f0;
+    font-size: 14px;
+    margin-bottom: -1px;
+}
+.item-tools ul li{
+    float: left;
+    width: 32%;
+    text-align: center;
+}
+.item-tools ul{
+    background: #ffffff;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+.item-tools i.icon{
+    font-size: 20px;
+    margin-right: 5px;
+    line-height: 20px;
+    vertical-align: middle;
+}
+.item-tools .tool-line{
+    border-left: 1px solid #f0f0f0;
+    height: 28px;
+    margin-top: 5px;
+    width: 1%;
+}
+.bold{
+    font-weight:bold;
+}
 
 /*IPAD STYLE*/
-/*.list-block .time-line-content .item-content {
+.list-block .time-line-content .item-content {
     width: 50%;
     float: left;
-}*/
+}
