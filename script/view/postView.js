@@ -13,7 +13,7 @@ define(['utils/appFunc',
             renderData.senTweet = i18n.index.sen_tweet;
             renderData.sendPlaceholder = i18n.index.send_placeholder;
             renderData.loadingGeo = i18n.geo.loading_geo;
-            renderData.data = '';
+            renderData.data = window.htmlOriginal;
             log(window.html)
             log(window.htmlOriginal)
             var output = TM.renderTplById('sendPopupTemplate', renderData);
