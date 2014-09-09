@@ -166,10 +166,32 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             var itemId = $$(this).parents('.item-content').data('id');
             mainView.loadPage('page/item.html?id=' + itemId);
         },
-        shareArticle: function(){
-            var itemTitle = $$(this).parents('.item-content').data('title');
-            //var itemTitleDesc = $$(this).parents('.item-content').data('titleDesc');
-            window.plugins.socialsharing.share('Prebiram članek z naslovom • ' + itemTitle + ' • ' + 'Preberi več v mobilni aplikaciji Pivar - glasilo skupine Laško!', null, null, 'http://www.lasko.eu/pivar')
+
+        createSectionListview: function(data){
+            var html = '', arr = [];
+            data.forEach(function(editions){
+                editions.articles.forEach(function(edition){
+                    if(edition.artShow === "true"){
+                        var fin = edition.cat.replace(new RegExp("-", "g"),' ')
+                        arr.push(fin);
+                    }
+                })
+            });
+            var uniques = appFunc.uniquify(arr);
+            window.htmlOriginal = uniques;
+            if(uniques && uniques > 0){
+                html += '<ul>'
+                uniques.forEach(function(section){
+
+                    html += '<li>'+section+'</li>'
+
+                });
+                html += '</ul>';
+            } else {
+                html = '<p>Kategorije niso na voljo</p>'
+            }
+            window.html = html;
+            $$('.rubrike-page ul').html(html);
         }
 
     };
