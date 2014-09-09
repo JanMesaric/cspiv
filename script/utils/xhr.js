@@ -31,15 +31,52 @@ define(['utils/appFunc',
 
             return apiServer.replace(/&$/gi, '');
         },
-
-        simpleCall: function(options,callback){
+        fetchWholeContent: function(options, callback){
             options = options || {};
             options.data = options.data ? options.data : '';
 
             //If you access your server api ,please user `post` method.
             options.method = options.method || 'GET';
-            //options.method = options.method || 'POST';
 
+            this.checkIfOnline();
+
+            $$ = Dom7;
+            $$.ajax({
+                //url: xhr.getRequestURL(options) ,
+                url: 'api/pivar.json',
+                method: options.method,
+                dataType: 'json',
+                data: options.data,
+                success:function(data){
+                    log(data);
+                    alert(data);
+                    data = data ? JSON.parse(data) : '';
+
+                    var codes = [
+                        {code:10000, message:'Your session is invalid, please login again',path:'/'},
+                        {code:10001, message:'Unknown error,please login again',path:'tpl/login.html'},
+                        {code:20001, message:'User name or password does not match',path:'/'}
+                    ];
+                    //preverim če je error code kot v codes in če je preusmerim na path
+                    var codeLevel = xhr.search(data.err_code,codes);
+
+                    if(!codeLevel){
+
+                        (typeof(callback) === 'function') ? callback(data) : '';
+
+                    }else{
+                        hiApp.alert(codeLevel.message,function(){
+                            if(codeLevel.path !== '/')
+                                mainView.loadPage(codeLevel.path);
+
+                            hiApp.hideIndicator();
+                            hiApp.hidePreloader();
+                        });
+                    }
+                }
+            });
+        },
+        checkIfOnline: function(){
             if(appFunc.isPhonegap()){
                 //Check network connection
                 var network = networkStatus.checkConnection();
@@ -53,9 +90,20 @@ define(['utils/appFunc',
                     return false;
                 }
             }
+        },
+        simpleCall: function(options,callback){
+            options = options || {};
+            options.data = options.data ? options.data : '';
 
+            //If you access your server api ,please user `post` method.
+            options.method = options.method || 'GET';
+            //options.method = options.method || 'POST';
+
+            this.checkIfOnline();
+            $$ = Dom7;
             $$.ajax({
-                url: xhr.getRequestURL(options) ,
+                //url: 'api/pivar.json' ,
+                url: xhr.getRequestURL(options),
                 method: options.method,
                 data: options.data,
                 success:function(data){
@@ -66,7 +114,7 @@ define(['utils/appFunc',
                         {code:10001, message:'Unknown error,please login again',path:'tpl/login.html'},
                         {code:20001, message:'User name or password does not match',path:'/'}
                     ];
-
+                    //preverim če je error code kot v codes in če je preusmerim na path
                     var codeLevel = xhr.search(data.err_code,codes);
 
                     if(!codeLevel){
@@ -74,7 +122,6 @@ define(['utils/appFunc',
                         (typeof(callback) === 'function') ? callback(data) : '';
 
                     }else{
-
                         hiApp.alert(codeLevel.message,function(){
                             if(codeLevel.path !== '/')
                                 mainView.loadPage(codeLevel.path);

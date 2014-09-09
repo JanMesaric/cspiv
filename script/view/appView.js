@@ -4,8 +4,10 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
 
         i18next: function(content){
             var renderData = [];
+            //to je v headerju title
             renderData.i = i18n.app.name;
 
+            //content je tu že populatan, samo še rendamo in vstavimo taprav data
             var output = TM.renderTpl(content,renderData);
 
             $$('.views .i18n').each(function(){
@@ -52,7 +54,6 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
         },
 
         photoBrowser: function(){
-
             var url = $$(this).attr('src');
 
             var myPhotoBrowser = hiApp.photoBrowser({

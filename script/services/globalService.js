@@ -2,7 +2,7 @@ define([], function() {
     var CONFIG = null;
 
     var globalService = {
-
+        //dobim nazaj userje, če je že log-inan;; sessionID in user data
         init: function(){
             if (!CONFIG) {
                 CONFIG = {};
@@ -37,9 +37,11 @@ define([], function() {
             localStorage.removeItem('sid');
         },
 
+        //je user log-inan?
         isLogin: function(){
             return (CONFIG.currentUser && localStorage.getItem('sid'));
         }
+
 
     };
 

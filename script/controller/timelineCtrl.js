@@ -6,7 +6,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
 
             VM.module('timelineView').init();
 
-            this.getTimeline();
+            this.getTimelineForCurrEdition();
         },
 
         bindEvent: function(){
@@ -45,16 +45,20 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
             ];
 
             appFunc.bindEvents(bindings);
-
         },
 
-        getTimeline: function(){
-            xhr.simpleCall({
-                func:'timeline'
-            },function(response){
-                VM.module('timelineView').getTimeline(response.data);
-            });
-        },
+        getTimelineForCurrEdition: function(){
+            if(appFunc.isAppData()){
+                window.appData = '';
+                xhr.simpleCall({func:'pivar'}, function(data){
+                    window.appData = data;
+                    var articles = appFunc.getCurrEditionArticles(data);
+                    VM.module('timelineView').getTimeline(articles);
+
+                    VM.module('timelineView').createSectionListview(data);
+                });
+            }
+        }
 
         /*refreshTimeline: function(){
             xhr.simpleCall({

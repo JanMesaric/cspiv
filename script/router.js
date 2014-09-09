@@ -14,6 +14,7 @@ define(['GS','controller/module'],function(GS,CM) {
             });
 
             if(!GS.isLogin()){
+                //mainView je globalna spremenljivka!
                 mainView.loadPage('page/login.html');
             }else{
                 mainView.loadPage('index.html',false);
@@ -28,6 +29,7 @@ define(['GS','controller/module'],function(GS,CM) {
             var from = page.from;
             var swipeBack = page.swipeBack;
 
+            //če sem prišel iz mainpaga potem skrij spodnji menu, a se to sploh dogaja kle? ker če zbrišeš ni razlike
             if(name === 'ourView' || name === 'contatcView' || name === 'setting' ){
                 if(from === 'left' && swipeBack){
                     CM.module('appCtrl').showToolbar();
@@ -36,9 +38,11 @@ define(['GS','controller/module'],function(GS,CM) {
         },
 
         pageBeforeInit: function(page) {
+            //initiam vse controllerje!
             var name = page.name;
             var query = page.query;
             var from = page.from;
+            //OURVIEW SE PROŽI NA ZAČETKU!!! torej še preden se nalowda glavni page gre to čez in se sprožijo trije controllerji
             switch (name) {
                 case 'login':
                     if(from === 'left') return;
@@ -70,6 +74,7 @@ define(['GS','controller/module'],function(GS,CM) {
         },
 
         preprocess: function(content,url){
+            //TO JE CONTENT IZ INDEX.HTML
             if(!url) return false;
 
             url = url.split('?')[0] ;
@@ -101,7 +106,11 @@ define(['GS','controller/module'],function(GS,CM) {
                 default :
                     return content;
             }
+            //dobim url, primerjam poti in pišem kateri view želim za katerega odpret in to feedam v i18next
+            //http://www.idangero.us/framework7/docs/init-app.html#.VA3FOvmSww0 za preprocess AJAX callback
+            //module vrne vse metode viewa in ctrl-jev
             var output = CM.module('appCtrl').i18next(viewName,content);
+            //ta output je procesiran html
             return output;
 
         }

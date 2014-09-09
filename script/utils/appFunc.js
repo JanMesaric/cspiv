@@ -91,10 +91,7 @@ define(['i18n!nls/lang'],function(i18n){
         },
 
         matchUrl: function(string){
-
-            //ZAKOMENTIRAL ZARADI ERRORJA
-
-            /*var reg = /((http|ftp|https):\/\/)?[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&;:\/~\+#]*[\w\-\@?^=%&;\/~\+#])?/g;
+            var reg = /((http|ftp|https):\/\/)?[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&;:\/~\+#]*[\w\-\@?^=%&;\/~\+#])?/g;
 
             string = string.replace(reg,function(a){
                 if(a.indexOf('http') !== -1 || a.indexOf('ftp') !== -1){
@@ -105,7 +102,7 @@ define(['i18n!nls/lang'],function(i18n){
                     return '<a href=\"#\" onclick=\"event.stopPropagation();window.open(\'http://' + a + '\',\'_blank\')\">' + a + '</a>';
                 }
             });
-            return string;*/
+            return string;
         },
 
         bindEvents: function(bindings) {
@@ -118,6 +115,25 @@ define(['i18n!nls/lang'],function(i18n){
                         .on(bindings[i].event, bindings[i].handler);
                 }
             }
+        },
+
+        isAppData: function(){
+            return !window.appData || window.appData == "";
+        },
+
+        getCurrEdition: function(){
+            //TODO
+            return 0;
+        },
+
+        getCurrEditionArticles: function(data){
+            return data[this.getCurrEdition()].articles;
+        },
+
+        uniquify: function(array){
+            return array.filter(function(el, index, arr) {
+                return index == arr.indexOf(el);
+            });
         }
     };
 

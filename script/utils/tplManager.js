@@ -24,6 +24,7 @@ define(['text!GTPL','mustache'],function(GTPL,mustache){
         },
 
         renderTpl: function(markup,renderData){
+            //markup je naš html, view je pa naš data, ki ga damo v prerendered markup
             var output = mustache.render(markup,renderData);
             return output;
         },

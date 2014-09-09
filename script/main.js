@@ -1,5 +1,7 @@
+var log = console.log.bind(console);
 (function() {
     var lang = localStorage.getItem('lang') || 'en-us';
+    //TODO: http://requirejs.org/docs/api.html
     require.config({
         locale: lang,
         paths: {
@@ -15,6 +17,7 @@
         }
     });
 
+    //requirejs avtomatične najde router -> router.js v istem rootu kot main
     require(['Framework7','router','i18n!nls/lang','utils/appFunc'], function(Framework7,router,i18n,appFunc) {
 
         var app = {
@@ -43,14 +46,15 @@
 
                 window.hiApp = new Framework7({
                     pushState: false,
-                    popupCloseByOutside:false,
+                    popupCloseByOutside:false, //TODO: true je bolša izbira
                     animateNavBackIcon: true,
                     modalTitle: i18n.global.modal_title,
                     modalButtonOk: i18n.global.modal_button_ok,
                     modalButtonCancel: i18n.global.cancel,
+                    //TODO: PREPROCESS ZA ROUTER!!!
                     preprocess:router.preprocess
                 });
-
+                //initi za spodnje menuje, vezani so globalno!
                 window.mainView = hiApp.addView('#ourView', {
                     dynamicNavbar: true
                 });
@@ -62,7 +66,7 @@
                 window.settingView = hiApp.addView('#settingView', {
                     dynamicNavbar: true
                 });
-
+                //zaženi router
                 router.init();
             }
         };
