@@ -33,28 +33,34 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 handler:VM.module('postView').openSendPopup
             },{
                 element: '#ourView',
-                selector: '.time-line-content .item-content .click-content',
-                event: 'click',
-                handler: VM.module('timelineView').openItemPage
-            },{
-                element: '#ourView',
                 selector: '.time-line-content .item-content .share-article',
                 event: 'click',
                 handler: VM.module('timelineView').shareArticle
-              }
+              },{
+                element: '#ourView',
+                selector: '.js-favorite',
+                event: 'click',
+                handler: VM.module('timelineView').addFavorite
+              },{
+                element: '#ourView',
+                selector: '.time-line-content .item-content .click-content',
+                event: 'click',
+                handler: VM.module('timelineView').openItemPage
+            }
             ];
 
             appFunc.bindEvents(bindings);
         },
 
         getTimelineForCurrEdition: function(){
-            if(appFunc.isAppData()){
+            if(appFunc.isAppDataAvailable()){
                 window.appData = '';
                 xhr.simpleCall({func:'pivar'}, function(data){
                     window.appData = data;
                     var articles = appFunc.getCurrEditionArticles(data);
+                    //ustvarim prvo stran
                     VM.module('timelineView').getTimeline(articles);
-
+                    //ustvarim data za postView.js oz. rubrike popup
                     VM.module('timelineView').createSectionListview(data);
                 });
             }

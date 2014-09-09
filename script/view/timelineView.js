@@ -11,8 +11,15 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
         },
 
         getTimeline: function(data){
+            var arr = [];
+            data.forEach(function(data){
+                if(appFunc.isAlreadyFav(data.id,data.idEdition)){
+                    data.isfavorited = true;
+                }
+                arr.push(data);
+            });
             var renderData = this.renderDataFunc({
-                data:data
+                data:arr
             });
             var output = TM.renderTplById('timelineTemplate',renderData);
             $$('#ourView').find('.time-line-content').html(output);
@@ -31,6 +38,7 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
                 forward : i18n.timeline.forward,
                 comment : i18n.timeline.comment,
                 like : i18n.timeline.like
+
             };
 
             var renderData = {
@@ -53,6 +61,7 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
                     return appFunc.timeFormat(this.created_at);
                 }
             };
+
             return renderData;
         },
 
@@ -172,30 +181,46 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             window.plugins.socialsharing.share('Prebiram članek z naslovom • ' + itemTitle + ' • ' + 'Preberi več v mobilni aplikaciji Pivar - glasilo skupine Laško!', null, null, 'http://www.lasko.eu/pivar')
         },
         createSectionListview: function(data){
-            var html = '', arr = [];
-            data.forEach(function(editions){
-                editions.articles.forEach(function(edition){
-                    if(edition.artShow === "true"){
-                        var fin = edition.cat.replace(new RegExp("-", "g"),' ')
-                        arr.push(fin);
-                    }
-                })
-            });
-            var uniques = appFunc.uniquify(arr);
-            window.htmlOriginal = uniques;
-            if(uniques && uniques > 0){
-                html += '<ul>'
-                uniques.forEach(function(section){
-
-                    html += '<li>'+section+'</li>'
-
+            if(!window.htmlOriginal){
+                var arr = [];
+                data.forEach(function(editions){
+                    editions.articles.forEach(function(edition){
+                        if(edition.artShow === "true"){
+                            var fin = edition.cat.replace(new RegExp("-", "g"),' ');
+                            arr.push(fin);
+                        }
+                    });
                 });
-                html += '</ul>';
-            } else {
-                html = '<p>Kategorije niso na voljo</p>'
+                var uniques = appFunc.uniquify(arr);
+                arr = [];
+                uniques.forEach(function(fin){
+                    arr.push({name: fin});
+                })
+                window.htmlOriginal = arr;
             }
-            window.html = html;
-            $$('.rubrike-page ul').html(html);
+        },
+
+        addFavorite: function(){
+            if(!localStorage.getItem('favoriteObj')){
+                localStorage.setItem('favoriteObj', JSON.stringify([]));
+            }
+            var id = $$(this).data('id'),
+                edition = $$(this).data('edition');
+                appFunc.toggleFavorite(id, edition,this);
+//                obj = {
+//                    id: id,
+//                    edition: edition
+//                }
+//                var oldObj = JSON.parse(localStorage.getItem('favoriteObj'));
+//                if(!appFunc.isAlreadyFav(id, edition)){
+//                    oldObj.push(obj);
+//                } else {
+//                    return false;
+//                }
+//                localStorage.setItem('favoriteObj', JSON.stringify(oldObj));
+            //hiApp.alert('Članek je shranjen med priljubljene', 'Uspešno shranjeno');
+
+
         }
 
     };

@@ -41,7 +41,15 @@
                 <li class="tool-line"></li>
                 <li><a href="page/item.html?id={{id}}"><i class="icon ios7-chatbubble-outline"></i><span class="text">{{i18n.comment}}</span></a></li>
                 <li class="tool-line"></li>
-                <li><i class="icon ios7-heart-outline"></i><span class="text">{{i18n.like}}</span></li>
+
+                {{#isfavorited}}
+                <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shranjeno</span></li>
+                {{/isfavorited}}
+                {{^isfavorited}}
+                <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">{{i18n.like}}</span></li>
+                {{/isfavorited}}
+
+
             </ul>
         </div>
 
@@ -71,7 +79,14 @@
             <li class="tool-line"></li>
             <li><i class="icon ios7-chatbubble-outline"></i><span class="text">Komentiraj</span></li>
             <li class="tool-line"></li>
-            <li><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
+            <li class="js-favorite"><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
+
+            {{#isfavorited}}
+            <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shranjeno</span></li>
+            {{/isfavorited}}
+            {{^isfavorited}}
+            <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
+            {{/isfavorited}}
         </ul>
     </div>
 <div class="item-content">
@@ -151,37 +166,51 @@
                     <div class="rubrike-page list-block">
                         <ul>
                             {{#data}}
+                                {{#name}}
+                                     <li>
+                                         <a href="#" class="item-link js-section-li">
+                                             <div class="item-content">
+                                                 <!--<div class="item-media about spring"></div>-->
+                                                 <div class="item-inner">
+                                                     <div class="item-title">{{name}}
+                                                     </div>
+                                                 </div>
+                                             </div>
+                                         </a>
+
+                                     </li>
+                                {{/name}}
                             {{/data}}
-                            <li>
-                                <a href="page/about.html" class="item-link">
-                                    <div class="item-content">
-                                        <!--<div class="item-media about spring"></div>-->
-                                        <div class="item-inner">
-                                            <div class="item-title">Aktualno</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="page/about.html" class="item-link">
-                                    <div class="item-content">
-                                        <!--<div class="item-media about spring"></div>-->
-                                        <div class="item-inner">
-                                            <div class="item-title">Šport</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="page/about.html" class="item-link">
-                                    <div class="item-content">
-                                        <!--<div class="item-media about spring"></div>-->
-                                        <div class="item-inner">
-                                            <div class="item-title">Rubrika 1</div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
+                            <!--<li>-->
+                                <!--<a href="page/about.html" class="item-link">-->
+                                    <!--<div class="item-content">-->
+                                        <!--&lt;!&ndash;<div class="item-media about spring"></div>&ndash;&gt;-->
+                                        <!--<div class="item-inner">-->
+                                            <!--<div class="item-title">Aktualno</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a href="page/about.html" class="item-link">-->
+                                    <!--<div class="item-content">-->
+                                        <!--&lt;!&ndash;<div class="item-media about spring"></div>&ndash;&gt;-->
+                                        <!--<div class="item-inner">-->
+                                            <!--<div class="item-title">Šport</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a href="page/about.html" class="item-link">-->
+                                    <!--<div class="item-content">-->
+                                        <!--&lt;!&ndash;<div class="item-media about spring"></div>&ndash;&gt;-->
+                                        <!--<div class="item-inner">-->
+                                            <!--<div class="item-title">Rubrika 1</div>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
+                                <!--</a>-->
+                            <!--</li>-->
 
                         </ul>
                     </div>

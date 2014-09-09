@@ -117,7 +117,7 @@ define(['i18n!nls/lang'],function(i18n){
             }
         },
 
-        isAppData: function(){
+        isAppDataAvailable: function(){
             return !window.appData || window.appData == "";
         },
 
@@ -127,13 +127,59 @@ define(['i18n!nls/lang'],function(i18n){
         },
 
         getCurrEditionArticles: function(data){
-            return data[this.getCurrEdition()].articles;
+            var arr = [], emp = data[this.getCurrEdition()].articles;
+            emp.forEach(function(e){
+                if(e.artShow === "true"){
+                    arr.push(e);
+                }
+            });
+            return arr;
         },
 
         uniquify: function(array){
             return array.filter(function(el, index, arr) {
                 return index == arr.indexOf(el);
             });
+        },
+        removeObjFromArray: function(arr, id, edition){
+            var i = 0, len = arr.length;
+            for(;i<len;i++){
+                if(arr[i].id === id && arr[i].edition === edition){
+                    arr.splice(i,1);
+                }
+            };
+            return arr;
+        },
+        toggleFavorite: function(id, edition, reference){
+            var obj = {
+                id: id,
+                edition: edition
+                },
+                text = '',
+                end = '';
+            var oldObj = JSON.parse(localStorage.getItem('favoriteObj'));
+            if(!appFunc.isAlreadyFav(id, edition)){
+                oldObj.push(obj);
+                end = JSON.stringify(oldObj);
+                text = 'Shranjeno'
+            } else {
+                end = JSON.stringify(this.removeObjFromArray(oldObj, id, edition));
+                text = 'Shrani';
+            }
+            $$(reference).find('span').text(text);
+            localStorage.setItem('favoriteObj', end);
+        },
+        isAlreadyFav: function(id, edition){
+            var data = JSON.parse(localStorage.getItem('favoriteObj')),
+                isfav = false;
+            if(data){
+                data.forEach(function(data){
+                    if(data.id == id && data.edition == edition){
+                        isfav = true;
+                    }
+                });
+            }
+            return isfav;
         }
     };
 

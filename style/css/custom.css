@@ -113,20 +113,16 @@
 .bold{
     font-weight:bold;
 }
-.clearfix{
-    clear: both;
-}
-
 
 /*IPAD STYLE*/
-.time-line-content{
-    -webkit-column-count: 2;
-    -webkit-column-gap: 10px;
-    column-count: 2;
-    column-gap: 10px;
-    width: 100%;
-}
-.list-block .time-line-content .item-content {
-    display: inline-block; /* Display inline-block, and absolutely NO FLOATS! */
-    width: 100%;
-}
+/*.time-line-content{*/
+     /*-webkit-column-count: 2;*/
+     /*-webkit-column-gap: 10px;*/
+     /*column-count: 2;*/
+     /*column-gap: 10px;*/
+     /*width: 100%;*/
+/*}*/
+/*.list-block .time-line-content .item-content {*/
+    /*display: inline-block; *//* Display inline-block, and absolutely NO FLOATS! */
+    /*width: 100%;*/
+/*}*/

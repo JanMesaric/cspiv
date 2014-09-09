@@ -1,8 +1,9 @@
 define(['utils/appFunc',
+        'controller/module',
         'i18n!nls/lang',
         'utils/tplManager',
         'components/geolocation',
-        'components/camera'],function(appFunc,i18n,TM,geo,camera){
+        'components/camera'],function(appFunc,CM,i18n,TM,geo,camera){
 
     var postView = {
 
@@ -13,33 +14,43 @@ define(['utils/appFunc',
             renderData.senTweet = i18n.index.sen_tweet;
             renderData.sendPlaceholder = i18n.index.send_placeholder;
             renderData.loadingGeo = i18n.geo.loading_geo;
-            renderData.data = window.htmlOriginal;
-            log(window.html)
-            log(window.htmlOriginal)
+            renderData.data = htmlOriginal; //pripeto na window v timelineView-u
+
             var output = TM.renderTplById('sendPopupTemplate', renderData);
             hiApp.popup($$.trim(output));
 
-            var bindings = [{
-                element: '#sendWeiboBtn',
+              var bindings = [
+// {
+//                element: '#sendWeiboBtn',
+//                event: 'click',
+//                handler: postView.postMsg
+//            },{
+//                element: 'div.message-tools .get-position',
+//                event: 'click',
+//                handler: geo.catchGeoInfo
+//            },{
+//                element: '#geoInfo',
+//                event: 'click',
+//                handler: geo.cleanGeo
+//            },{
+//                element: 'div.message-tools .image-upload',
+//                event: 'click',
+//                handler: camera.getPicture
+//            },
+              {
+                element: '.js-section-li',
                 event: 'click',
-                handler: postView.postMsg
-            },{
-                element: 'div.message-tools .get-position',
-                event: 'click',
-                handler: geo.catchGeoInfo
-            },{
-                element: '#geoInfo',
-                event: 'click',
-                handler: geo.cleanGeo
-            },{
-                element: 'div.message-tools .image-upload',
-                event: 'click',
-                handler: camera.getPicture
+                handler: postView.filterBySection
             }];
 
             appFunc.bindEvents(bindings);
         },
-
+        filterBySection: function(e){
+            e.preventDefault();
+//            log(CM)
+//            CM.module('timelineCtrl').getTimelineForCurrEdition();
+            hiApp.closeModal('.send-popup');
+        },
         clearSendPopup: function(){
             $$('#messageText').val('');
             $$('#uploadPicPreview>img').attr('src','');
