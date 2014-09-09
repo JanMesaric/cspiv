@@ -287,10 +287,21 @@
 </script>
 
 <script id="contactListTemplate" type="text/template">
-    {{#contacts}}
-
     <li class="contact-item">
-        <a href="page/kuhalnica.html?nickname={{nickname}}" class="item-link">
+        <a href="page/kuhalnica.html" class="item-link">
+            <div class="item-content">
+                <div class="item-media"><img src="style/img/avatar/avatar{{avatar}}.jpg" width="44"></div>
+                <div class="item-inner">
+                    <div class="item-title-row">
+                        <div class="item-title">Kuhalnica</div>
+                    </div>
+                    <div class="item-subtitle">{{location}}</div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="contact-item">
+        <a href="page/kuhalnica.html" class="item-link">
             <div class="item-content">
                 <div class="item-media"><img src="style/img/avatar/avatar{{avatar}}.jpg" width="44"></div>
                 <div class="item-inner">
@@ -302,7 +313,32 @@
             </div>
         </a>
     </li>
-    {{/contacts}}
+    <li class="contact-item">
+        <a href="page/kuhalnica.html" class="item-link">
+            <div class="item-content">
+                <div class="item-media"><img src="style/img/avatar/avatar{{avatar}}.jpg" width="44"></div>
+                <div class="item-inner">
+                    <div class="item-title-row">
+                        <div class="item-title">{{nickname}}</div>
+                    </div>
+                    <div class="item-subtitle">{{location}}</div>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="contact-item">
+        <a href="page/kuhalnica.html" class="item-link">
+            <div class="item-content">
+                <div class="item-media"><img src="style/img/avatar/avatar{{avatar}}.jpg" width="44"></div>
+                <div class="item-inner">
+                    <div class="item-title-row">
+                        <div class="item-title">{{nickname}}</div>
+                    </div>
+                    <div class="item-subtitle">{{location}}</div>
+                </div>
+            </div>
+        </a>
+    </li>
 </script>
 
 <script id="messageTemplate" type="text/template">
