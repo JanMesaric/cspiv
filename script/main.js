@@ -43,7 +43,6 @@ var log = console.log.bind(console);
             },
             initMainView:function(){
                 window.$$ = Dom7;
-
                 window.hiApp = new Framework7({
                     pushState: false,
                     popupCloseByOutside:false, //TODO: true je bolša izbira

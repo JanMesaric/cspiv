@@ -16,6 +16,8 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
             this.hideToolbar();
 
             hiApp.showIndicator();
+
+
         },
 
         submitMessage: function(e){
@@ -62,6 +64,9 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
                 hiApp.hideIndicator();
 
             },600);
+        },
+        initSwiper: function(){
+
         },
 
         i18next: function(content){
