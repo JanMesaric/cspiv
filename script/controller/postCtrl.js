@@ -1,7 +1,8 @@
 define(['utils/appFunc',
         'utils/xhr',
         'view/module',
-        'i18n!nls/lang'],function(appFunc,xhr,VM,i18n){
+        'i18n!nls/lang',
+        'controller/timelineCtrl'],function(appFunc,xhr,VM,i18n,CT){
 
     var postCtrl = {
 
@@ -15,6 +16,11 @@ define(['utils/appFunc',
                 selector: '#uploadPicPreview>img',
                 event: 'click',
                 handler: postCtrl.clearChosenImage
+            },{
+                element: document,
+                selector: '.js-section-li',
+                event: 'click',
+                handler: postCtrl.filterBySection
             }];
 
             appFunc.bindEvents(bindings);
@@ -27,10 +33,16 @@ define(['utils/appFunc',
 
                 localStorage.removeItem('imageUrl');
             });
+        },
+        filterBySection: function(e){
+            e.preventDefault();
+            var cat = $$(this).find('.item-title').text().replace(new RegExp(" ", "g"),'-');
+            CT.refreshTimeline(cat);
+            hiApp.closeModal('.send-popup');
         }
     };
 
     postCtrl.bindEvent();
 
-    return postCtrl;
+    return postCtrl
 });

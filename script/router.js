@@ -43,9 +43,7 @@ define(['GS','controller/module'],function(GS,CM) {
             var query = page.query;
             var from = page.from;
             //OURVIEW SE PROŽI NA ZAČETKU!!! torej še preden se nalowda glavni page gre to čez in se sprožijo trije controllerji
-            log(name);
             switch (name) {
-
                 case 'login':
                     if(from === 'left') return;
                     CM.module('loginCtrl').init();
@@ -66,13 +64,15 @@ define(['GS','controller/module'],function(GS,CM) {
                     CM.module('itemCtrl').init(query);
                     CM.module('commentCtrl').init();
                     CM.module('kuhalnicaitemCtrl').init(query);
-
                     break;
                 case 'message':
                     CM.module('messageCtrl').init(query);
                     break;
                 case 'language':
                     CM.module('languageCtrl').init(query);
+                    break;
+                case 'archive':
+                    CM.module('archiveCtrl').init();
                     break;
                 case 'kuhalnicaView':
                     CM.module('kuhalnicaCtrl').init(query);
@@ -113,6 +113,9 @@ define(['GS','controller/module'],function(GS,CM) {
                 case 'page/language.html':
                     viewName = 'languageView';
                     break;
+                case 'page/archive.html':
+                    viewName = 'archiveView';
+                    break;
                 case 'page/kuhalnica.html':
                     viewName = 'kuhalnicaView';
                     break;
@@ -126,7 +129,6 @@ define(['GS','controller/module'],function(GS,CM) {
             //http://www.idangero.us/framework7/docs/init-app.html#.VA3FOvmSww0 za preprocess AJAX callback
             //module vrne vse metode viewa in ctrl-jev
             var output = CM.module('appCtrl').i18next(viewName,content);
-
             //ta output je procesiran html
             return output;
 

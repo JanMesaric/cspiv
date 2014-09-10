@@ -123,7 +123,7 @@ define(['i18n!nls/lang'],function(i18n){
 
         getCurrEdition: function(){
             //TODO
-            return 0;
+            return localStorage.getItem('currEdition');
         },
 
         getCurrEditionArticles: function(data){
@@ -132,6 +132,18 @@ define(['i18n!nls/lang'],function(i18n){
                 if(e.artShow === "true"){
                     arr.push(e);
                 }
+            });
+            return arr;
+        },
+
+        getAllArticles: function(data){
+            var arr = [];
+            data.forEach(function(editions){
+                editions.articles.forEach(function(edition){
+                    if(edition.artShow === "true"){
+                        arr.push(edition);
+                    }
+                });
             });
             return arr;
         },

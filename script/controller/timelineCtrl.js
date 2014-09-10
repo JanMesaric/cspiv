@@ -53,6 +53,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
         },
 
         getTimelineForCurrEdition: function(){
+            log('succ')
             if(appFunc.isAppDataAvailable()){
                 window.appData = '';
                 xhr.simpleCall({func:'pivar'}, function(data){
@@ -65,16 +66,23 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                     log(window.appData);
                 });
             }
-        }
-
-        /*refreshTimeline: function(){
-            xhr.simpleCall({
-                func:'refresh_timeline'
-            },function(response){
-                VM.module('timelineView').refreshTimeline(response.data);
-            });
         },
 
+        refreshTimeline: function(cat){
+            var cat = cat || 'Nazaj-na-številko';
+            VM.module('timelineView').refreshTimeline(appFunc.getAllArticles(window.appData), cat);
+            log('orly')
+
+        },
+        openEdition: function(id){
+            localStorage.setItem('currEdition', id);
+//            if(!id){
+//                hiApp.alert('Prišlo je do napake, poizkusite znova.','Napaka');
+//            }
+            VM.module('timelineView').openEdition(id);
+            //hiApp.openPanel('#ourView')
+        }
+        /*
         infiniteTimeline: function(){
             var $dom = $$(this);
             xhr.simpleCall({

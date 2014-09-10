@@ -1,4 +1,4 @@
-$$(function(){
+(function(){
 	//Featured Slide
 	var featuredSwiper = $$('.featured').swiper({
 		slidesPerView:'auto',

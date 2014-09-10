@@ -14,7 +14,7 @@ define(['utils/appFunc',
             renderData.senTweet = i18n.index.sen_tweet;
             renderData.sendPlaceholder = i18n.index.send_placeholder;
             renderData.loadingGeo = i18n.geo.loading_geo;
-            renderData.data = htmlOriginal; //pripeto na window v timelineView-u
+            renderData.data = catReplaced; //pripeto na window v timelineView-u, to so unique predelki
 
             var output = TM.renderTplById('sendPopupTemplate', renderData);
             hiApp.popup($$.trim(output));
@@ -37,20 +37,16 @@ define(['utils/appFunc',
 //                event: 'click',
 //                handler: camera.getPicture
 //            },
-              {
-                element: '.js-section-li',
-                event: 'click',
-                handler: postView.filterBySection
-            }];
+//              {
+//                element: '.js-section-li',
+//                event: 'click',
+//                handler: postView.filterBySection
+//            }
+            ];
 
             appFunc.bindEvents(bindings);
         },
-        filterBySection: function(e){
-            e.preventDefault();
-//            log(CM)
-//            CM.module('timelineCtrl').getTimelineForCurrEdition();
-            hiApp.closeModal('.send-popup');
-        },
+
         clearSendPopup: function(){
             $$('#messageText').val('');
             $$('#uploadPicPreview>img').attr('src','');

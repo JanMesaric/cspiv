@@ -6,19 +6,19 @@ body {
 	color: #333;
 }
 .featured {
-	height: 160px;
+	height: 80%;
 	padding: 20px 0 50px;
 	margin-bottom: -25px;
-	background-color: #aaa;
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#eeeeee));
-	background-image: -webkit-linear-gradient(top, #aaa, #eeeeee);
-	background-image:    -moz-linear-gradient(top, #aaa, #eeeeee);
-	background-image:      -o-linear-gradient(top, #aaa, #eeeeee);
-    background-image:         linear-gradient(to bottom, #aaa, #eee);
+	/*background-color: #aaa;*/
+	/*background-image: -webkit-gradient(linear, left top, left bottom, from(#aaa), to(#eeeeee));*/
+	/*background-image: -webkit-linear-gradient(top, #aaa, #eeeeee);*/
+	/*background-image:    -moz-linear-gradient(top, #aaa, #eeeeee);*/
+	/*background-image:      -o-linear-gradient(top, #aaa, #eeeeee);*/
+    /*background-image:         linear-gradient(to bottom, #aaa, #eee);*/
 }
 .featured .swiper-slide {
-	border-radius: 5px;
-	height: 160px;
+	height: 100%;
+    background-size:100%;
 	width: 273px;
 	-webkit-backface-visibility: hidden;
 	-moz-backface-visibility: hidden;

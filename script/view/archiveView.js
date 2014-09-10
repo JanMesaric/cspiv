@@ -5,18 +5,20 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
         init: function(params){
             appFunc.hideToolbar('.views');
             appFunc.bindEvents(params.bindings);
+            this.createArchiveSlides();
 
-            var id = params.query.id;
-            this.getItem(id);
+//            var id = params.query.id;
+//            this.getItem(id);
         },
-
+        createArchiveSlides: function(){
+            log('create')
+        },
         getItem: function(id){
 
             var $this = $$('.time-line-content .item-content[data-id="'+ id +'"]');
 
             var item = [];
             item.id = $this.data('id');
-            item.idEdition = $('.js-favorite').data('edition');
             item.nickname = $this.find('.item-header .detail .nickname').html();
             item.avatar = $this.find('.item-header .avatar>img').data('avatarid');
             item.time = appFunc.timeFormat($this.find('.item-header .detail .create-time').data('time'));
@@ -24,11 +26,7 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
             item.content = $this.find('.item-content').html();
             item.author = $this.find('.item-author').html();
             item.rubrika = $this.find('.item-rubrika').html();
-            if(appFunc.isAlreadyFav(item.id, item.idEdition)){
-                item.shranjeno = 'Shranjeno';
-            } else {
-                item.shranjeno = 'Shrani';
-            }
+
 
 
             if($this.find('.item-image img')[0])
@@ -42,7 +40,7 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
         i18next: function(content){
             var renderData = [];
             renderData.back = i18n.global.back;
-            renderData.title = i18n.item.title;
+            renderData.title = 'Arhiv';
             renderData.comment = i18n.timeline.comment;
             renderData.forward = i18n.timeline.forward;
 

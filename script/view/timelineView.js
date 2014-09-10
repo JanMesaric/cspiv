@@ -21,6 +21,7 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             var renderData = this.renderDataFunc({
                 data:arr
             });
+
             var output = TM.renderTplById('timelineTemplate',renderData);
             $$('#ourView').find('.time-line-content').html(output);
 
@@ -65,51 +66,50 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             return renderData;
         },
 
-        refreshItemTime:function(){
-            $$('#ourView').find('.item-header .detail .create-time').each(function(){
-                var nowTime = appFunc.timeFormat($$(this).data('time'));
-                $$(this).html(nowTime);
-            });
-        },
+//        refreshItemTime:function(){
+//            $$('#ourView').find('.item-header .detail .create-time').each(function(){
+//                var nowTime = appFunc.timeFormat($$(this).data('time'));
+//                $$(this).html(nowTime);
+//            });
+//        },
+        //TODO: tako bi lahko uporabil za refresh priljubljenih
 
-        refreshTimeline: function(data){
-            // Find newest msg id in ptrContent;
-
-            this.refreshItemTime();
-
-            var newestId = $$('#ourView').find('.time-line-content .item-content'). eq(0).data('id');
-
-            setTimeout(function () {
-
-                $$('#ourView .refresh-click').find('i').removeClass('ios7-reloading');
-
-                if(parseInt(newestId) === 48) {
-                    timelineView.showLoadResult(i18n.index.nothing_loaded);
-                    hiApp.pullToRefreshDone();
-                    return false;
-                }
-
-                var length = data.length;
-
-                var renderData = timelineView.renderDataFunc({
-                    data:data
+        refreshTimeline: function(data, category){
+            var arr = [];
+            if(category != 'Nazaj-na-številko'){
+                data.forEach(function(res){
+                    if(res.cat == category){
+                        arr.push(res);
+                    }
                 });
+                data = arr;
+            } else {
+                data = appFunc.getCurrEditionArticles(window.appData);
+            }
+            if(data == 0 || data == undefined){
+                hiApp.alert('Prišlo je do napake, prosimo poizkusite znova', 'Napaka');
+            }
+            var renderData = timelineView.renderDataFunc({
+                data:data
+            });
+            var output = TM.renderTplById('timelineTemplate',renderData);
+            $$('#ourView').find('.time-line-content').html(output);
 
-                var output;
+        },
+        openEdition: function(){
+            var data = appFunc.getCurrEditionArticles(window.appData);
+            if(data == 0 || data == undefined){
+                hiApp.alert('Prišlo je do napake, prosimo poizkusite znova', 'Napaka');
+            }
+            var renderData = timelineView.renderDataFunc({
+                data:data
+            });
+            var output = TM.renderTplById('timelineTemplate',renderData);
+            $$('#ourView').find('.time-line-content').html(output);
 
-                if(length >= 15){
-                    output = TM.renderTplById('timelineTemplate',renderData);
-                    $$('#ourView').find('.time-line-content').html(output);
-                }else if(length > 0){
-                    output = TM.renderTplById('timelineTemplate',renderData);
-                    $$('#ourView').find('.time-line-content').prepend(output);
-                }else{
-                    timelineView.showLoadResult(i18n.index.nothing_loaded);
-                }
-
-                hiApp.pullToRefreshDone();
-
-            },1500);
+            //TODO:deluje le v eno smer
+            $$('#contatcView').hide();
+            $$('#ourView').show();
         },
 
         infiniteTimeline: function(options){
@@ -182,7 +182,7 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             window.plugins.socialsharing.share('Prebiram članek z naslovom • ' + itemTitle + ' • ' + 'Preberi več v mobilni aplikaciji Pivar - glasilo skupine Laško!', null, null, 'http://www.lasko.eu/pivar')
         },
         createSectionListview: function(data){
-            if(!window.htmlOriginal){
+            if(!window.catReplaced){
                 var arr = [];
                 data.forEach(function(editions){
                     editions.articles.forEach(function(edition){
@@ -197,7 +197,7 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
                 uniques.forEach(function(fin){
                     arr.push({name: fin});
                 })
-                window.htmlOriginal = arr;
+                window.catReplaced = arr;
             }
         },
 

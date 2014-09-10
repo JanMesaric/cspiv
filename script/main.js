@@ -8,6 +8,8 @@ var log = console.log.bind(console);
             text:'../vendors/require/text',
             i18n:'../vendors/require/i18n',
             Framework7:'../vendors/framework7/framework7',
+            swiper:'../vendors/idangero/idangerous.swiper-2.0.min',
+            swiper3d:'../vendors/framework7/idangerous.swiper.3dflow-2.0',
             mustache:'../vendors/mustache/mustache',
             GTPL:'../page/global.tpl.html',
             GS:'services/globalService'
@@ -65,6 +67,9 @@ var log = console.log.bind(console);
                 window.settingView = hiApp.addView('#settingView', {
                     dynamicNavbar: true
                 });
+                if(!localStorage.getItem('currEdition')){
+                    localStorage.setItem('currEdition', 2);
+                }
                 //zaženi router
                 router.init();
             }
