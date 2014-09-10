@@ -290,7 +290,7 @@
     {{#contacts}}
 
     <li class="contact-item">
-        <a href="page/kuhalnica.html" class="item-link">
+        <a href="page/kuhalnica.html?nickname={{nickname}}" class="item-link">
             <div class="item-content">
                 <div class="item-media"><img src="style/img/avatar/avatar{{avatar}}.jpg" width="44"></div>
                 <div class="item-inner">
@@ -321,114 +321,4 @@
     </div>
     {{/image}}
     {{/message}}
-</script>
-
-
-
-<!-- Kuhalnica Template -->
-
-<script id="kuhalnicaTemplate" type="text/template" >
-    {{#weibo}}
-    <li data-id="{{id}}" data-mid="{{mid}}" data-title="{{title}}" data-titleDesc="{{titleDesc}}" class="item-content card-content">
-        <div class="item-inner">
-            <div class="item-header">
-                <div class="avatar">
-                    <img data-avatarid="{{img.photoMain}}" src="{{img.photoMain}}">
-                </div>
-                <div class="detail">
-                    <p data-title="{{title}}" class="nickname">{{{title}}}</p>
-                    <p class="item-rubrika">{{{credits}}}</p>
-                    <p class="item-author">Avtor: {{{author}}}</p>
-                </div>
-            </div>
-
-            <div class="click-content">
-
-                <div class="item-subtitle">
-                    {{{descShort}}}
-                </div>
-                <!-- SKRITI ELEMENTI KER JIH RABIM V ITEM VIEW -->
-                <div class="item-content" style="display:none">
-                    {{{descLong}}}
-                </div>
-                <div class="item-ingredients" style="display:none">
-                    {{{ingredients}}}
-                </div>
-                <div class="item-author" style="display:none">
-                    {{{author}}}
-                </div>
-
-                {{#image}}
-                <div class="item-image">
-                    <img src="{{img.photoMain}}" alt="">
-                </div>
-                {{/image}}
-
-            </div>
-
-
-            <div class="item-tools">
-                <ul>
-                    <li class="share-article"><i class="icon ios7-redo-outline"></i><span class="text">{{i18n.forward}}</span></li>
-                    <li class="tool-line"></li>
-                    <li><a href="page/item.html?id={{id}}"><i class="icon ios7-chatbubble-outline"></i><span class="text">{{i18n.comment}}</span></a></li>
-                    <li class="tool-line"></li>
-
-                    {{#isfavorited}}
-                    <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shranjeno</span></li>
-                    {{/isfavorited}}
-                    {{^isfavorited}}
-                    <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">{{i18n.like}}</span></li>
-                    {{/isfavorited}}
-
-
-                </ul>
-            </div>
-
-        </div>
-    </li>
-    {{/weibo}}
-</script>
-
-     <!-- itemKuhalnicaTemplate-->
-<script id="itemKuhalnicaTemplate" type="text/template" >
-    <div class="item-header">
-        <div class="avatar">
-            <img src="{{avatar}}">
-        </div>
-
-        <div class="detail">
-            <p class="nickname">{{nickname}}</p>
-            <p class="item-author">Avtor: {{author}}</p>
-            <p class="item-rubrika">{{{rubrika}}}</p>
-        </div>
-    </div>
-    <div class="item-subtitle">
-        {{&text}}
-    </div>
-    <div class="item-tools">
-        <ul>
-            <li class="share-article"><i class="icon ios7-redo-outline"></i><span class="text">Deli</span></li>
-            <li class="tool-line"></li>
-            <li><i class="icon ios7-chatbubble-outline"></i><span class="text">Komentiraj</span></li>
-            <li class="tool-line"></li>
-            <li class="js-favorite"><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
-
-            {{#isfavorited}}
-            <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shranjeno</span></li>
-            {{/isfavorited}}
-            {{^isfavorited}}
-            <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
-            {{/isfavorited}}
-        </ul>
-    </div>
-    <div class="item-content">
-        {{&content}}
-        <div class="clearfix"></div>
-    </div>
-    {{#image}}
-    <div class="item-image">
-        <img src="{{image}}" alt="">
-    </div>
-    {{/image}}
 </script>
