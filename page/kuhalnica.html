@@ -7,29 +7,25 @@
             </a>
         </div>
 
-        <div class="center chat-name sliding">{{chat}}</div>
+        <div class="center chat-name sliding">Pivarjeva Kuhalnica</div>
 
     </div>
 </div>
 <div class="pages navbar-through">
-    <div data-page="kuhalnica" class="page no-toolbar toolbar-fixed">
-
-        <div class="page-content">
-            <div class="swiper-container featured">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide" style="background-image:url(dangero/big/1.jpg)">
-                        <a href="http://www.idangero.us" target="_blank"></a>
-                    </div>
-                    <div class="swiper-slide" style="background-image:url(dangero/big/2.jpg)">
-                        <a href="http://www.idangero.us/sliders/moover/" target="_blank"></a>
-                    </div>
-                    <div class="swiper-slide" style="background-image:url(dangero/big/3.jpg)">
-                        <a href="http://www.idangero.us/index.php?content=cat_item&id=62" target="_blank"></a>
-                    </div>
-                </div>
+    <div data-page="kuhalnicaView" id="kuhalnicaView" class="page no-swipeback">
+        <div data-distance="50" class="page-content pull-to-refresh-content infinite-scroll">
+            <div class="pull-to-refresh-layer">
+                <div class="preloader"></div>
+                <div class="pull-to-refresh-arrow"></div>
             </div>
+            <div class="list-block media-list">
+                <div class="load-result"></div>
+
+                <ul class="kuhalnica-content">
+                </ul>
 
             </div>
         </div>
+    </div>
     </div>
 </div>

@@ -9,7 +9,10 @@ define(['controller/appCtrl',
         'controller/contactCtrl',
         'controller/commentCtrl',
         'controller/messageCtrl',
-        'controller/languageCtrl'],function(appCtrl,loginCtrl,settingCtrl,aboutCtrl,feedbackCtrl,timelineCtrl,itemCtrl,postCtrl,contactCtrl,commentCtrl,messageCtrl,languageCtrl) {
+        'controller/languageCtrl',
+        'controller/kuhalnicaCtrl',
+        'controller/kuhalnicaitemCtrl'
+],function(appCtrl,loginCtrl,settingCtrl,aboutCtrl,feedbackCtrl,timelineCtrl,itemCtrl,postCtrl,contactCtrl,commentCtrl,messageCtrl,languageCtrl,kuhalnicaCtrl,kuhalnicaitemCtrl) {
 
     var module = {
         module: function(name){
@@ -52,6 +55,12 @@ define(['controller/appCtrl',
                     break;
                 case 'languageCtrl':
                     controller = languageCtrl;
+                    break;
+                case 'kuhalnicaCtrl':
+                    controller = kuhalnicaCtrl;
+                    break;
+                case 'kuhalnicaitemCtrl':
+                    controller = kuhalnicaitemCtrl;
                     break;
             }
 

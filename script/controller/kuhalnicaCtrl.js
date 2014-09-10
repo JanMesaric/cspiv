@@ -1,67 +1,74 @@
 define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
 
-    var timelineCtrl = {
+    var kuhalnicaCtrl = {
 
         init: function(){
 
-            VM.module('timelineView').init();
+            VM.module('kuhalnicaView').init();
 
-            this.getTimelineForCurrEdition();
+            this.getKuhalnicaForCurrEdition();
         },
 
         bindEvent: function(){
 
             var bindings = [{
-                element: '#ourView',
+                element: '#contatcView',
                 selector: '.pull-to-refresh-content',
                 event: 'refresh',
-                handler: timelineCtrl.refreshTimeline
+                handler: kuhalnicaCtrl.refreshTimeline
             },{
-                element: '#ourView',
+                element: '#contatcView',
                 selector: '.pull-to-refresh-content',
                 event: 'infinite',
-                handler: timelineCtrl.infiniteTimeline
+                handler: kuhalnicaCtrl.infiniteTimeline
             },{
-                element: '#ourView',
+                element: '#contatcView',
                 selector: '.refresh-click',
                 event: 'click',
-                handler: VM.module('timelineView').refreshTimelineByClick
+                handler: VM.module('kuhalnicaView').refreshTimelineByClick
             },{
                 element: document,
                 selector: 'a.open-send-popup',
                 event: 'click',
                 handler:VM.module('postView').openSendPopup
             },{
-                element: '#ourView',
-                selector: '.time-line-content .item-content .share-article',
+                element: '#contatcView',
+                selector: '.kuhalnica-content .item-content .share-article',
                 event: 'click',
-                handler: VM.module('timelineView').shareArticle
+                handler: VM.module('kuhalnicaView').shareArticle
               },{
-                element: '#ourView',
+                element: '#contatcView',
                 selector: '.js-favorite',
                 event: 'click',
-                handler: VM.module('timelineView').addFavorite
+                handler: VM.module('kuhalnicaView').addFavorite
               },{
-                element: '#ourView',
-                selector: '.time-line-content .item-content .click-content',
+                element: '#contatcView',
+                selector: '.kuhalnica-content .item-content .click-content',
                 event: 'click',
-                handler: VM.module('timelineView').openItemPage
+                handler: VM.module('kuhalnicaView').openKuhalnicaItemPage
             }
             ];
 
             appFunc.bindEvents(bindings);
         },
 
-        getTimelineForCurrEdition: function(){
+        getKuhalnicaForCurrEdition: function(){
+
+            var cooking = window.appData[0].cooking.cookingArray;
+            log(window.appData[0].cooking.cookingArray);
+            //ustvarim prvo stran
+            VM.module('kuhalnicaView').getKuhalnica(cooking);
+            //ustvarim data za postView.js oz. rubrike popup
+
             if(appFunc.isAppDataAvailable()){
                 window.appData = '';
                 xhr.simpleCall({func:'pivar'}, function(data){
                     window.appData = data;
                     var articles = appFunc.getCurrEditionArticles(data);
                     //ustvarim prvo stran
-                    VM.module('timelineView').getTimeline(articles);
+                    VM.module('kuhalnicaView').getKuhalnica(articles);
                     //ustvarim data za postView.js oz. rubrike popup
-                    VM.module('timelineView').createSectionListview(data);
+                    VM.module('kuhalnicaView').createSectionListview(data);
                     log(window.appData);
                 });
             }
@@ -88,7 +95,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
         }*/
     };
 
-    timelineCtrl.bindEvent();
+    kuhalnicaCtrl.bindEvent();
 
-    return timelineCtrl;
+    return kuhalnicaCtrl;
 });

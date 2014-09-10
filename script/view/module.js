@@ -9,7 +9,10 @@ define(['view/appView',
         'view/contactView',
         'view/commentView',
         'view/messageView',
-        'view/languageView'],function(appView,loginView,settingView,aboutView,feedbackView,timelineView,itemView,postView,contactView,commentView,messageView,languageView) {
+        'view/languageView',
+        'view/kuhalnicaView',
+        'view/kuhalnicaItemView'
+],function(appView,loginView,settingView,aboutView,feedbackView,timelineView,itemView,postView,contactView,commentView,messageView,languageView,kuhalnicaView,kuhalnicaItemView) {
 
     var module = {
 
@@ -53,6 +56,12 @@ define(['view/appView',
                     break;
                 case 'languageView':
                     view = languageView;
+                    break;
+                case 'kuhalnicaView':
+                    view = kuhalnicaView;
+                    break;
+                case 'kuhalnicaItemView':
+                    view = kuhalnicaItemView;
                     break;
             }
 

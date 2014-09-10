@@ -4,6 +4,10 @@ define(['utils/appFunc','view/module', 'utils/xhr'],function(appFunc,VM, xhr){
 
         i18next: function(viewName,content){
             //vzemi view in ga populati s contentom in vrni output
+            log(viewName);
+            //log(content);
+            //log(VM);
+
             var output = VM.module(viewName).i18next(content);
             return output;
         },

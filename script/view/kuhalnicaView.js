@@ -1,16 +1,16 @@
 define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,i18n){
 
-    var timelineView = {
+    var kuhalnicaView = {
 
         init: function(){
             appFunc.showToolbar('.views');
 
-            $$('#ourView .pull-to-refresh-layer').show();
+            $$('#kuhalnicaView .pull-to-refresh-layer').show();
 
             hiApp.showIndicator();
         },
 
-        getTimeline: function(data){
+        getKuhalnica: function(data){
             var arr = [];
             data.forEach(function(data){
                 if(appFunc.isAlreadyFav(data.id,data.idEdition)){
@@ -21,13 +21,13 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             var renderData = this.renderDataFunc({
                 data:arr
             });
-            var output = TM.renderTplById('timelineTemplate',renderData);
-            $$('#ourView').find('.time-line-content').html(output);
+            var output = TM.renderTplById('kuhalnicaTemplate',renderData);
+            $$('#kuhalnicaView').find('.kuhalnica-content').html(output);
 
             hiApp.hideIndicator();
 
             //Unlock scroll loading status
-            var ptrContent = $$('#ourView').find('.pull-to-refresh-content');
+            var ptrContent = $$('#kuhalnicaView').find('.pull-to-refresh-content');
             ptrContent.data('scrollLoading','unloading');
         },
 
@@ -66,7 +66,7 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
         },
 
         refreshItemTime:function(){
-            $$('#ourView').find('.item-header .detail .create-time').each(function(){
+            $$('#kuhalnicaView').find('.item-header .detail .create-time').each(function(){
                 var nowTime = appFunc.timeFormat($$(this).data('time'));
                 $$(this).html(nowTime);
             });
@@ -77,34 +77,34 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
 
             this.refreshItemTime();
 
-            var newestId = $$('#ourView').find('.time-line-content .item-content'). eq(0).data('id');
+            var newestId = $$('#kuhalnicaView').find('.kuhalnica-content .item-content'). eq(0).data('id');
 
             setTimeout(function () {
 
-                $$('#ourView .refresh-click').find('i').removeClass('ios7-reloading');
+                $$('#kuhalnicaView .refresh-click').find('i').removeClass('ios7-reloading');
 
                 if(parseInt(newestId) === 48) {
-                    timelineView.showLoadResult(i18n.index.nothing_loaded);
+                    kuhalnicaView.showLoadResult(i18n.index.nothing_loaded);
                     hiApp.pullToRefreshDone();
                     return false;
                 }
 
                 var length = data.length;
 
-                var renderData = timelineView.renderDataFunc({
+                var renderData = kuhalnicaView.renderDataFunc({
                     data:data
                 });
 
                 var output;
 
                 if(length >= 15){
-                    output = TM.renderTplById('timelineTemplate',renderData);
-                    $$('#ourView').find('.time-line-content').html(output);
+                    output = TM.renderTplById('kuhalnicaTemplate',renderData);
+                    $$('#kuhalnicaView').find('.kuhalnica-content').html(output);
                 }else if(length > 0){
-                    output = TM.renderTplById('timelineTemplate',renderData);
-                    $$('#ourView').find('.time-line-content').prepend(output);
+                    output = TM.renderTplById('kuhalnicaTemplate',renderData);
+                    $$('#kuhalnicaView').find('.kuhalnica-content').prepend(output);
                 }else{
-                    timelineView.showLoadResult(i18n.index.nothing_loaded);
+                    kuhalnicaView.showLoadResult(i18n.index.nothing_loaded);
                 }
 
                 hiApp.pullToRefreshDone();
@@ -124,7 +124,7 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             $this.data('scrollLoading','loading');
 
             var timeLimes = options.data;
-            var items = $this.find('.time-line-content .item-content');
+            var items = $this.find('.kuhalnica-content .item-content');
             var length = items.length;
             var lastId = items.eq(length - 1).data('id');
             if(parseInt(lastId) === 24){
@@ -136,11 +136,11 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
                 var renderData = this.renderDataFunc({
                     data: timeLimes
                 });
-                var output = TM.renderTplById('timelineTemplate', renderData);
+                var output = TM.renderTplById('kuhalnicaTemplate', renderData);
 
                 setTimeout(function(){
                     $this.data('scrollLoading','unloading');
-                    $$('#ourView').find('.time-line-content').append(output);
+                    $$('#kuhalnicaView').find('.kuhalnica-content').append(output);
 
                     hiApp.hideIndicator();
                 },1500);
@@ -153,28 +153,27 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
                 $$('#ourView .refresh-click ').find('i').addClass('ios7-reloading');
             },350);
 
-            $$('#ourView .pull-to-refresh-content').scrollTop(0,300);
+            $$('#kuhalnicaView .pull-to-refresh-content').scrollTop(0,300);
 
             hiApp.pullToRefreshTrigger('#ourview');
         },
 
         showLoadResult: function(text){
             setTimeout(function(){
-                $$('#ourView .load-result').html(text).css('opacity','1').transition(1000);
+                $$('#kuhalnicaView .load-result').html(text).css('opacity','1').transition(1000);
 
                 setTimeout(function(){
-                    $$('#ourView .load-result').css('opacity','0').transition(1000);
+                    $$('#kuhalnicaView .load-result').css('opacity','0').transition(1000);
                 },2100);
             },400);
         },
 
-        openItemPage: function(e){
+        openKuhalnicaItemPage: function(e){
             if(e.target.nodeName !== 'DIV'){
                 return false;
             }
             var itemId = $$(this).parents('.item-content').data('id');
-            log(itemId);
-            mainView.loadPage('page/item.html?id=' + itemId);
+            contatcView.loadPage('page/itemKuhalnica.html?id=' + itemId);
         },
         shareArticle: function(){
             var itemTitle = $$(this).parents('.item-content').data('title');
@@ -222,9 +221,20 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             //hiApp.alert('Članek je shranjen med priljubljene', 'Uspešno shranjeno');
 
 
+        },
+        i18next: function(content){
+            var renderData = [];
+            renderData.back = i18n.global.back;
+            renderData.title = i18n.item.title;
+            renderData.comment = i18n.timeline.comment;
+            renderData.forward = i18n.timeline.forward;
+
+            var output = TM.renderTpl(content,renderData);
+
+            return output;
         }
 
     };
 
-    return timelineView;
+    return kuhalnicaView;
 });

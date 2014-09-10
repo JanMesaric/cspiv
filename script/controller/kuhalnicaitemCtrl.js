@@ -1,16 +1,15 @@
 define(['utils/appFunc','view/module'],function(appFunc,VM){
 
-    var itemCtrl = {
+    var kuhalnicaitemCtrl = {
 
         init: function(query){
-
             var bindings = [{
                 element: '.back2home',
                 event: 'click',
                 handler: VM.module('appView').showToolbar
             }];
 
-            VM.module('itemView').init({
+            VM.module('kuhalnicaItemView').init({
                 bindings:bindings,
                 query:query
             });
@@ -18,5 +17,5 @@ define(['utils/appFunc','view/module'],function(appFunc,VM){
 
     };
 
-    return itemCtrl;
+    return kuhalnicaitemCtrl;
 });

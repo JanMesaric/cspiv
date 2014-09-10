@@ -1,8 +1,9 @@
 define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18n,TM){
 
-    var itemView = {
+    var kuhalnicaItemView = {
 
         init: function(params){
+
             appFunc.hideToolbar('.views');
             appFunc.bindEvents(params.bindings);
 
@@ -11,8 +12,7 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
         },
 
         getItem: function(id){
-
-            var $this = $$('.time-line-content .item-content[data-id="'+ id +'"]');
+            var $this = $$('.kuhalnica-content .item-content[data-id="'+ id +'"]');
 
             var item = [];
             item.id = $this.data('id');
@@ -23,13 +23,15 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
             item.content = $this.find('.item-content').html();
             item.author = $this.find('.item-author').html();
             item.rubrika = $this.find('.item-rubrika').html();
+            item.ingredients = $this.find('.item-ingredients').html();
 
             if($this.find('.item-image img')[0])
                 item.image = $this.find('.item-image img').attr('src');
 
-            var output = TM.renderTplById('itemTemplate',item);
+            var output = TM.renderTplById('itemKuhalnicaTemplate',item);
+            log(output);
 
-            $$('#itemContent').html(output);
+            $$('#kuhalnicaitemContent').html(output);
         },
 
         i18next: function(content){
@@ -46,5 +48,5 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
 
     };
 
-    return itemView;
+    return kuhalnicaItemView;
 });
