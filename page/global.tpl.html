@@ -1,61 +1,62 @@
 <script id="timelineTemplate" type="text/template" >
-{{#weibo}}
-<li data-id="{{id}}" data-mid="{{mid}}" data-title="{{title}}" data-titleDesc="{{titleDesc}}" class="item-content card-content">
-    <div class="item-inner">
-        <div class="item-header">
-            <div class="avatar">
-                <img data-avatarid="{{img.photoMain}}" src="{{img.photoMain}}">
+    {{#weibo}}
+    <li data-id="{{id}}" data-mid="{{mid}}" data-title="{{title}}" data-titleDesc="{{titleDesc}}" class="item-content card-content">
+        <div class="item-inner">
+            <div class="item-header">
+                <div class="avatar">
+                    <img data-avatarid="{{img.photoMain}}" src="{{img.photoMain}}">
+                </div>
+                <div class="detail">
+                    <p data-title="{{title}}" class="nickname">{{{title}}}</p>
+                    <p class="item-rubrika">{{{catDes}}}</p>
+                    <p data-time="{{created_at}}" class="create-time"></p>
+                </div>
             </div>
-            <div class="detail">
-                <p data-title="{{title}}" class="nickname">{{{title}}}</p>
-                <p class="item-rubrika">{{{catDes}}}</p>
-                <p data-time="{{created_at}}" class="create-time"></p>
+
+            <div class="click-content">
+
+                <div class="item-subtitle">
+                    {{{titleDesc}}}
+                </div>
+                <!-- SKRITI ELEMENTI KER JIH RABIM V ITEM VIEW -->
+                <div class="item-content" style="display:none">
+                    {{{content}}}
+                </div>
+                <div class="item-author" style="display:none">
+                    {{{author}}}
+                </div>
+
+                {{#image}}
+                <div class="item-image">
+                    <img src="{{img.photoMain}}" alt="">
+                </div>
+                {{/image}}
+
             </div>
+
+
+            <div class="item-tools">
+                <ul>
+                    <li class="share-article"><i class="icon ios7-redo-outline"></i><span class="text">{{i18n.forward}}</span></li>
+                    <li class="tool-line"></li>
+                    <!--<a style="color:#909090;" href="page/item.html?id={{id}}"><li><i class="icon ios7-chatbubble-outline"></i><span class="text">{{i18n.comment}}</span></li></a>-->
+                    <li class="click-content"><i class="icon ios7-chatbubble-outline"></i><span class="text">{{i18n.comment}}</span></li>
+                    <li class="tool-line"></li>
+
+                    {{#isfavorited}}
+                    <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shranjeno</span></li>
+                    {{/isfavorited}}
+                    {{^isfavorited}}
+                    <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">{{i18n.like}}</span></li>
+                    {{/isfavorited}}
+
+
+                </ul>
+            </div>
+
         </div>
-
-        <div class="click-content">
-
-            <div class="item-subtitle">
-                {{{titleDesc}}}
-            </div>
-            <!-- SKRITI ELEMENTI KER JIH RABIM V ITEM VIEW -->
-            <div class="item-content" style="display:none">
-                {{{content}}}
-            </div>
-            <div class="item-author" style="display:none">
-                {{{author}}}
-            </div>
-
-            {{#image}}
-            <div class="item-image">
-                <img src="{{img.photoMain}}" alt="">
-            </div>
-            {{/image}}
-
-        </div>
-
-
-        <div class="item-tools">
-            <ul>
-                <li class="share-article"><i class="icon ios7-redo-outline"></i><span class="text">{{i18n.forward}}</span></li>
-                <li class="tool-line"></li>
-                <li><a href="page/item.html?id={{id}}"><i class="icon ios7-chatbubble-outline"></i><span class="text">{{i18n.comment}}</span></a></li>
-                <li class="tool-line"></li>
-
-                {{#isfavorited}}
-                <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shranjeno</span></li>
-                {{/isfavorited}}
-                {{^isfavorited}}
-                <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">{{i18n.like}}</span></li>
-                {{/isfavorited}}
-
-
-            </ul>
-        </div>
-
-    </div>
-</li>
-{{/weibo}}
+    </li>
+    {{/weibo}}
 </script>
 
 <script id="itemTemplate" type="text/template" >
@@ -70,55 +71,71 @@
             <p class="item-rubrika">{{{rubrika}}}</p>
         </div>
     </div>
-<div class="item-subtitle">
-{{&text}}
-</div>
+    <div class="item-subtitle">
+        {{&text}}
+    </div>
     <div class="item-tools">
         <ul>
             <li class="share-article"><i class="icon ios7-redo-outline"></i><span class="text">Deli</span></li>
             <li class="tool-line"></li>
             <li><i class="icon ios7-chatbubble-outline"></i><span class="text">Komentiraj</span></li>
             <li class="tool-line"></li>
-            <li class="js-favorite"><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
 
-            {{#isfavorited}}
-            <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shranjeno</span></li>
-            {{/isfavorited}}
-            {{^isfavorited}}
-            <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
-            {{/isfavorited}}
+            <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">{{shranjeno}}</span></li>
+
         </ul>
     </div>
-<div class="item-content">
-{{&content}}
-<div class="clearfix"></div>
-</div>
-{{#image}}
-<div class="item-image">
-  <img src="{{image}}" alt="">
-</div>
-{{/image}}
+    <div class="item-content">
+        {{&content}}
+        <div class="clearfix"></div>
+    </div>
+    {{#image}}
+    <div class="item-image">
+        <img src="{{image}}" alt="">
+    </div>
+    {{/image}}
+</script>
+<script id="moviesItemTemplate" type="text/template" >
+    {{#movies}}
+    <li>
+        <a href="page/moviesItem.html?id={{id}}" class="item-link item-content">
+            <div class="item-media"><img src="{{imgSrc}}" width="44"></div>
+            <div class="item-inner">
+                <div class="item-title-row">
+                    <div class="item-title">{{title}}</div>
+                </div>
+                <div class="item-subtitle">{{genre}}</div>
+            </div>
+        </a>
+    </li>
+    {{/movies}}
+    {{^movies}}
+    <div class="none-comment">
+        <i class="icon ios7-chatboxes-outline"></i>
+        <p>Pri prikazu je prišlo do napake</p>
+    </div>
+    {{/movies}}
 </script>
 
 <script id="commentsTemplate" type="text/template" >
-{{#comments}}
-<li class="comment-item">
-    <div class="avatar">
-      <img src="style/img/avatar/avatar{{avatar}}.jpg" alt="">
+    {{#comments}}
+    <li class="comment-item">
+        <!--<div class="avatar">-->
+        <!--<img src="style/img/avatar/avatar{{avatar}}.jpg" alt="">-->
+        <!--</div>-->
+        <div class="comment-detail">
+            <div class="name">{{name}}</div>
+            <div class="text">{{text}}</div>
+            <div class="time">{{rtime}}</div>
+        </div>
+    </li>
+    {{/comments}}
+    {{^comments}}
+    <div class="none-comment">
+        <i class="icon ios7-chatboxes-outline"></i>
+        <p>{{emptyComment}}</p>
     </div>
-    <div class="comment-detail">
-      <div class="name">{{name}}</div>
-      <div class="text">{{text}}</div>
-      <div class="time">{{rtime}}</div>
-    </div>
-</li>
-{{/comments}}
-{{^comments}}
-<div class="none-comment">
-  <i class="icon ios7-chatboxes-outline"></i>
-  <p>{{emptyComment}}</p>
-</div> 
-{{/comments}}
+    {{/comments}}
 </script>
 
 <script id="commentPopupTemplate" type="text/template">
@@ -176,50 +193,50 @@
                                 </a>
                             </li>
                             {{#data}}
-                                {{#name}}
-                                     <li>
-                                         <a href="#" class="item-link js-section-li">
-                                             <div class="item-content">
-                                                 <!--<div class="item-media about spring"></div>-->
-                                                 <div class="item-inner">
-                                                     <div class="item-title">{{name}}
-                                                     </div>
-                                                 </div>
-                                             </div>
-                                         </a>
+                            {{#name}}
+                            <li>
+                                <a href="#" class="item-link js-section-li">
+                                    <div class="item-content">
+                                        <!--<div class="item-media about spring"></div>-->
+                                        <div class="item-inner">
+                                            <div class="item-title">{{name}}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
 
-                                     </li>
-                                {{/name}}
+                            </li>
+                            {{/name}}
                             {{/data}}
                             <!--<li>-->
-                                <!--<a href="page/about.html" class="item-link">-->
-                                    <!--<div class="item-content">-->
-                                        <!--&lt;!&ndash;<div class="item-media about spring"></div>&ndash;&gt;-->
-                                        <!--<div class="item-inner">-->
-                                            <!--<div class="item-title">Aktualno</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</a>-->
+                            <!--<a href="page/about.html" class="item-link">-->
+                            <!--<div class="item-content">-->
+                            <!--&lt;!&ndash;<div class="item-media about spring"></div>&ndash;&gt;-->
+                            <!--<div class="item-inner">-->
+                            <!--<div class="item-title">Aktualno</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</a>-->
                             <!--</li>-->
                             <!--<li>-->
-                                <!--<a href="page/about.html" class="item-link">-->
-                                    <!--<div class="item-content">-->
-                                        <!--&lt;!&ndash;<div class="item-media about spring"></div>&ndash;&gt;-->
-                                        <!--<div class="item-inner">-->
-                                            <!--<div class="item-title">Šport</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</a>-->
+                            <!--<a href="page/about.html" class="item-link">-->
+                            <!--<div class="item-content">-->
+                            <!--&lt;!&ndash;<div class="item-media about spring"></div>&ndash;&gt;-->
+                            <!--<div class="item-inner">-->
+                            <!--<div class="item-title">Šport</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</a>-->
                             <!--</li>-->
                             <!--<li>-->
-                                <!--<a href="page/about.html" class="item-link">-->
-                                    <!--<div class="item-content">-->
-                                        <!--&lt;!&ndash;<div class="item-media about spring"></div>&ndash;&gt;-->
-                                        <!--<div class="item-inner">-->
-                                            <!--<div class="item-title">Rubrika 1</div>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
-                                <!--</a>-->
+                            <!--<a href="page/about.html" class="item-link">-->
+                            <!--<div class="item-content">-->
+                            <!--&lt;!&ndash;<div class="item-media about spring"></div>&ndash;&gt;-->
+                            <!--<div class="item-inner">-->
+                            <!--<div class="item-title">Rubrika 1</div>-->
+                            <!--</div>-->
+                            <!--</div>-->
+                            <!--</a>-->
                             <!--</li>-->
 
                         </ul>
@@ -324,7 +341,7 @@
         </a>
     </li>
     <li class="contact-item">
-        <a href="page/kuhalnica.html" class="item-link">
+        <a href="page/movies.html" class="item-link">
             <div class="item-content">
                 <div class="item-media"><img src="https://blogs.zoho.com/wp-content/uploads/2014/02/wolf-of-wall-street1.jpg" width="44"></div>
                 <div class="item-inner">
@@ -452,7 +469,6 @@
             <li class="tool-line"></li>
             <li><i class="icon ios7-chatbubble-outline"></i><span class="text">Komentiraj</span></li>
             <li class="tool-line"></li>
-            <li class="js-favorite"><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
 
             {{#isfavorited}}
             <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shranjeno</span></li>
@@ -472,7 +488,6 @@
     </div>
     {{/image}}
 </script>
-
 <script id="sendRecipeTemplate" type="text/template">
     <div class="send-recipe popup">
         <div class="view navbar-fixed">

@@ -62,9 +62,9 @@ define({
         reply:'Reply',
         reply_comment:'Reply',
         copy_comment:'Copy',
-        placeholder:'Write a comment ...',
+        placeholder:'Napiši komentar...',
         empty_comment:'Ni komentarjev',
-        commenting:'Submitting...'
+        commenting:'Pošiljanje...'
     },
     chat:{
         title:'Message',

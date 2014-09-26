@@ -156,8 +156,10 @@ define(['i18n!nls/lang'],function(i18n){
         removeObjFromArray: function(arr, id, edition){
             var i = 0, len = arr.length;
             for(;i<len;i++){
-                if(arr[i].id === id && arr[i].edition === edition){
-                    arr.splice(i,1);
+                if(arr[i] != undefined){
+                    if(arr[i].id == id && arr[i].edition == edition){
+                        arr.splice(i,1);
+                    }
                 }
             };
             return arr;
@@ -179,6 +181,7 @@ define(['i18n!nls/lang'],function(i18n){
                 text = 'Shrani';
             }
             $$(reference).find('span').text(text);
+            $$('.js-favorite').find('span').text(text);
             localStorage.setItem('favoriteObj', end);
         },
         isAlreadyFav: function(id, edition){
@@ -187,12 +190,75 @@ define(['i18n!nls/lang'],function(i18n){
             if(data){
                 data.forEach(function(data){
                     if(data.id == id && data.edition == edition){
+                        log(data.id + ' ' + data.edition + ' || ' + id + ' ' + edition)
                         isfav = true;
                     }
                 });
             }
             return isfav;
+        },
+
+        openView: function(fromContainer, toContainer){
+            $$(fromContainer).hide();
+            $$(toContainer).show();
+
+        },
+        returnCurrentArticleComments: function(params){
+            var arr = [];
+            params.comments.forEach(function(data){
+                if(data.articleId == window.currArticleId && data.editionId == localStorage.getItem('currEdition')){
+                    arr.push(data);
+                }
+            });
+            return arr;
+        },
+        calculateSince: function(datetime){
+            var tTime=new Date(datetime*1000);
+            var cTime=new Date();
+            var sinceMin=Math.round((cTime-tTime)/60000);
+
+            if(sinceMin==0)
+            {
+                var sinceSec=Math.round((cTime-tTime)/1000);
+                if(sinceSec<10)
+                    var since='pred manj kot 10 sekundami';
+                else if(sinceSec<20)
+                    var since='pred manj kot 20 sekundami';
+                else
+                    var since='pred pol minute';
+            }
+            else if(sinceMin==1)
+            {
+                var sinceSec=Math.round((cTime-tTime)/1000);
+                if(sinceSec==30)
+                    var since='pred pol minute';
+                else if(sinceSec<60)
+                    var since='pred manj kot minuto';
+                else
+                    var since='pred 1 minuto';
+            }
+            else if(sinceMin<45)
+                var since='pred '+sinceMin+' minutami';
+            else if(sinceMin>44 && sinceMin<60)
+                var since='pred 1 uro';
+            else if(sinceMin<1440){
+                var sinceHr=Math.round(sinceMin/60);
+                if(sinceHr==1)
+                    var since='pred 1 uro';
+                else
+                    var since='pred '+sinceHr+' urami';
+            }
+            else if(sinceMin>1439 && sinceMin<2880)
+                var since='pred 1 dnevom';
+            else
+            {
+                var sinceDay=Math.round(sinceMin/1440);
+                var since=sinceDay+' dnevi';
+            }
+
+            return since
         }
+
     };
 
     return appFunc;

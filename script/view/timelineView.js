@@ -107,56 +107,10 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             var output = TM.renderTplById('timelineTemplate',renderData);
             $$('#ourView').find('.time-line-content').html(output);
 
-            //TODO:deluje le v eno smer
-            $$('#contatcView').hide();
-            $$('#ourView').show();
+
         },
 
-        infiniteTimeline: function(options){
-            options = options || {};
 
-            hiApp.showIndicator();
-
-            var $this = options.$dom;
-            var status = $this.data('scrollLoading');
-            if (status === 'loading') return;
-
-            $this.data('scrollLoading','loading');
-
-            var timeLimes = options.data;
-            var items = $this.find('.time-line-content .item-content');
-            var length = items.length;
-            var lastId = items.eq(length - 1).data('id');
-            if(parseInt(lastId) === 24){
-
-                //I can't hide indicator by javascript, why?
-                hiApp.detachInfiniteScroll($this);
-                hiApp.hideIndicator();
-            }else{
-                var renderData = this.renderDataFunc({
-                    data: timeLimes
-                });
-                var output = TM.renderTplById('timelineTemplate', renderData);
-
-                setTimeout(function(){
-                    $this.data('scrollLoading','unloading');
-                    $$('#ourView').find('.time-line-content').append(output);
-
-                    hiApp.hideIndicator();
-                },1500);
-
-            }
-        },
-
-        refreshTimelineByClick: function(){
-            setTimeout(function(){
-                $$('#ourView .refresh-click ').find('i').addClass('ios7-reloading');
-            },350);
-
-            $$('#ourView .pull-to-refresh-content').scrollTop(0,300);
-
-            hiApp.pullToRefreshTrigger('#ourview');
-        },
 
         showLoadResult: function(text){
             setTimeout(function(){
@@ -170,10 +124,11 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
 
         openItemPage: function(e){
             if(e.target.nodeName !== 'DIV'){
-                return false;
+                log('shouldnt happend')
+//                return false;
             }
             var itemId = $$(this).parents('.item-content').data('id');
-            log(itemId);
+            window.currArticleId = itemId;
             mainView.loadPage('page/item.html?id=' + itemId);
         },
         shareArticle: function(){
@@ -207,7 +162,7 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             }
             var id = $$(this).data('id'),
                 edition = $$(this).data('edition');
-                appFunc.toggleFavorite(id, edition,this);
+                appFunc.toggleFavorite(id, edition, this);
 //                obj = {
 //                    id: id,
 //                    edition: edition

@@ -3,7 +3,6 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
     var kuhalnicaCtrl = {
 
         init: function(){
-
             VM.module('kuhalnicaView').init();
 
             this.getKuhalnicaForCurrEdition();
@@ -46,6 +45,18 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 selector: '.kuhalnica-content .item-content .click-content',
                 event: 'click',
                 handler: VM.module('kuhalnicaView').openKuhalnicaItemPage
+            },{
+                element: '#contatcView',
+                selector: '.kuhalnica-content .item-content .click-content',
+                event: 'click',
+                handler: VM.module('kuhalnicaView').openKuhalnicaItemPage
+            },{
+                element: document,
+                selector: '.back2contact',
+                event: 'click',
+                handler: function(){
+                    appFunc.showToolbar('.views');
+                }
             }
             ];
 

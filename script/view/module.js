@@ -13,7 +13,10 @@ define(['view/appView',
         'view/archiveView',
         'view/kuhalnicaView',
         'view/kuhalnicaItemView',
-        'view/recipeView'],function(appView,loginView,settingView,aboutView,feedbackView,timelineView,itemView,postView,contactView,commentView,messageView,languageView, archiveView,kuhalnicaView,kuhalnicaItemView,recipeView) {
+        'view/recipeView',
+        'view/moviesView',
+        'view/moviesItemView',
+        'view/signupView'],function(appView,loginView,settingView,aboutView,feedbackView,timelineView,itemView,postView,contactView,commentView,messageView,languageView, archiveView,kuhalnicaView,kuhalnicaItemView, recipeView, moviesView,moviesItemView,signupView) {
 
     var module = {
 
@@ -69,6 +72,15 @@ define(['view/appView',
                     break;
                 case 'recipeView':
                     view = recipeView;
+                    break;
+                case 'moviesView':
+                    view = moviesView;
+                    break;
+                case 'moviesItemView':
+                    view = moviesItemView;
+                    break;
+                case 'signupView':
+                    view = signupView;
                     break;
             }
 

@@ -3,7 +3,6 @@ define(['utils/appFunc','view/module'],function(appFunc,VM){
     var itemCtrl = {
 
         init: function(query){
-
             var bindings = [{
                 element: '.back2home',
                 event: 'click',

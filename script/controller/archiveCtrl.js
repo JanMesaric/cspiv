@@ -3,6 +3,9 @@ define(['utils/appFunc','view/module', 'utils/tplManager', 'controller/timelineC
     var itemCtrl = {
 
         init: function(){
+            //TODO: to je treba še porihtat
+            appFunc.hideToolbar('.views');
+
             var output = '',
                 data = window.appData,
                 i = data.length - 1;
@@ -32,6 +35,13 @@ define(['utils/appFunc','view/module', 'utils/tplManager', 'controller/timelineC
                     selector: '.js-open-edition',
                     event: 'click',
                     handler: itemCtrl.openEdition
+                }, {
+                    element: document,
+                    selector: '.back2contact',
+                    event: 'click',
+                    handler: function(){
+                        appFunc.showToolbar('.views');
+                    }
                 }
             ];
 
@@ -39,6 +49,7 @@ define(['utils/appFunc','view/module', 'utils/tplManager', 'controller/timelineC
 
         },
         openEdition: function(){
+            //CT: timelineCtrl
             CT.openEdition($$(this).data('id'));
         }
 

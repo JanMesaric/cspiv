@@ -3,7 +3,7 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
     var kuhalnicaView = {
 
         init: function(){
-            appFunc.showToolbar('.views');
+            appFunc.hideToolbar('.views');
 
             $$('#kuhalnicaView .pull-to-refresh-layer').show();
 

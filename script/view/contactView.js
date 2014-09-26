@@ -4,6 +4,7 @@ define(['utils/appFunc','utils/tplManager'],function(appFunc,TM){
 
         init: function(params){
             appFunc.bindEvents(params.bindings);
+
         },
 
         beforeLoadContacts: function(){

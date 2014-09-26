@@ -8,6 +8,8 @@ define(['GS','controller/module'],function(GS,CM) {
                 router.pageBeforeInit(page);
             });
 
+
+
             $$(document).on('pageAfterAnimation', function (e) {
                 var page = e.detail.page;
                 router.pageAfterAnimation(page);
@@ -43,6 +45,7 @@ define(['GS','controller/module'],function(GS,CM) {
             var query = page.query;
             var from = page.from;
             //OURVIEW SE PROŽI NA ZAČETKU!!! torej še preden se nalowda glavni page gre to čez in se sprožijo trije controllerji
+log(name)
             switch (name) {
                 case 'login':
                     if(from === 'left') return;
@@ -78,6 +81,15 @@ define(['GS','controller/module'],function(GS,CM) {
                     break;
                 case 'itemKuhalnica':
                     CM.module('kuhalnicaitemCtrl').init(query);
+                    break;
+                case 'movies':
+                    CM.module('moviesCtrl').init();
+                    break;
+                case 'moviesItem':
+                    CM.module('moviesItemCtrl').init();
+                    break;
+                case 'signup':
+                    CM.module('signupCtrl').init();
                     break;
             }
         },
@@ -115,11 +127,20 @@ define(['GS','controller/module'],function(GS,CM) {
                 case 'page/archive.html':
                     viewName = 'archiveView';
                     break;
+                case 'page/movies.html':
+                    viewName = 'moviesView';
+                    break;
+                case 'page/moviesItem.html':
+                    viewName = 'moviesItemView';
+                    break;
                 case 'page/kuhalnica.html':
                     viewName = 'kuhalnicaView';
                     break;
                 case 'page/itemKuhalnica.html':
                     viewName = 'kuhalnicaItemView';
+                    break;
+                case 'page/signup.html':
+                    viewName = 'signupView';
                     break;
                 default :
                     return content;

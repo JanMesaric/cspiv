@@ -13,7 +13,10 @@ define(['controller/appCtrl',
         'controller/archiveCtrl',
         'controller/kuhalnicaCtrl',
         'controller/kuhalnicaitemCtrl',
-        'controller/recipeCtrl'],function(appCtrl,loginCtrl,settingCtrl,aboutCtrl,feedbackCtrl,timelineCtrl,itemCtrl,postCtrl,contactCtrl,commentCtrl,messageCtrl,languageCtrl,archiveCtrl,kuhalnicaCtrl,kuhalnicaitemCtrl,recipeCtrl) {
+        'controller/recipeCtrl',
+        'controller/moviesCtrl',
+        'controller/moviesItemCtrl',
+        'controller/signupCtrl'],function(appCtrl,loginCtrl,settingCtrl,aboutCtrl,feedbackCtrl,timelineCtrl,itemCtrl,postCtrl,contactCtrl,commentCtrl,messageCtrl,languageCtrl,archiveCtrl,kuhalnicaCtrl,kuhalnicaitemCtrl, recipeCtrl, moviesCtrl,moviesItemCtrl, signupCtrl) {
 
     var module = {
         module: function(name){
@@ -68,6 +71,15 @@ define(['controller/appCtrl',
                     break;
                 case 'recipeCtrl':
                     controller = recipeCtrl;
+                    break;
+                case 'moviesCtrl':
+                    controller = moviesCtrl;
+                    break;
+                case 'moviesItemCtrl':
+                    controller = moviesItemCtrl;
+                    break;
+                case 'signupCtrl':
+                    controller = signupCtrl;
                     break;
             }
 
