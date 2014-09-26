@@ -20,6 +20,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
         },
 
         loadContacts: function() {
+
             if(VM.module('contactView').beforeLoadContacts()) {
                 xhr.simpleCall({
                     query: {

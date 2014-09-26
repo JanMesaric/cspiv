@@ -3,16 +3,11 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
     var loginCtrl = {
 
         init: function(){
+            log('signupCtrl')
             var bindings = [{
-                element: '.login-submit',
+                element: '.login-btn-register',
                 event: 'click',
                 handler: loginCtrl.loginSubmit
-            },{
-                element: '.copyright a',
-                event: 'click',
-                handler: function(){
-                    mainView.loadPage('page/signup.html');
-                }
             }];
 
             VM.module('loginView').init({
@@ -21,21 +16,31 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
         },
 
         loginSubmit: function(){
-            var loginName = $$('input.login-name').val();
-            var password = $$('input.password').val();
+            var loginName = $$('input.register-name').val();
+            var password = $$('input.register-password').val();
             if(loginName === '' || password === ''){
                 hiApp.alert(i18n.login.err_empty_input);
 //            }else if(!appFunc.isEmail(loginName)){
 //                hiApp.alert(i18n.login.err_illegal_email);
             }else{
                 hiApp.showPreloader(i18n.login.login);
+//                'name' => $_POST['name'],
+//                    'pass' => $_POST['pass'],
+//                    'mail' => $_POST['mail'],
+//
+//                    //'pass1' => 'user1',
+//                    'status' => '1',
+//                    'field_user_display_name[und][0][value]' => "wat",
+//                    'field_user_display_name[und][0][format]' => NULL,
+//                    'field_user_display_name[und][0][safe_value]' => "wat",
 
                 $.ajax({
-                    url: "http://connectsocial.si/drupaltest/ajax/login.php",
+                    url: "http://connectsocial.si/drupaltest/ajax/createUser.php",
                     type: "post",
                     dataType: "json",
-                    data: {"username":loginName,"password":password},
+                    data: {"name":loginName,"pass":password, "mail": loginName},
                     success: function(data){
+                        log(data)
                         if(!data.user){
                             //napačni vhodni podatki
                             log('napačni login podatki');

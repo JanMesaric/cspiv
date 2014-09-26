@@ -31,6 +31,18 @@ define(['utils/appFunc',
 
             return apiServer.replace(/&$/gi, '');
         },
+        fetchComments: function(options, callback){
+            var url = options.url;
+            $$.ajax({
+                url: url,
+                method: 'get',
+                dataType: 'json',
+                success: callback,
+                error: function(){
+                    log('error')
+                }
+            })
+        },
         fetchWholeContent: function(options, callback){
             options = options || {};
             options.data = options.data ? options.data : '';

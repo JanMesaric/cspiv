@@ -39,7 +39,8 @@
             <ul>
                 <li class="share-article"><i class="icon ios7-redo-outline"></i><span class="text">{{i18n.forward}}</span></li>
                 <li class="tool-line"></li>
-                <li><a href="page/item.html?id={{id}}"><i class="icon ios7-chatbubble-outline"></i><span class="text">{{i18n.comment}}</span></a></li>
+                <!--<a style="color:#909090;" href="page/item.html?id={{id}}"><li><i class="icon ios7-chatbubble-outline"></i><span class="text">{{i18n.comment}}</span></li></a>-->
+                <li class="click-content"><i class="icon ios7-chatbubble-outline"></i><span class="text">{{i18n.comment}}</span></li>
                 <li class="tool-line"></li>
 
                 {{#isfavorited}}
@@ -70,42 +71,58 @@
             <p class="item-rubrika">{{{rubrika}}}</p>
         </div>
     </div>
-<div class="item-subtitle">
-{{&text}}
-</div>
-    <div class="item-tools">
-        <ul>
-            <li class="share-article"><i class="icon ios7-redo-outline"></i><span class="text">Deli</span></li>
-            <li class="tool-line"></li>
-            <li><i class="icon ios7-chatbubble-outline"></i><span class="text">Komentiraj</span></li>
-            <li class="tool-line"></li>
-            <li class="js-favorite"><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
-
-            {{#isfavorited}}
-            <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shranjeno</span></li>
-            {{/isfavorited}}
-            {{^isfavorited}}
-            <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
-            {{/isfavorited}}
-        </ul>
+    <div class="item-subtitle">
+    {{&text}}
     </div>
-<div class="item-content">
-{{&content}}
-<div class="clearfix"></div>
-</div>
-{{#image}}
-<div class="item-image">
-  <img src="{{image}}" alt="">
-</div>
-{{/image}}
+        <div class="item-tools">
+            <ul>
+                <li class="share-article"><i class="icon ios7-redo-outline"></i><span class="text">Deli</span></li>
+                <li class="tool-line"></li>
+                <li><i class="icon ios7-chatbubble-outline"></i><span class="text">Komentiraj</span></li>
+                <li class="tool-line"></li>
+
+                <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">{{shranjeno}}</span></li>
+
+            </ul>
+        </div>
+    <div class="item-content">
+    {{&content}}
+    <div class="clearfix"></div>
+    </div>
+    {{#image}}
+    <div class="item-image">
+      <img src="{{image}}" alt="">
+    </div>
+    {{/image}}
+</script>
+<script id="moviesItemTemplate" type="text/template" >
+    {{#movies}}
+    <li>
+        <a href="page/moviesItem.html?id={{id}}" class="item-link item-content">
+                <div class="item-media"><img src="{{imgSrc}}" width="44"></div>
+                <div class="item-inner">
+                    <div class="item-title-row">
+                        <div class="item-title">{{title}}</div>
+                    </div>
+                    <div class="item-subtitle">{{genre}}</div>
+                </div>
+        </a>
+    </li>
+    {{/movies}}
+    {{^movies}}
+    <div class="none-comment">
+        <i class="icon ios7-chatboxes-outline"></i>
+        <p>Pri prikazu je prišlo do napake</p>
+    </div>
+    {{/movies}}
 </script>
 
 <script id="commentsTemplate" type="text/template" >
 {{#comments}}
 <li class="comment-item">
-    <div class="avatar">
-      <img src="style/img/avatar/avatar{{avatar}}.jpg" alt="">
-    </div>
+    <!--<div class="avatar">-->
+      <!--<img src="style/img/avatar/avatar{{avatar}}.jpg" alt="">-->
+    <!--</div>-->
     <div class="comment-detail">
       <div class="name">{{name}}</div>
       <div class="text">{{text}}</div>
@@ -316,7 +333,7 @@
                 <div class="item-media"><img src="style/img/avatar/avatar{{avatar}}.jpg" width="44"></div>
                 <div class="item-inner">
                     <div class="item-title-row">
-                        <div class="item-title">{{nickname}}</div>
+                        <div class="item-title">Arhiv</div>
                     </div>
                     <div class="item-subtitle">{{location}}</div>
                 </div>
@@ -324,12 +341,12 @@
         </a>
     </li>
     <li class="contact-item">
-        <a href="page/kuhalnica.html" class="item-link">
+        <a href="page/movies.html" class="item-link">
             <div class="item-content">
                 <div class="item-media"><img src="style/img/avatar/avatar{{avatar}}.jpg" width="44"></div>
                 <div class="item-inner">
                     <div class="item-title-row">
-                        <div class="item-title">{{nickname}}</div>
+                        <div class="item-title">Movies</div>
                     </div>
                     <div class="item-subtitle">{{location}}</div>
                 </div>
@@ -452,7 +469,6 @@
             <li class="tool-line"></li>
             <li><i class="icon ios7-chatbubble-outline"></i><span class="text">Komentiraj</span></li>
             <li class="tool-line"></li>
-            <li class="js-favorite"><i class="icon ios7-heart-outline"></i><span class="text">Shrani</span></li>
 
             {{#isfavorited}}
             <li class="js-favorite" data-id="{{id}}" data-edition="{{idEdition}}"><i class="icon ios7-heart-outline"></i><span class="text">Shranjeno</span></li>

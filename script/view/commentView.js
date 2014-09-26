@@ -33,7 +33,6 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
         },
 
         sendComment: function(){
-
             var text = $$('#commentText').val();
 
             if(appFunc.getCharLength(text) < 4){
@@ -43,25 +42,44 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
 
             hiApp.showPreloader(i18n.comment.commenting);
 
-            setTimeout(function(){
-                hiApp.hidePreloader();
-                hiApp.closeModal('.comment-popup');
+            var data = {
+                "username": "admin", //TODO: to more bit aktivno
+                "password": "bjforall",
+                "articleId": window.currArticleId, //odvisen od article
+                "articleEdition": localStorage.getItem('currEdition'), //odvisen od id
+                "body": $('#commentText').val()
+            };
+            $.ajax({
+                url: "http://connectsocial.si/drupaltest/ajax/createTopic.php",
+                type: "post",
+                dataType: "json",
+                data: data,
+                success: function(res){
+                    $('#commentContent').prepend('<li class="comment-item">\
+                        <div class="comment-detail">\
+                            <div class="name">'+data.username+'</div>\
+                            <div class="text">'+data.body+'</div>\
+                            <div class="time">pred 1 sekundo</div>\
+                        </div>\
+                    </li>');
+                    hiApp.hidePreloader();
+                    hiApp.closeModal('.comment-popup');
 
-                //Refresh comment content
-            },1500);
-
+                },
+                error: function(e,p,m){
+                    myApp.alert('Prišlo je do napake pri prenosu sporočila, poizkusite ponovno!', 'Napaka');
+                }
+            });
         },
 
         render: function(params){
-            setTimeout(function(){
-                var renderData = {
-                    comments:params.comments,
-                    emptyComment:i18n.comment.empty_comment,
-                    rtime:function(){
-                        return appFunc.timeFormat(this.time);
-                    }
+                var filteredParams = appFunc.returnCurrentArticleComments(params)
+                var comments = [];
+                comments.push(params);
+                var arr = {
+                    "comments": filteredParams
                 };
-                var output = TM.renderTplById('commentsTemplate',renderData);
+                var output = TM.renderTplById('commentsTemplate',arr);
                 $$('#commentContent').html(output);
 
                 var bindings = [{
@@ -72,7 +90,7 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
 
                 appFunc.bindEvents(bindings);
 
-            },1500);
+
         },
 
         createActionSheet: function(){

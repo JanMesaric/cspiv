@@ -43,7 +43,9 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 handler: VM.module('timelineView').addFavorite
               },{
                 element: '#ourView',
-                selector: '.time-line-content .item-content .click-content',
+                selector: '.time-line-content .item-content .click-content,' +
+                    '.time-line-content .item-tools .click-content,' +
+                    '.item-header, .detail',
                 event: 'click',
                 handler: VM.module('timelineView').openItemPage
             }
@@ -53,7 +55,6 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
         },
 
         getTimelineForCurrEdition: function(){
-            log('succ')
             if(appFunc.isAppDataAvailable()){
                 window.appData = '';
                 xhr.simpleCall({func:'pivar'}, function(data){
@@ -71,16 +72,16 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
         refreshTimeline: function(cat){
             var cat = cat || 'Nazaj-na-številko';
             VM.module('timelineView').refreshTimeline(appFunc.getAllArticles(window.appData), cat);
-            log('orly')
+            log('refreshing timeline')
 
         },
         openEdition: function(id){
             localStorage.setItem('currEdition', id);
-//            if(!id){
-//                hiApp.alert('Prišlo je do napake, poizkusite znova.','Napaka');
-//            }
-            VM.module('timelineView').openEdition(id);
-            //hiApp.openPanel('#ourView')
+            VM.module('timelineView').openEdition();
+            hiApp.openPanel('#ourView')
+            $('.js-open-ourview').trigger('click');
+            //TODO:deluje le v eno smer
+            //appFunc.openView('#contatcView', '#ourView');
         }
         /*
         infiniteTimeline: function(){

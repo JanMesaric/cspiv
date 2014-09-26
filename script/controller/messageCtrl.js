@@ -3,6 +3,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
     var messageCtrl = {
 
         init: function(query){
+
             xhr.simpleCall({
                 func:'answers'
             },function(response) {
