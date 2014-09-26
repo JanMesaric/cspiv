@@ -5086,12 +5086,11 @@ img {
 .message-content .upload-pic-preview {
   position: relative;
   overflow: hidden;
-  width: 120px;
+  width: 100%;
   padding: 2px;
   margin: 10px;
   border: 1px solid #ddd;
   display: none;
-  border-radius: 5px;
   height: auto;
 }
 .message-content .upload-pic-preview > img {

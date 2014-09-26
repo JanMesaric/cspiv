@@ -300,12 +300,12 @@
     <li class="contact-item">
         <a href="page/kuhalnica.html" class="item-link">
             <div class="item-content">
-                <div class="item-media"><img src="style/img/avatar/avatar{{avatar}}.jpg" width="44"></div>
+                <div class="item-media"><img src="http://www.seattleorganicrestaurants.com/vegan-whole-foods/images/Food-Guidelines.jpg" width="44"></div>
                 <div class="item-inner">
                     <div class="item-title-row">
-                        <div class="item-title">Kuhalnica</div>
+                        <div class="item-title">Pivarjeva kuhalnica</div>
                     </div>
-                    <div class="item-subtitle">{{location}}</div>
+                    <div class="item-subtitle">Prebrskajte našo shrambo okusnih receptov..</div>
                 </div>
             </div>
         </a>
@@ -313,12 +313,12 @@
     <li class="contact-item">
         <a href="page/archive.html" class="item-link">
             <div class="item-content">
-                <div class="item-media"><img src="style/img/avatar/avatar{{avatar}}.jpg" width="44"></div>
+                <div class="item-media"><img src="http://assets.dornob.com/wp-content/uploads/2011/03/crossword-puzzle-wrapping-papers.jpg" width="44"></div>
                 <div class="item-inner">
                     <div class="item-title-row">
-                        <div class="item-title">{{nickname}}</div>
+                        <div class="item-title">Nagradna križanka</div>
                     </div>
-                    <div class="item-subtitle">{{location}}</div>
+                    <div class="item-subtitle">Obrazec za vnos gesla...</div>
                 </div>
             </div>
         </a>
@@ -326,12 +326,12 @@
     <li class="contact-item">
         <a href="page/kuhalnica.html" class="item-link">
             <div class="item-content">
-                <div class="item-media"><img src="style/img/avatar/avatar{{avatar}}.jpg" width="44"></div>
+                <div class="item-media"><img src="https://blogs.zoho.com/wp-content/uploads/2014/02/wolf-of-wall-street1.jpg" width="44"></div>
                 <div class="item-inner">
                     <div class="item-title-row">
-                        <div class="item-title">{{nickname}}</div>
+                        <div class="item-title">Kino kotiček</div>
                     </div>
-                    <div class="item-subtitle">{{location}}</div>
+                    <div class="item-subtitle">Sporedi Kolosejevih centrov...</div>
                 </div>
             </div>
         </a>
@@ -339,12 +339,12 @@
     <li class="contact-item">
         <a href="page/kuhalnica.html" class="item-link">
             <div class="item-content">
-                <div class="item-media"><img src="style/img/avatar/avatar{{avatar}}.jpg" width="44"></div>
+                <div class="item-media"><img src="http://d2yhexj5rb8c94.cloudfront.net/sites/default/files/styles/article_node_view/public/horse.jpg" width="44"></div>
                 <div class="item-inner">
                     <div class="item-title-row">
-                        <div class="item-title">{{nickname}}</div>
+                        <div class="item-title">Fotografije bralcev</div>
                     </div>
-                    <div class="item-subtitle">{{location}}</div>
+                    <div class="item-subtitle">Mesečno nagrajujemo najbolj izvirne...</div>
                 </div>
             </div>
         </a>
@@ -471,4 +471,58 @@
         <img src="{{image}}" alt="">
     </div>
     {{/image}}
+</script>
+
+<script id="sendRecipeTemplate" type="text/template">
+    <div class="send-recipe popup">
+        <div class="view navbar-fixed">
+            <div class="page">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="left"><a href="#" class="link close-popup">{{cancel}}</a></div>
+                        <div class="center">Ustvari svoj recept</div>
+                        <div class="right"><a id="sendWeiboBtn1" href="#" class="link orange">{{send}}</a></div>
+                    </div>
+                </div>
+                <div class="page-content message-content">
+
+                    <div class="message-input-title">
+                        <textarea id="messageTitle" placeholder="Ime recepta..."></textarea>
+                    </div>
+                    <div class="message-input-text">
+                        <textarea id="messageText" placeholder="Opišite svoj recept (sestavine, čas in način priprave...)"></textarea>
+                    </div>
+
+                    <div class="message-tools">
+                        <ul>
+                            <li class="camera image-upload">
+                                <i class="icon ios7-camera-outline"></i>
+                            </li>
+                            <li class="photoalbum image-upload">
+                                <i class="icon ios7-pic"></i>
+                            </li>
+                            <!--<li><i class="icon ios7-emotion"></i></li>-->
+                            <!--<li><i class="icon ios7-at-outline"></i></li>-->
+                            <!--<li class="get-position"><i class="icon ios7-dingxiang"></i></li>-->
+                        </ul>
+                    </div>
+
+
+                    <div id="geoInfo" class="geo-info">
+                        <div class="location"><i class="icon preloader"></i><span class="info">{{loadingGeo}}</span></div>
+                        <div class="close"><i class="icon ios7-close"></i></div>
+                    </div>
+                    <div id="nonePhoto" class="none-photo">
+                        <i class="icon ios7-camera-outline"></i>
+                        <p>Prostor za fotografijo jedi</p>
+                    </div>
+
+                    <div id="uploadPicPreview" class="upload-pic-preview">
+                        <img src="" alt="" />
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
 </script>

@@ -12,7 +12,8 @@ define(['controller/appCtrl',
         'controller/languageCtrl',
         'controller/archiveCtrl',
         'controller/kuhalnicaCtrl',
-        'controller/kuhalnicaitemCtrl'],function(appCtrl,loginCtrl,settingCtrl,aboutCtrl,feedbackCtrl,timelineCtrl,itemCtrl,postCtrl,contactCtrl,commentCtrl,messageCtrl,languageCtrl,archiveCtrl,kuhalnicaCtrl,kuhalnicaitemCtrl) {
+        'controller/kuhalnicaitemCtrl',
+        'controller/recipeCtrl'],function(appCtrl,loginCtrl,settingCtrl,aboutCtrl,feedbackCtrl,timelineCtrl,itemCtrl,postCtrl,contactCtrl,commentCtrl,messageCtrl,languageCtrl,archiveCtrl,kuhalnicaCtrl,kuhalnicaitemCtrl,recipeCtrl) {
 
     var module = {
         module: function(name){
@@ -64,6 +65,9 @@ define(['controller/appCtrl',
                     break;
                 case 'kuhalnicaitemCtrl':
                     controller = kuhalnicaitemCtrl;
+                    break;
+                case 'recipeCtrl':
+                    controller = recipeCtrl;
                     break;
             }
 

@@ -76,7 +76,7 @@
                      <div class="list-block media-list">
                        <div class="load-result"></div>
 
-                       <ul class="time-line-content">
+                       <ul class="time-line-content js-masonry"  data-masonry-options='{ "columnWidth": 200, "itemSelector": ".item-content" }'>
 
                        </ul>
 
@@ -98,17 +98,17 @@
 
                 <div class="pages navbar-through">
                     <div data-page="contactView" class="page contact-page">
-                        <!-- Search bar -->
+                        <!-- Search bar
                         <form class="searchbar" data-search-list=".contacts-list" data-search-in=".item-title">
                             <div class="searchbar-input">
                                 <input type="search" class="i18n" data-i18n="[placeholder]global.search">
                                 <a href="#" class="searchbar-clear"></a>
                             </div>
                             <a href="#" class="searchbar-cancel i18n" data-i18n="global.cancel"></a>
-                        </form>
+                        </form>-->
 
-                        <!-- Search bar overlay-->
-                        <div class="searchbar-overlay"></div>
+                        <!-- Search bar overlay
+                        <div class="searchbar-overlay"></div>-->
 
                         <div class="page-content">
                             <div class="list-block media-list contacts-list searchbar-found">
@@ -165,6 +165,7 @@
         <!-- Please ignore the 404 error when you are not running under PhoneGap environment or delete it. -->
         <script type="text/javascript" src="cordova.js"></script>
         <script src="vendors/jquery/jquery.js"></script>
+        <script src="vendors/masonry/masonry.min.js"></script>
 
         <!--(if target dev)><!-->
         <script data-main="script/main" src="vendors/require/require.js"></script>

@@ -5,6 +5,7 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
     var fileTransfer = {
 
         startUpload: function(fileUrl){
+            alert(fileUrl);
 
             var uploadServer = 'http://up.qiniu.com/';
 

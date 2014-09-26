@@ -28,9 +28,9 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 handler: VM.module('kuhalnicaView').refreshTimelineByClick
             },{
                 element: document,
-                selector: 'a.open-send-popup',
+                selector: 'a.open-send-recipe-popup',
                 event: 'click',
-                handler:VM.module('postView').openSendPopup
+                handler:VM.module('recipeView').openRecipeSendPopup
             },{
                 element: '#contatcView',
                 selector: '.kuhalnica-content .item-content .share-article',

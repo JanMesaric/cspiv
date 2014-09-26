@@ -45,8 +45,8 @@ define([
 
         cameraSuccess: function(fileUrl){
             $$('#uploadPicPreview>img').attr('src',fileUrl);
+            $$('#nonePhoto').hide();
             $$('#uploadPicPreview').show();
-
         },
 
         cameraError: function(message){

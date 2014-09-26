@@ -63,7 +63,6 @@ define(['GS','controller/module'],function(GS,CM) {
                 case 'item':
                     CM.module('itemCtrl').init(query);
                     CM.module('commentCtrl').init();
-                    CM.module('kuhalnicaitemCtrl').init(query);
                     break;
                 case 'message':
                     CM.module('messageCtrl').init(query);

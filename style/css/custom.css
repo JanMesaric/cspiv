@@ -63,17 +63,8 @@
 }
 .card-content .item-header .detail .nickname {
     font-family: 'NeutraMedium';
-    font-size:24px;
+    font-size: 24px;
 }
-/*.navbar .center {
-    font-family: 'NeutraBold';
-    text-transform:uppercase;
-    font-size:24px;
-}
-.navbar{
-    background: #4fb950;
-    color:white;
-}*/
 .navbar a.link{
     color:#4fb950;
 }
@@ -129,8 +120,82 @@
     border: 0;
     background-repeat: no-repeat;
 }
-
-/*IPAD STYLE*/
+.message-content .message-input-title {
+    text-align: center;
+    height: 60px;
+}
+.message-content .message-input-text {
+    text-align: center;
+    height: 150px;
+}
+.message-content .message-input-title > textarea {
+    width: 100%;
+    height: 50px;
+    font-size: 15px;
+    border: none;
+    color: #444;
+    margin: 0;
+    padding: 5px;
+    resize: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.message-content .message-input-text > textarea {
+    width: 100%;
+    height: 150px;
+    font-size: 15px;
+    border: none;
+    color: #444;
+    margin: 0;
+    padding: 5px;
+    resize: none;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.message-content .message-tools > ul > li {
+    width: 50%;
+    float: left;
+    text-align: center;
+    position: relative;
+}
+.none-photo{
+    text-align: center;
+    margin-top: 10px;
+    color: #DBDBDB;
+}
+.none-photo i{
+    display: block;
+    font-size: 75px;
+    margin-left: 0px;
+}
+.message-content .upload-pic-preview {
+    position: relative;
+    overflow: hidden;
+    width: 92%;
+    margin-top: 10px;
+    display: none;
+    height: auto;
+}
+.message-content .upload-pic-preview > img {
+    border-radius: 5px;
+    height: auto;
+    display: block;
+    width: 100%;
+}
+.message-content .upload-pic-preview .mask {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 100;
+}
+/* IPAD STYLE
 .time-line-content{
      -webkit-column-count: 2;
      -webkit-column-gap: 10px;
@@ -152,4 +217,4 @@
 .list-block .kuhalnica-content .item-content {
     display: inline-block;
     width: 100%;
-}
+}*/
