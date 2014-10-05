@@ -18,6 +18,7 @@
 .card-content .item-content {
     padding: 10px;
     white-space: normal;
+    overflow: hidden;
 }
 .detail{
     font-size:17px;
@@ -54,9 +55,11 @@
 .firstcharacterred { float: left; color: #d01729; font-size: 3em; line-height: 1em; padding-right: 4px}
 .secondaryphoto{
     width: 50%;
-    border: 2px solid lightgrey;
     float: left;
     margin: 0 10px 5px 0;
+}
+.comments-content{
+    clear:both;
 }
 .item-rubrika{
     color: #4fb950;
@@ -130,7 +133,7 @@
     background-repeat: no-repeat;
 }
 
-/*IPAD STYLE*/
+/*IPAD STYLE
 .time-line-content{
      -webkit-column-count: 2;
      -webkit-column-gap: 10px;
@@ -152,7 +155,9 @@
 .list-block .kuhalnica-content .item-content {
     display: inline-block;
     width: 100%;
-}
+}*/
+
+
 .message-content .message-input-title {
     text-align: center;
     height: 60px;

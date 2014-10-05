@@ -184,10 +184,10 @@
                         <ul>
                             <li>
                                 <a href="#" class="item-link js-section-li">
-                                    <div class="item-content">
+                                    <div style="background: #4fb950; color:white" class="item-content">
                                         <!--<div class="item-media about spring"></div>-->
                                         <div class="item-inner">
-                                            <div class="item-title">Nazaj na številko</div>
+                                            <div class="item-title">Nazaj na trenutno številko</div>
                                         </div>
                                     </div>
                                 </a>
@@ -253,16 +253,8 @@
         <div class="setting-page list-block">
             <ul>
                 <li>
-                    <div class="item-content">
-                        <div class="item-inner user-info">
-                            <div class="avatar">
-                                <img src="{{avatarUrl}}" alt="">
-                            </div>
-                            <div class="user-detail">
-                                <div class="name">{{i18nNickName}}: {{nickName}}</div>
-                                <div class="point">{{i18nPoints}}: {{points}}</div>
-                            </div>
-                        </div>
+                    <div class="content-block">
+                        <div class="logo">{{appName}}</div>
                     </div>
                 </li>
                 <li>
@@ -270,7 +262,7 @@
                         <div class="item-content">
                             <div class="item-media feedback spring"></div>
                             <div class="item-inner">
-                                <div class="item-title">{{feedBack}}</div>
+                                <div class="item-title">Kontaktiraj uredništvo</div>
                             </div>
                         </div>
                     </a>
@@ -280,7 +272,7 @@
                         <div class="item-content">
                             <div class="item-media update spring"></div>
                             <div class="item-inner">
-                                <div class="item-title">{{checkUpdate}}</div>
+                                <div class="item-title">Preveri posodobitve</div>
                             </div>
                         </div>
                     </a>
@@ -292,7 +284,7 @@
                                 <i class="icon ios7-world-outline"></i>
                             </div>
                             <div class="item-inner">
-                                <div class="item-title">{{language}}</div>
+                                <div class="item-title">Povezave</div>
                             </div>
                         </div>
                     </a>
@@ -302,13 +294,26 @@
                         <div class="item-content">
                             <div class="item-media about spring"></div>
                             <div class="item-inner">
-                                <div class="item-title">{{about}}</div>
+                                <div class="item-title">O Pivarju</div>
                             </div>
                         </div>
                     </a>
                 </li>
+                <li>
+                    <div class="item-content">
+                        <div class="item-inner user-info">
+                            <div class="avatar">
+                                <img src="style/img/avatar-placeholder.svg" alt="">
+                            </div>
+                            <div class="user-detail">
+                                <div class="name">Uporabnik: Jan M</div>
+                                <div class="point">Prijavljen dne: 24.10.2014</div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
-            <a href="#" class="button button-big button-cancel logout-button  color-white">{{loginOut}}</a>
+            <a href="#" class="button button-big button-cancel logout-button  color-white">Odjavi se</a>
         </div>
     </div>
 </script>
@@ -366,6 +371,9 @@
             </div>
         </a>
     </li>
+    <div>
+        <a href="http://facebook.com" target="_blank"><img src="style/img/addtest.jpg" style="background:none; width:100%" alt=""/></a>
+    </div>
 </script>
 
 <script id="messageTemplate" type="text/template">

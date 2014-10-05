@@ -20,11 +20,11 @@ define(['utils/appFunc',
             hiApp.popup($$.trim(output));
 
               var bindings = [
-// {
-//                element: '#sendWeiboBtn',
-//                event: 'click',
-//                handler: postView.postMsg
-//            },{
+            {
+                element: '#sendWeiboBtn',
+                event: 'click',
+                handler: postView.openArchive
+            }
 //                element: 'div.message-tools .get-position',
 //                event: 'click',
 //                handler: geo.catchGeoInfo
@@ -45,6 +45,10 @@ define(['utils/appFunc',
             ];
 
             appFunc.bindEvents(bindings);
+        },
+        openArchive: function(){
+            mainView.loadPage('page/archive.html');
+            hiApp.closeModal('.send-popup');
         },
 
         clearSendPopup: function(){
