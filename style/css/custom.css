@@ -133,8 +133,8 @@
     background-repeat: no-repeat;
 }
 
-/*IPAD STYLE
-.time-line-content{
+/*IPAD STYLE*/
+/*.time-line-content{
      -webkit-column-count: 2;
      -webkit-column-gap: 10px;
      column-count: 2;
@@ -235,4 +235,28 @@
 }
 .comments-content .comments-list .comment-detail{
     margin-left: 5px;
+}
+.weather-icon-main{
+    width: 100px!important;
+    height: 100px!important;
+    background: #4fb950;
+}
+.weather-icon-main img{
+    height: 100%;
+    background: none;
+    margin: 0 auto;
+}
+.weather-icon-main-detailed{
+    width: 90px;
+    height: 90px;
+    background-size: 83%;
+    border-radius: 5px;
+    margin: 0 auto;
+    border: 1px solid #dfdfdf;
+    background: #4fb950;
+}
+.weather-icon-main-detailed img{
+    height: 100%;
+    background: none;
+    margin-left: 11px;
 }
