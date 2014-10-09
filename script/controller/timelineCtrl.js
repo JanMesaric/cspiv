@@ -52,7 +52,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 element: '#ourView',
                 selector: '.searchbar-input input',
                 event: 'keyup',
-                handler: function(){
+                handler: debounce(function(){//ta funkcija je v main.js nakoncu
                     var val = $(this).val();
                     var arr = [];
                     var regexObj = new RegExp(val.toLowerCase());
@@ -67,14 +67,13 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                     });
                     hiApp.hideIndicator();
                     VM.module('timelineView').getTimeline(arr);
-                }
+                }, 500)
 
             },{
                 element: '#ourView',
                 selector: '.searchbar-cancel',
                 event: 'click',
                 handler: function(){
-                    log('whaat')
                     VM.module('timelineView').getTimeline(appFunc.getCurrEditionArticles(window.appData));
                 }
             }
