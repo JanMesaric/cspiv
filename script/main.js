@@ -619,7 +619,7 @@ var App = {
                 window.settingView = hiApp.addView('#settingView', {
                     dynamicNavbar: true,
                     domCache:true
-                });
+                }); /**/
 
 
                 if(!localStorage.getItem('currEdition')){
