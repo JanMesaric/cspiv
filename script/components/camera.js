@@ -9,7 +9,7 @@ define([
         getPicture: function(){
 
             if(!appFunc.isPhonegap()){
-                hiApp.alert(i18n.error.phonegap_only);
+                //hiApp.alert(i18n.error.phonegap_only);
                 return false;
             }
 
@@ -52,7 +52,7 @@ define([
         cameraError: function(message){
             setTimeout(function(){
                 if(message !== 'no image selected'){
-                    hiApp.alert(message);
+                    //hiApp.alert(message);
                 }
             },500);
         },

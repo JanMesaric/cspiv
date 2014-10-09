@@ -33,7 +33,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 handler:VM.module('postView').openSendPopup
             },{
                 element: '#ourView',
-                selector: '.time-line-content .item-content .share-article',
+                selector: '.time-line-content .item-content .share-article, #itemContent .share-article',
                 event: 'click',
                 handler: VM.module('timelineView').shareArticle
               },{

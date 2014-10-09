@@ -8,7 +8,7 @@ define({
         back:'Nazaj',
         done:'Done',
         search:'Iskanje',
-        modal_title: 'Sistem',
+        modal_title: 'Pivar',
         modal_button_ok: 'OK',
         minute_ago:' mins ago',
         hour_ago:' hours ago',
@@ -25,13 +25,13 @@ define({
         setting: 'Več',
         sen_tweet: 'New Tweet',
         send_placeholder: 'What\'s new with you.',
-        sending:'Submitting...',
+        sending:'Pošiljam...',
         err_text_too_short:'Ah,Content is too short'
     },
     setting: {
         feed_back: 'Feedback',
         feed_back_placeholder:'Hi,Any suggestions to tell us?',
-        feed_back_result:'Thank you for your feedback',
+        feed_back_result:'Vaše sporočilo smo prejeli!',
         check_update: 'Update',
         about: 'About',
         login_out: 'Izpiši se',
@@ -46,7 +46,7 @@ define({
         login_btn: 'Vpiši se',
         sign_up: 'Registriraj se',
         err_empty_input: 'Please enter login name and password',
-        err_illegal_email: 'Usernamee must be Email',
+        err_illegal_email: 'Username must be Email',
         login: 'Loading, please wait...'
     },
     timeline:{

@@ -33,7 +33,7 @@ define(['utils/appFunc',
                 event: 'click',
                 handler: geo.cleanGeo
             },{
-                element: 'div.message-tools .image-upload',
+                element: 'div.message-tools .image-upload, #nonePhoto',
                 event: 'click',
                 handler: camera.getPicture
             },
@@ -57,8 +57,7 @@ define(['utils/appFunc',
             var text = $$('#messageText').val();
             var title = $$('#messageTitle').val();
 
-            alert(text);
-            alert(title);
+
 
             if(appFunc.getCharLength(text) < 4){
                 hiApp.alert('ups, tekst je prekratek...');
