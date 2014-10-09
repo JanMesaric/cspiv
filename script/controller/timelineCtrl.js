@@ -89,7 +89,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 xhr.simpleCall({func:'pivar'}, function(data){
                     window.appData = data;
                     var dw = window.appData[localStorage.getItem('currEdition')].info;
-                    $('.current-edition-js').text(dw.number + ' ' + dw.dddate.replace(new RegExp(' ', 'g'),''))
+                    $('.current-edition-js').text('Št:'+dw.number + ' ' + dw.dddate.replace(new RegExp(' ', 'g'),''))
                     var articles = appFunc.getCurrEditionArticles(data);
                     //ustvarim prvo stran
                     VM.module('timelineView').getTimeline(articles);
@@ -131,7 +131,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
             appFunc.showToolbar('.views');
             var len = window.appData.length + id;
             log(id);
-             
+
             log(id);
             var data = window.appData[id].info;
             log(data.number)
