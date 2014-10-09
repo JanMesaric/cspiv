@@ -168,8 +168,7 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             },400);
         },
 
-        openKuhalnicaItemPage: function(e){
-
+        openKuhalnicaItemPage: function(){
 //            if(e.target.nodeName !== 'DIV'){
 //                return false;
 //            }

@@ -12,7 +12,24 @@ define(['GS','controller/module'],function(GS,CM) {
                 var page = e.detail.page;
                 router.pageAfterAnimation(page);
             });
-
+            /*$$(document).on('show', function(e){
+                    var id = $$(e.target).attr('id');
+                    if(GS.isLogin()){
+                        log('yeyeye')
+                        $('.setting-page').html('<li>\
+                            <a href="page/language.html?from=setting" class="item-link">\
+                            <div class="item-content">\
+                                <div class="item-media language">\
+                                    <i class="icon ios7-world-outline"></i>\
+                                </div>\
+                                <div class="item-inner">\
+                                    <div class="item-title">Iskfdsafasdfsdanje</div>\
+                                </div>\
+                            </div>\
+                            </a>\
+                        </li>')
+                    }
+            })*/
 //            if(!GS.isLogin()){
 //                //mainView je globalna spremenljivka!
 //                mainView.loadPage('page/login.html');

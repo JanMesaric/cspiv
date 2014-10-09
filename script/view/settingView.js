@@ -6,6 +6,7 @@ define(['utils/appFunc','utils/tplManager','GS','i18n!nls/lang'],function(appFun
 
         init: function(params){
             appFunc.bindEvents(params.bindings);
+
         },
 
         renderSetting: function(user){

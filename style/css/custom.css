@@ -275,7 +275,7 @@
         /*height: auto;*/
     /*}*/
 }
-
+.weather-by-city li,
 .language-page li{
     list-style-type:none;
 }
