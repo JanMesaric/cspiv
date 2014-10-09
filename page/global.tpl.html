@@ -2,7 +2,7 @@
     {{#weibo}}
     <li data-id="{{id}}" data-mid="{{mid}}" data-title="{{title}}" data-titleDesc="{{titleDesc}}" class="item-content card-content">
         <div class="item-inner">
-            <div class="item-header">
+            <div class="item-header {{cat}}">
                 <div class="avatar">
                     <img data-avatarid="{{img.photoMain}}" src="{{img.photoMain}}">
                 </div>
@@ -175,13 +175,33 @@
                 <div class="navbar">
                     <div class="navbar-inner">
                         <div class="left"><a href="#" class="link close-popup">{{cancel}}</a></div>
-                        <div class="center">Rubrike</div>
-                        <div class="right"><a id="sendWeiboBtn" href="#" class="link orange">Arhiv št.</a></div>
+                        <div class="center">Številka</div>
+                        <!--<div class="right"><a id="sendWeiboBtn" href="#" class="link orange">Arhiv št.</a></div>-->
                     </div>
                 </div>
                 <div class="page-content message-content">
                     <div class="rubrike-page list-block">
                         <ul>
+                            <li style="width: 50%; float: left;">
+                                <a href="#" class="item-link js-section-li">
+                                    <div style="" class="item-content">
+                                        <!--<div class="item-media about spring"></div>-->
+                                        <div class="item-inner">
+                                            <div class="item-title">Arhiv številk</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li style="width: 50%; float: left;">
+                                <a href="#" class="item-link js-section-li">
+                                    <div style="" class="item-content">
+                                        <!--<div class="item-media about spring"></div>-->
+                                        <div class="item-inner">
+                                            <div class="item-title">Priljubljeno</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li>
                                 <a href="#" class="item-link js-section-li">
                                     <div style="background: #4fb950; color:white" class="item-content">
@@ -192,6 +212,8 @@
                                     </div>
                                 </a>
                             </li>
+                            <div class="list-block-label" style="margin: 20px 0 10px;">Rubrike</div>
+
                             {{#data}}
                             {{#name}}
                             <li>

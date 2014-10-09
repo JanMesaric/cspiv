@@ -1,0 +1,190 @@
+.uvodnik-archive, .uvodnik span{
+    color: #4fb950;
+}
+.uvodnik{
+    border-bottom: 1px solid #4fb950;
+}
+.poslovno-archive, .poslovno span{
+    color: #4fb950;
+}
+.poslovno{
+    border-bottom: 1px solid #4fb950;
+}
+.union-archive, .union span{
+    color: #d01729;
+}
+.union{
+    border-bottom: 1px solid #d01729;
+}
+.radenska-archive, .radenska span{
+    color: #4fb950;
+}
+.radenska{
+    border-bottom: 1px solid #4fb950;
+}
+.intervju-archive, .intervju span{
+    color: #d37a42;
+}
+.intervju{
+    border-bottom: 1px solid #d37a42;
+}
+.gostujoce-pero-archive, .gostujoce-pero span{
+    color: #4fb950;
+}
+.gostujoce-pero{
+    border-bottom: 1px solid #4fb950;
+}
+.izbrano-kuhalnica-archive, .izbrano-kuhalnica span{
+    border-bottom: 1px solid #d01729;
+    color: #d01729;
+}
+.izbrano-foto-archive, .izbrano-foto span{
+    border-bottom: 1px solid #4fb950;
+    line-height:1.5em;
+}
+.dogajanje-archive, .dogajanje span{
+    color: #4f9fd6;
+}
+.dogajanje{
+    border-bottom: 1px solid #4f9fd6;
+}
+.tuji-trgi-orange-archive, .tuji-trgi-orange span{
+    color: #d37a42;
+}
+.tuji-trgi-orange{
+    border-bottom: 1px solid #d37a42;
+}
+.tuji-trgi-green-archive, .tuji-trgi-green span{
+    color: #4fb950;
+}
+.tuji-trgi-green{
+    border-bottom: 1px solid #4fb950;
+}
+.aktualno-archive, .aktualno span{
+    color: #4fb950;
+}
+.aktualno{
+    border-bottom: 1px solid #4fb950;
+}
+.aktivni-archive, .aktivni span{
+    color: #4f9fd6;
+}
+.aktivni{
+    border-bottom: 1px solid #4f9fd6;
+}
+.degustacija-archive, .degustacija span{
+    color: #4fb950;
+}
+.degustacija{
+    border-bottom: 1px solid #4fb950;
+}
+.iskrica-archive, .iskrica span{
+    color: #4fb950;
+}
+.iskrica{
+    border-bottom: 1px solid #4fb950;
+}
+.sport-archive, .sport span{
+    color: #444d9f;
+}
+.sport{
+    border-bottom: 1px solid #444d9f;
+}
+.okusanje-archive, .okusanje span{
+    color: #941801;
+}
+.okusanje{
+    border-bottom: 1px solid #941801;
+}
+.trajnostni-razvoj-archive, .trajnostni-razvoj span{
+    color: #444d9f;
+}
+.trajnostni-razvoj{
+    border-bottom: 1px solid #444d9f;
+}
+.novosti-novice-iz-vitala-mestinje-archive, .novosti-novice-iz-vitala-mestinje span{
+    color: #d01729;
+    line-height:1.5em;
+}
+.novosti-novice-iz-vitala-mestinje{
+    border-bottom: 1px solid #d01729;
+}
+.novosti-novice-iz-radenske-archive, .novosti-novice-iz-radenske span{
+    color: #4fb950;
+    line-height:1.5em;
+}
+.novosti-novice-iz-radenske {
+    border-bottom: 1px solid #4fb950;
+}
+.ali-ste-vedeli-archive, .ali-ste-vedeli span{
+    color: #4fb950;
+    line-height:1.5em;
+}
+.ali-ste-vedeli{
+    border-bottom: 1px solid #4fb950;
+}
+.novosti-lasko-archive, .novosti-lasko span{
+    color: #4fb950;
+    line-height:1.5em;
+}
+.novosti-lasko{
+    border-bottom: 1px solid #4fb950;
+}
+.peter-ivan-archive, .peter-ivan span{
+    color: #4fb950;
+}
+.peter-ivan{
+    border-bottom: 1px solid #4fb950;
+}
+.zdravje-archive, .zdravje span{
+    color: #4fb950;
+}
+.zdravje{
+    border-bottom: 1px solid #4fb950;
+}
+.twitter-title-archive, .twitter-title span{
+    border-bottom: 1px solid #4f9fd6;
+    color: #4f9fd6;
+
+    color:black;
+}
+.dogodki-title-archive, .dogodki-title span{
+    color: #07a624;
+}
+.dogodki-title{
+    border-bottom: 1px solid #07a624;
+}
+.instagram-title-archive, .instagram-title span{
+    border-bottom: 1px solid #406e94;
+    color: #406e94;
+}
+.druzbena-odgovornost-archive, .druzbena-odgovornost span{
+    color: #d01729;
+}
+.druzbena-odgovornost{
+    border-bottom: 3px solid #d01729;
+}
+.po-sloveniji-archive, .po-sloveniji span{
+    color: #4fb950;
+}
+.po-sloveniji{
+    border-bottom: 3px solid #4fb950;
+}
+.izobrazevanje-archive, .izobrazevanje span{
+    color: #d37a42;
+}
+.izobrazevanje{
+    border-bottom: 3px solid #d37a42;
+}
+.zabava-archive, .zabava span{
+    color: #008445;
+}
+.zabava{
+    border-bottom: 3px solid #008445;
+}
+.laško-archive, .laško span{
+    color: #008445;
+}
+.laško{
+    border-bottom: 3px solid #008445;
+}

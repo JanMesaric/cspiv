@@ -5248,7 +5248,7 @@ img {
 }
 .card-content .item-header {
   padding: 5px 0;
-  border-bottom: 1px solid #f0f0f0;
+  /*border-bottom: 1px solid #f0f0f0;*/
   font-size: 13px;
   margin: 0 10px;
   overflow: hidden;

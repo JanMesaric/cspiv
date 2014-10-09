@@ -28,7 +28,7 @@
     color:#303033!important;
 }
 .card-content .item-header {
-    border-bottom: 1px solid #4fb950;
+    /*border-bottom: 1px solid #4fb950;*/
 }
 .toolbar a.active {
     color: #4fb950;
@@ -265,11 +265,11 @@
         display: inline-block;
         width: 100%;
     }
-    .card-content .item-header .detailed-avatar {
-        float: left;
-        width: 50%;
-        margin-right: 15px;
-        height: auto;
-    }
+    /*.card-content .item-header .detailed-avatar {*/
+        /*float: left;*/
+        /*width: 50%;*/
+        /*margin-right: 15px;*/
+        /*height: auto;*/
+    /*}*/
 }
 
