@@ -5,7 +5,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
         init: function(){
 
             VM.module('timelineView').init();
-
+            setTimeout(function(){$('.page-content').scrollTop(44);},30);
             this.getTimelineForCurrEdition();
         },
 
@@ -45,9 +45,38 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 element: '#ourView',
                 selector: '.time-line-content .item-content .click-content,' +
                     '.time-line-content .item-tools .click-content,' +
-                    '.item-header, .detail',
+                    '.time-line-content .item-header,.time-line-content .detail',
                 event: 'click',
                 handler: VM.module('timelineView').openItemPage
+            },{
+                element: '#ourView',
+                selector: '.searchbar-input input',
+                event: 'keyup',
+                handler: function(){
+                    var val = $(this).val();
+                    var arr = [];
+                    var regexObj = new RegExp(val.toLowerCase());
+                    hiApp.showIndicator();
+                    window.appData.forEach(function(data){
+                        data.articles.forEach(function(res){
+                            if(res.artShow === "true" && regexObj.test(res.title.toLowerCase())){
+                                arr.push(res);
+                            }
+
+                        });
+                    });
+                    hiApp.hideIndicator();
+                    VM.module('timelineView').getTimeline(arr);
+                }
+
+            },{
+                element: '#ourView',
+                selector: '.searchbar-cancel',
+                event: 'click',
+                handler: function(){
+                    log('whaat')
+                    VM.module('timelineView').getTimeline(appFunc.getCurrEditionArticles(window.appData));
+                }
             }
             ];
 
@@ -73,15 +102,17 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
             var cat = cat || 'Nazaj-na-številko';
             VM.module('timelineView').refreshTimeline(appFunc.getAllArticles(window.appData), cat);
             log('refreshing timeline')
-
         },
         openEdition: function(id){
             localStorage.setItem('currEdition', id);
             VM.module('timelineView').openEdition();
-            hiApp.openPanel('#ourView')
-            $('.js-open-ourview').trigger('click');
-            //TODO:deluje le v eno smer
-            //appFunc.openView('#contatcView', '#ourView');
+            hiApp.openPanel('#ourView');
+            mainView.goBack();
+            appFunc.showToolbar('.views');
+            var len = window.appData.length - id - 1;
+            var data = window.appData[len].info;
+            $$('.current-edition-js').text('Št:' + data.number + ', ' + data.dddate.replace(new RegExp(' ', 'g'),''));
+
         }
         /*
         infiniteTimeline: function(){

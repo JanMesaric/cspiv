@@ -1,4 +1,550 @@
 var log = console.log.bind(console);
+var App = {
+    getGeolocation: function(){
+        navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError, {enableHighAccuracy: true, timeout: 10000});
+    },
+    geolocationSuccess: function(){
+        App.currentPos = {
+            lon: position.coords.longitude,
+            lat: position.coords.latitude
+        };
+        //alert(App.currentPos.lon + ' ' + App.currentPos.lat) //do kle
+        var cityBounds = [],
+            cities = App.cities;
+        for(var i = 0, len = cities.length; i < len; i++){
+            var negLon = Math.abs(cities[i].lon - App.currentPos.lon);
+            var negLat = Math.abs(cities[i].lat - App.currentPos.lat);
+            // console.log(negLon)
+            var obj = {
+                comparator: Math.sqrt(negLon^2+negLat^2), //za testirat sqrt(a^2+b^2)
+                name: cities[i].name
+            };
+            cityBounds.push(obj);
+        }
+
+        var final = [],
+            first = cityBounds[0].comparator,
+            newcomparator,
+            nameof;
+        for(var i = 1, len = cityBounds.length; i < len; i++){
+            if(newcomparator == undefined){
+                if(cityBounds[i].comparator < first){
+                    final.push(cityBounds[i]);
+                    newcomparator = cityBounds[i].comparator
+                }else{
+                    final.push(cityBounds[0]);
+                    newcomparator = cityBounds[0].comparator
+                }
+            }
+            if(cityBounds[i].comparator < newcomparator){
+                final.push(cityBounds[i])
+            }
+            if(i == 7){
+                nameof = final.pop().name
+            }
+
+        };
+        if(App.getCityFired){//če je kliknjen gumb v #weather
+            navigator.notification.alert(
+                App.messages.getCityResult + ' ' + nameof, //message
+                alertDismissed,         // callback
+                'Vreme',            // title
+                'OK'                  // buttonName
+            );
+            function alertDismissed(){}
+            App.getCityFired = false;
+        }
+        $("#currCity").text(nameof);
+        //alert('Začenjam z iskanjem podatkov vremena'); //do kle
+        localStorage.setItem('currentCity', nameof);
+
+        /* get forecast */
+        App.myTimer = setInterval(function(){
+            $.ajax({
+                timeout: 5000,
+                url:"http://api.openweathermap.org/data/2.5/forecast?q="+localStorage.getItem('currentCity')+",si&units=metric",
+                dataType: 'jsonp',
+                async: true,
+                success:function(json){
+
+                    var day0temp = json.list[0].main.temp;
+                    var day1temp = json.list[9].main.temp;
+                    var day2temp = json.list[17].main.temp;
+                    var day3temp = json.list[25].main.temp;
+                    var day4temp = json.list[33].main.temp;
+                    var daystemp = [day0temp, day1temp, day2temp, day3temp, day4temp];
+
+                    var day0wind = json.list[0].wind.speed;
+                    var day1wind = json.list[9].wind.speed;
+                    var day2wind = json.list[17].wind.speed;
+                    var day3wind = json.list[25].wind.speed;
+                    var day4wind = json.list[33].wind.speed;
+
+                    var day0src = json.list[0].weather[0].description;
+                    var day1src = json.list[9].weather[0].description;
+                    var day2src = json.list[17].weather[0].description;
+                    var day3src = json.list[25].weather[0].description;
+                    var day4src = json.list[33].weather[0].description;
+
+                    var dayssrc = [day0src, day1src, day2src, day3src, day4src];
+                    var dayswind = [day0wind, day1wind, day2wind, day3wind, day4wind];
+
+                    var crsrc = JSON.stringify(dayssrc)
+                    localStorage.setItem('currSrc', crsrc);
+                    localStorage.setItem('weatherWind', '['+dayswind+']');
+                    localStorage.setItem('weatherForecast', '['+daystemp+']');
+                    // self.setWeather();
+                    App.Vent.trigger("weatherUpdate");
+
+                },
+                error:function(){
+                    //console.log('Weather does not work!');
+                }
+            });
+
+            /* curr weather */
+            $.ajax({
+                timeout: 5000,
+                url:"http://api.openweathermap.org/data/2.5/weather?q="+localStorage.getItem('currentCity')+",si&units=metric",
+                dataType: 'jsonp',
+                async: true,
+                success:function(json){
+
+
+                    var name = '',
+                        day0 = json.weather[0].description,
+                        src = '',
+                        srcmain = '';
+
+                    switch (day0){
+                        case 'sky is clear':
+                        case 'Sky is Clear':
+                            name = 'sončno';
+                            src = 'style/img/weatherIcons/7.png';
+                            srcmain = 'style/img/weatherIcons/blck/1.png';
+                            break;
+                        case 'few clouds':
+                        case 'proximity shower rain':
+                            name = 'delno oblačno';
+                            src = 'style/img/weatherIcons/8.png';
+                            srcmain = 'style/img/weatherIcons/blck/2.png';
+                            break;
+                        case 'scattered clouds':
+                            name = 'delno oblačno';
+                            src = 'style/img/weatherIcons/8.png';
+                            srcmain = 'style/img/weatherIcons/blck/2.png';
+                            break;
+                        case 'broken clouds':
+                            name = 'delno oblačno';
+                            src = 'style/img/weatherIcons/8.png';
+                            srcmain = 'style/img/weatherIcons/blck/2.png';
+                            break;
+                        case 'overcast clouds':
+                            name = 'oblačno';
+                            src = 'style/img/weatherIcons/8.png';
+                            srcmain = 'style/img/weatherIcons/blck/2.png';
+                            break;
+                        //konec oblakov
+
+                        //Atmosphere
+                        case 'mist':
+                        case 'smoke':
+                        case 'haze':
+                        case 'Sand/Dust Whirls':
+                        case 'Fog':
+                            name = 'oblačno';
+                            src = 'style/img/weatherIcons/10.png';
+                            srcmain = 'style/img/weatherIcons/blck/4.png';
+                            break;
+                        //snow
+                        case 'light snow':
+                        case 'snow':
+                        case 'heavy snow':
+                        case 'sleet':
+                        case 'shower snow':
+                            name = 'snežne padavine';
+                            src = 'style/img/weatherIcons/12.png';
+                            srcmain = 'style/img/weatherIcons/blck/6.png';
+                            break;
+                        //rain1
+                        case 'light rain':
+                        case 'moderate rain':
+                        case 'heavy intensity rain':
+                        case 'very heavy rain':
+                        case 'extreme rain':
+                            name = 'deževno';
+                            src = 'style/img/weatherIcons/9.png';
+                            srcmain = 'style/img/weatherIcons/blck/3.png';
+                            break;
+                        //rain2
+                        case 'freezing rain':
+                        case 'light intensity shower rain':
+                        case 'shower rain':
+                        case 'heavy intensity shower rain':
+                            name = 'deževno';
+                            src = 'style/img/weatherIcons/9.png';
+                            srcmain = 'style/img/weatherIcons/blck/5.png';
+                            break;
+                        //drizzle
+                        case 'light intensity drizzle':
+                        case 'drizzle':
+                        case 'heavy intensity drizzle':
+                        case 'light intensity drizzle rain':
+                        case 'drizzle rain':
+                        case 'heavy intensity drizzle rain':
+                        case 'shower drizzle':
+                            name = 'deževno';
+                            src = 'style/img/weatherIcons/11.png';
+                            srcmain = 'style/img/weatherIcons/blck/5.png';
+                            break;
+                        //thunderstorm
+                        case 'thunderstorm with light rain':
+                        case 'thunderstorm with rain':
+                        case 'thunderstorm with heavy rain':
+                        case 'light thunderstorm':
+                        case 'thunderstorm':
+                        case 'heavy thunderstorm':
+                        case 'ragged thunderstorm':
+                        case 'thunderstorm with light drizzle':
+                        case 'thunderstorm with drizzle':
+                        case 'thunderstorm with heavy drizzle':
+                            name = 'nevihta';
+                            src = 'style/img/weatherIcons/11.png';
+                            srcmain = 'style/img/weatherIcons/blck/5.png';
+                            break;
+                    }
+
+                    var currWeather = {
+                        name: name,
+                        src: src,
+                        srcmain: srcmain,
+                        temp: Math.round(json.main.temp),
+                        wind: json.wind.speed
+                    };
+
+                    localStorage.setItem('currWeather', JSON.stringify(currWeather));
+                    App.Vent.trigger("currWeatherUpdate");
+                    // self.setCurrWeather();
+                },
+                error:function(){
+
+                    //console.log('Weather does not work!');
+                }
+            });
+        }, 10000); //na 30 sekund dobi weather
+    },
+    geolocationError: function(){
+        navigator.notification.alert(
+            App.messages.getCityError, //message
+            alertDismissed,         // callback
+            'Vreme - Napaka pri iskanju mesta',            // title
+            'OK'                  // buttonName
+        );
+        function alertDismissed(){}
+        localStorage.setItem('currentCity', 'lasko');
+        $("#currCity").text('Laško');
+        var url = "http://api.openweathermap.org/data/2.5/forecast?q=lasko,si&units=metric";
+        App.myTimer = setInterval(function(){
+            $.ajax({
+                timeout: 5000,
+                url:url,
+                dataType: 'jsonp',
+                async: true,
+                success:function(json){
+                    var day0temp = json.list[0].main.temp;
+                    var day1temp = json.list[9].main.temp;
+                    var day2temp = json.list[17].main.temp;
+                    var day3temp = json.list[25].main.temp;
+                    var day4temp = json.list[33].main.temp;
+                    var daystemp = [day0temp, day1temp, day2temp, day3temp, day4temp];
+
+                    var day0wind = json.list[0].wind.speed;
+                    var day1wind = json.list[9].wind.speed;
+                    var day2wind = json.list[17].wind.speed;
+                    var day3wind = json.list[25].wind.speed;
+                    var day4wind = json.list[33].wind.speed;
+
+                    var day0src = json.list[0].weather[0].description;
+                    var day1src = json.list[9].weather[0].description;
+                    var day2src = json.list[17].weather[0].description;
+                    var day3src = json.list[25].weather[0].description;
+                    var day4src = json.list[33].weather[0].description;
+
+                    var dayssrc = [day0src, day1src, day2src, day3src, day4src];
+                    var dayswind = [day0wind, day1wind, day2wind, day3wind, day4wind];
+
+                    var crsrc = JSON.stringify(dayssrc)
+                    localStorage.setItem('currSrc', crsrc);
+                    localStorage.setItem('weatherWind', '['+dayswind+']');
+                    localStorage.setItem('weatherForecast', '['+daystemp+']');
+                    // self.setWeather();
+                    App.Vent.trigger("weatherUpdate");
+                },
+                error:function(){
+                    //console.log('Weather does not work!');
+                }
+            });
+
+            /* curr weather */
+            $.ajax({
+                timeout: 5000,
+                url:"http://api.openweathermap.org/data/2.5/weather?q=lasko,si&units=metric",
+                dataType: 'jsonp',
+                async: true,
+                success:function(json){
+                    var name = '',
+                        day0 = json.weather[0].description,
+                        src = '',
+                        srcmain = '';
+                    switch (day0){
+                        case 'sky is clear':
+                        case 'Sky is Clear':
+                            name = 'sončno';
+                            src = 'style/img/weatherIcons/7.png';
+                            srcmain = 'style/img/weatherIcons/blck/1.png';
+                            break;
+                        case 'few clouds':
+                            name = 'delno oblačno';
+                            src = 'style/img/weatherIcons/8.png';
+                            srcmain = 'style/img/weatherIcons/blck/2.png';
+                            break;
+                        case 'scattered clouds':
+                            name = 'delno oblačno';
+                            src = 'style/img/weatherIcons/8.png';
+                            srcmain = 'style/img/weatherIcons/blck/2.png';
+                            break;
+                        case 'broken clouds':
+                            name = 'delno oblačno';
+                            src = 'style/img/weatherIcons/8.png';
+                            srcmain = 'style/img/weatherIcons/blck/2.png';
+                            break;
+                        case 'overcast clouds':
+                            name = 'oblačno';
+                            src = 'style/img/weatherIcons/8.png';
+                            srcmain = 'style/img/weatherIcons/blck/2.png';
+                            break;
+                        //konec oblakov
+
+                        //Atmosphere
+                        case 'mist':
+                        case 'smoke':
+                        case 'haze':
+                        case 'Sand/Dust Whirls':
+                        case 'Fog':
+                            name = 'oblačno';
+                            src = 'style/img/weatherIcons/10.png';
+                            srcmain = 'style/img/weatherIcons/blck/4.png';
+                            break;
+                        //snow
+                        case 'light snow':
+                        case 'snow':
+                        case 'heavy snow':
+                        case 'sleet':
+                        case 'shower snow':
+                            name = 'snežne padavine';
+                            src = 'style/img/weatherIcons/12.png';
+                            srcmain = 'style/img/weatherIcons/blck/6.png';
+                            break;
+                        //rain1
+                        case 'light rain':
+                        case 'moderate rain':
+                        case 'heavy intensity rain':
+                        case 'very heavy rain':
+                        case 'extreme rain':
+                            name = 'deževno';
+                            src = 'style/img/weatherIcons/9.png';
+                            srcmain = 'style/img/weatherIcons/blck/3.png';
+                            break;
+                        //rain2
+                        case 'freezing rain':
+                        case 'light intensity shower rain':
+                        case 'shower rain':
+                        case 'heavy intensity shower rain':
+                            name = 'deževno';
+                            srcmain = 'style/img/weatherIcons/blck/5.png';
+                            break;
+                        //drizzle
+                        case 'light intensity drizzle':
+                        case 'drizzle':
+                        case 'heavy intensity drizzle':
+                        case 'light intensity drizzle rain':
+                        case 'drizzle rain':
+                        case 'heavy intensity drizzle rain':
+                        case 'shower drizzle':
+                            name = 'deževno';
+                            src = 'style/img/weatherIcons/11.png';
+                            srcmain = 'style/img/weatherIcons/blck/5.png';
+                            break;
+                        //thunderstorm
+                        case 'thunderstorm with light rain':
+                        case 'thunderstorm with rain':
+                        case 'thunderstorm with heavy rain':
+                        case 'light thunderstorm':
+                        case 'thunderstorm':
+                        case 'heavy thunderstorm':
+                        case 'ragged thunderstorm':
+                        case 'thunderstorm with light drizzle':
+                        case 'thunderstorm with drizzle':
+                        case 'thunderstorm with heavy drizzle':
+                            name = 'nevihta';
+                            src = 'style/img/weatherIcons/11.png';
+                            srcmain = 'style/img/weatherIcons/blck/5.png';
+                            break;
+                    }
+                    var currWeather = {
+                        name: name,
+                        src: src,
+                        srcmain: srcmain,
+                        temp: Math.round(json.main.temp),
+                        wind: json.wind.speed
+                    };
+
+                    localStorage.setItem('currWeather', JSON.stringify(currWeather));
+                    App.Vent.trigger("currWeatherUpdate");
+                    // self.setCurrWeather();
+                },
+                error:function(){
+                    //console.log('Weather does not work!');
+                }
+            });
+        }, 10000);
+    },
+    /*podatki za vreme*/
+    cities: function(){
+        var cities = ['ljubljana', 'kranj', 'novo&mesto', 'koper', 'lasko', 'maribor', 'murska&sobota', 'nova&gorica'];
+        App.citiesTemperatures = [];
+
+        function citiess(){
+            for(var i = 0; i<8; i++){
+                ajaxReq(i);
+            }
+        }
+        citiess();
+        setTimeout(function(){
+            if(App.citiesTemperatures.length < 7){
+                citiess();
+            }
+        }, 10000);
+        function ajaxReq(i){
+            var currCity = cities[i], src, name;
+            $.ajax({
+                timeout: 5000,
+                url:"http://api.openweathermap.org/data/2.5/forecast?q="+ cities[i] +",si&units=metric",
+                dataType: 'jsonp',
+                async: true,
+                success:function(json){
+
+                    switch (json.list[0].weather[0].description){
+                        case 'sky is clear':
+                        case 'Sky is Clear':
+                            name = 'sončno';
+                            src = 'style/img/weatherIcons/1.png';
+                            srcmain = 'style/img/weatherIcons/1.png';
+                            break;
+                        case 'few clouds':
+                            name = 'delno oblačno';
+                            src = 'style/img/weatherIcons/2.png';
+                            srcmain = 'style/img/weatherIcons/2.png';
+                            break;
+                        case 'scattered clouds':
+                            name = 'delno oblačno';
+                            src = 'style/img/weatherIcons/2.png';
+                            srcmain = 'style/img/weatherIcons/2.png';
+                            break;
+                        case 'broken clouds':
+                            name = 'delno oblačno';
+                            src = 'style/img/weatherIcons/2.png';
+                            srcmain = 'style/img/weatherIcons/2.png';
+                            break;
+                        case 'overcast clouds':
+                            name = 'oblačno';
+                            src = 'style/img/weatherIcons/2.png';
+                            srcmain = 'style/img/weatherIcons/2.png';
+                            break;
+                        //konec oblakov
+
+                        //Atmosphere
+                        case 'mist':
+                        case 'smoke':
+                        case 'haze':
+                        case 'Sand/Dust Whirls':
+                        case 'Fog':
+                            name = 'oblačno';
+                            src = 'style/img/weatherIcons/4.png';
+                            srcmain = 'style/img/weatherIcons/4.png';
+                            break;
+                        //snow
+                        case 'light snow':
+                        case 'snow':
+                        case 'heavy snow':
+                        case 'sleet':
+                        case 'shower snow':
+                            name = 'snežne padavine';
+                            src = 'style/img/weatherIcons/6.png';
+                            srcmain = 'style/img/weatherIcons/6.png';
+                            break;
+                        //rain1
+                        case 'light rain':
+                        case 'moderate rain':
+                        case 'heavy intensity rain':
+                        case 'very heavy rain':
+                        case 'extreme rain':
+                            name = 'deževno';
+                            src = 'style/img/weatherIcons/3.png';
+                            srcmain = 'style/img/weatherIcons/3.png';
+                            break;
+                        //rain2
+                        case 'freezing rain':
+                        case 'light intensity shower rain':
+                        case 'shower rain':
+                        case 'heavy intensity shower rain':
+                            name = 'deževno';
+                            src = 'style/img/weatherIcons/5.png';
+                            srcmain = 'style/img/weatherIcons/5.png';
+                            break;
+                        //drizzle
+                        case 'light intensity drizzle':
+                        case 'drizzle':
+                        case 'heavy intensity drizzle':
+                        case 'light intensity drizzle rain':
+                        case 'drizzle rain':
+                        case 'heavy intensity drizzle rain':
+                        case 'shower drizzle':
+                            name = 'deževno';
+                            src = 'style/img/weatherIcons/5.png';
+                            srcmain = 'style/img/weatherIcons/blck/5.png';
+                            break;
+                        //thunderstorm
+                        case 'thunderstorm with light rain':
+                        case 'thunderstorm with rain':
+                        case 'thunderstorm with heavy rain':
+                        case 'light thunderstorm':
+                        case 'thunderstorm':
+                        case 'heavy thunderstorm':
+                        case 'ragged thunderstorm':
+                        case 'thunderstorm with light drizzle':
+                        case 'thunderstorm with drizzle':
+                        case 'thunderstorm with heavy drizzle':
+                            name = 'nevihta';
+                            src = 'style/img/weatherIcons/5.png';
+                            srcmain = 'style/img/weatherIcons/blck/5.png';
+                            break;
+                    }
+                    var obj = {
+                        name: currCity.replace('&', ' '),
+                        class: currCity.replace('&', '-'),
+                        temp: Math.round(json.list[0].main.temp) + '°',
+                        wind: Math.round(json.list[0].wind.speed),
+                        src: src,
+                        word: name
+                    };
+                    App.citiesTemperatures.push(obj);
+                },
+                error:function(){}
+            });
+        }
+    }
+};
 (function() {
     var lang = localStorage.getItem('lang') || 'en-us';
     //TODO: http://requirejs.org/docs/api.html
@@ -40,7 +586,10 @@ var log = console.log.bind(console);
                 switch (event) {
                     case 'deviceready':
                         app.initMainView();
+                        App.getGeolocation();
+                        App.cities();
                         break;
+
                 }
             },
             initMainView:function(){

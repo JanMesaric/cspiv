@@ -57,7 +57,7 @@
                        <!--</a>-->
                    </div>
 
-                   <div style="color:#CCCCCC" class="center sliding i18n" data-i18n="app.name">Št:16, 9/10/2014</div>
+                   <div style="color:#CCCCCC" class="center sliding i18n current-edition-js" data-i18n="app.name">TODO</div>
 
                    <div class="right">
                        <a href="#" class="open-send-popup link icon-only">Rubrike
@@ -71,6 +71,11 @@
                  <div data-page="ourView" class="page no-swipeback">
                    <!--<div data-distance="50" class="page-content pull-to-refresh-content infinite-scroll">-->
                    <div class="page-content">
+                   <form data-search-list=".list-block-search" data-search-in=".item-title" class="searchbar">
+                       <div class="searchbar-input">
+                           <input type="search" placeholder="Search"><a href="#" class="searchbar-clear"></a>
+                       </div><a href="#" class="searchbar-cancel">Cancel</a>
+                   </form>
                      <!--<div class="pull-to-refresh-layer">-->
                        <!--<div class="preloader"></div>-->
                        <!--<div class="pull-to-refresh-arrow"></div>-->
@@ -176,6 +181,7 @@
         <!-- Don't forget to get the latest Swiper and scrollbar version here-->
         <script src="vendors/idangero/idangerous.swiper-2.0.min.js"></script>
         <script src="vendors/idangero/idangerous.swiper.3dflow-2.0.js"></script>
+        <script src="vendors/underscore-min.js"></script>
 
         
         <!--(if target dist)>
