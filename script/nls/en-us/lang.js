@@ -77,7 +77,7 @@ define({
         confirm_clean_geo:'You will clear geo info'
     },
     camera:{
-        image_uploading: 'Uploading pictures',
+        image_uploading: 'Prenašam vsebino...',
         confirm_clear_image: 'Are you sure clear the selected pictures？',
         file_not_found_err: 'Upload file not found',
         invalid_url_err: 'Invalid url',

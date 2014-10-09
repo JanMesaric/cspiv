@@ -5,7 +5,7 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
     var fileTransfer = {
 
         startUpload: function(fileUrl){
-            alert(fileUrl);
+            //alert(fileUrl);
 
             var uploadServer = 'http://up.qiniu.com/';
 
@@ -19,6 +19,7 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
                     onClick: fileTransfer.abortUpload
                 }]
             });
+            //hiApp.alert('Recept uspešno poslan!');
 
             /* global FileUploadOptions */
             var options = new FileUploadOptions();
@@ -39,7 +40,7 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
 
             var response = r.response ? JSON.parse(r.response) : '';
 
-            hiApp.alert(response);
+            //hiApp.alert(response);
         },
 
         uploadFail: function (error) {
@@ -65,7 +66,7 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
                     break;
             }
 
-            hiApp.alert(errText);
+            //hiApp.alert(errText);
         },
 
         onprogress: function(progressEvent){
