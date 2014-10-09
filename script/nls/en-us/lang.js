@@ -46,7 +46,7 @@ define({
         login_btn: 'Vpiši se',
         sign_up: 'Registriraj se',
         err_empty_input: 'Please enter login name and password',
-        err_illegal_email: 'Username must be Email',
+        err_illegal_email: 'Usernamee must be Email',
         login: 'Loading, please wait...'
     },
     timeline:{
