@@ -64,7 +64,7 @@ define(['utils/appFunc',
                 return;
             }else{
                 //fileTransfer.startUpload(text);
-                hiApp.alert('Recept uspešno poslan!');
+                //hiApp.alert('Recept uspešno poslan!');
 
             }
 
