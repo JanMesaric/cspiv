@@ -33,7 +33,7 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
 
             if($this.find('.item-image img')[0])
                 item.image = $this.find('.item-image img').attr('src');
-
+        log(item)
             var output = TM.renderTplById('itemTemplate',item);
 
             $$('#itemContent').html(output);

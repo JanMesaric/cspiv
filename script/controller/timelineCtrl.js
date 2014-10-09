@@ -109,6 +109,10 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
             var data = appFunc.getAllArticles(window.appData),
                 fav = JSON.parse(localStorage.getItem('favoriteObj')),
                 arr = [];
+            if(!fav){
+                hiApp.alert('Trenutno nimate dodanih priljubljenih člankov.', 'Napaka');
+                return false;
+            }
             data.forEach(function(res){
                 fav.forEach(function(favs){
                     if(res.idEdition == favs.edition && res.id == favs.id){

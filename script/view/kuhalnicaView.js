@@ -169,7 +169,7 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
         },
 
         openKuhalnicaItemPage: function(e){
-            log('WAAAAAAAA')
+
 //            if(e.target.nodeName !== 'DIV'){
 //                return false;
 //            }
