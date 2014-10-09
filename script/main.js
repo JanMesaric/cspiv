@@ -607,15 +607,18 @@ var App = {
 
                 //initi za spodnje menuje, vezani so globalno!
                 window.mainView = hiApp.addView('#ourView', {
-                    dynamicNavbar: true
+                    dynamicNavbar: true,
+                    domCache:true
                 });
 
                 window.contatcView = hiApp.addView('#contatcView', {
-                    dynamicNavbar: true
+                    dynamicNavbar: true,
+                    domCache:true
                 });
 
                 window.settingView = hiApp.addView('#settingView', {
-                    dynamicNavbar: true
+                    dynamicNavbar: true,
+                    domCache:true
                 });
 
 

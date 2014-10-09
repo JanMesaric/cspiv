@@ -235,6 +235,9 @@
     background: none;
     margin-left: 11px;
 }
+.movies-listview{
+    background: white!important;
+}
 
 /*Tablet styles*/
 

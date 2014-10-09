@@ -37,7 +37,6 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
                 item.image = $this.find('.item-image img').attr('src');
 
             var output = TM.renderTplById('moviesItem',window.moviesData[0]);
-
             $$('.movies-item-content').html(output);
         },
         openItemPage: function(e){

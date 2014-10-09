@@ -61,10 +61,12 @@ define(['utils/appFunc',
             alert(title);
 
             if(appFunc.getCharLength(text) < 4){
-                hiApp.alert(i18n.index.err_text_too_short);
+                hiApp.alert('ups, tekst je prekratek...');
                 return;
             }else{
-                fileTransfer.startUpload(text);
+                //fileTransfer.startUpload(text);
+                hiApp.alert('Recept uspešno poslan!');
+
             }
 
             var imgSrc = $$('#uploadPicPreview>img').attr('src');

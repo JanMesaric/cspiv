@@ -42,16 +42,15 @@ define(['utils/appFunc','view/module', 'utils/tplManager', 'controller/timelineC
                             hiApp.showIndicator();
                             setTimeout(function(){
                                 var data = arr[0];
-                                $$('.movies-item-content').append('<img src="'+data.imgSrc+'" class="movie-image-placeholder" />' +
-                                    '<ul>' +
-                                    '<li>'+data.title+'</li>' +
-                                    '<li>'+data.cast+'</li>' +
-                                    '<li>'+data.country+'</li>' +
-                                    '<li>'+data.genre+'</li>' +
-                                    '<li>'+data.url+'</li>' +
-                                    '<li>'+data.title+'</li>' +
-                                    '<li>'+data.originalTitle+'</li>' +
-                                    '<li>'+data.description+'</li>' +
+                                $$('.movies-item-content').append('<img style="float:left; width:160px" src="'+data.imgSrc+'" class="movie-image-placeholder" />' +
+                                    '<ul style="padding:0">' +
+                                    '<li class="item-content" style="font-weight:bold">'+data.title+'</li>' +
+                                    '<li class="item-content">'+ "Igrajo: " +data.cast+'</li>' +
+                                    '<li class="item-content" style="background:white; font-weight:bold">'+ "Država: " +data.country+'</li>' +
+                                    '<li class="item-content" style="background:white; font-weight:bold">'+ "Žanr: " +data.genre+'</li>' +
+                                    '<li class="item-content" style="background:white">'+ "Opis: "+data.description+'</li>' +
+                                    '<li class="item-content"><a href="'+data.url+'" class="button external" target="_blank">'+ "Povezava (Kolosej.si)" + '</a></li>' +
+
                                     '</ul>')
                                 hiApp.hideIndicator();
                             }, 100);
