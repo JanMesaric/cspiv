@@ -8,8 +8,6 @@ define(['GS','controller/module'],function(GS,CM) {
                 router.pageBeforeInit(page);
             });
 
-
-
             $$(document).on('pageAfterAnimation', function (e) {
                 var page = e.detail.page;
                 router.pageAfterAnimation(page);
@@ -24,6 +22,10 @@ define(['GS','controller/module'],function(GS,CM) {
 
             //remove 'hidden-navbar' class
             $$('div.views').removeClass('hidden-navbar');
+
+
+
+
         },
 
         pageAfterAnimation: function(page){

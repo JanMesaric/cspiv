@@ -176,9 +176,12 @@ define(['i18n!nls/lang'],function(i18n){
                 oldObj.push(obj);
                 end = JSON.stringify(oldObj);
                 text = 'Shranjeno'
+                $$('.item-tools').find('.js-favorite').css('color', '#4fb950');
             } else {
                 end = JSON.stringify(this.removeObjFromArray(oldObj, id, edition));
                 text = 'Shrani';
+                $$('.item-tools').find('.js-favorite').css('color', '#909090');
+
             }
             $$(reference).find('span').text(text);
             $$('.js-favorite').find('span').text(text);

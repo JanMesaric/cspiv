@@ -30,6 +30,10 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             //Unlock scroll loading status
             var ptrContent = $$('#ourView').find('.pull-to-refresh-content');
             ptrContent.data('scrollLoading','unloading');
+
+
+
+
         },
 
         renderDataFunc: function(options){
