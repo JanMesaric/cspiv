@@ -129,8 +129,20 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
             hiApp.openPanel('#ourView');
             mainView.goBack();
             appFunc.showToolbar('.views');
-            var len = window.appData.length - id - 1;
-            var data = window.appData[len].info;
+            var len = window.appData.length + id;
+            log(id);
+            if(id == 3){
+                id=0
+            } else if(id==2){
+                id=1
+            } else if(id==1){
+                id=2
+            }else if(id==0){
+                id=3
+            }
+            log(id);
+            var data = window.appData[id].info;
+            log(data.number)
             $$('.current-edition-js').text('Št:' + data.number + ', ' + data.dddate.replace(new RegExp(' ', 'g'),''));
 
         }
