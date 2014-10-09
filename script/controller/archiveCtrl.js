@@ -8,8 +8,8 @@ define(['utils/appFunc','view/module', 'utils/tplManager', 'controller/timelineC
 
             var output = '',
                 data = window.appData,
-                i = data.length - 1;
-            for(;i>=0;i--){
+                i = 0;
+            for(;i<data.length;i++){
                 output += '<div class="swiper-slide js-open-edition" data-id="'+i+'" style="background-image: url('+data[i].info.imgPDF+');"></div>'
             };
             $$('.js-edition-info-placeholder').html('<div style="text-align:center;">' + window.appData[window.appData.length - 1].info.number +'<br />'+ window.appData[window.appData.length - 1].info.date + '</div>');
