@@ -42,12 +42,9 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 handler: VM.module('kuhalnicaView').addFavorite
               },{
                 element: '#contatcView',
-                selector: '.kuhalnica-content .item-content .click-content',
-                event: 'click',
-                handler: VM.module('kuhalnicaView').openKuhalnicaItemPage
-            },{
-                element: '#contatcView',
-                selector: '.kuhalnica-content .item-content .click-content',
+                selector: '.click-content, ' +
+                          '.kuhalnica-content .avatar, ' +
+                          '.kuhalnica-content .item-header,.kuhalnica-content .detail',
                 event: 'click',
                 handler: VM.module('kuhalnicaView').openKuhalnicaItemPage
             },{

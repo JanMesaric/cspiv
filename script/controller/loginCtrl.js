@@ -47,8 +47,12 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
                             return false;
                         }
                         GS.setCurrentUser(password,data.user);
+                        log('happen')
                         hiApp.hidePreloader();
-                        mainView.loadPage('index.html');
+                        log('happen2')
+//                        mainView.loadPage('index.html');
+                        mainView.goBack();
+                        log('happen3')
                     },
                     error: function(e,p,m){
                         hiApp.alert("Preverite vnešeno uporabniško ime in geslo ter poizkusite znova!", "Napaka");

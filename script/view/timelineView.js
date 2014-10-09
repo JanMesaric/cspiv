@@ -80,15 +80,21 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
 
         refreshTimeline: function(data, category){
             var arr = [];
-            if(category != 'Nazaj-na-številko'){
-                data.forEach(function(res){
-                    if(res.cat == category){
-                        arr.push(res);
-                    }
-                });
-                data = arr;
+            log(data)
+            log(category)
+            if(category != 'favorites'){
+                if(category != 'Nazaj-na-trenutno-številko'){
+                    data.forEach(function(res){
+                        if(res.cat == category){
+                            arr.push(res);
+                        }
+                    });
+                    data = arr;
+                } else {
+                    data = appFunc.getCurrEditionArticles(window.appData);
+                }
             } else {
-                data = appFunc.getCurrEditionArticles(window.appData);
+                data = data;
             }
             if(data == 0 || data == undefined){
                 hiApp.alert('Prišlo je do napake, prosimo poizkusite znova', 'Napaka');
@@ -113,9 +119,6 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
 
 
         },
-
-
-
         showLoadResult: function(text){
             setTimeout(function(){
                 $$('#ourView .load-result').html(text).css('opacity','1').transition(1000);

@@ -21,6 +21,11 @@ define(['utils/appFunc',
                 selector: '.js-section-li',
                 event: 'click',
                 handler: postCtrl.filterBySection
+            },{
+                element: document,
+                selector: '.open-favorites',
+                event: 'click',
+                handler: postCtrl.filterByFavorites
             }];
 
             appFunc.bindEvents(bindings);
@@ -38,6 +43,11 @@ define(['utils/appFunc',
             e.preventDefault();
             var cat = $$(this).find('.item-title').text().replace(new RegExp(" ", "g"),'-');
             CT.refreshTimeline(cat);
+            hiApp.closeModal('.send-popup');
+        },
+        filterByFavorites: function(e){
+            e.preventDefault();
+            CT.refreshTimelineForFavorites();
             hiApp.closeModal('.send-popup');
         }
     };

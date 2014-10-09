@@ -13,13 +13,13 @@ define(['GS','controller/module'],function(GS,CM) {
                 router.pageAfterAnimation(page);
             });
 
-            if(!GS.isLogin()){
-                //mainView je globalna spremenljivka!
-                mainView.loadPage('page/login.html');
-            }else{
-                mainView.loadPage('index.html',false);
-            }
-
+//            if(!GS.isLogin()){
+//                //mainView je globalna spremenljivka!
+//                mainView.loadPage('page/login.html');
+//            }else{
+//                mainView.loadPage('index.html',false);
+//            }
+            mainView.loadPage('index.html',false);
             //remove 'hidden-navbar' class
             $$('div.views').removeClass('hidden-navbar');
 

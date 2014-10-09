@@ -24,6 +24,14 @@ define(['utils/appFunc',
                 element: '#sendWeiboBtn',
                 event: 'click',
                 handler: postView.openArchive
+            },{
+                element: '.open-archive',
+                event: 'click',
+                handler:postView.openArchive
+            },{
+                element: '.open-favorites',
+                event: 'click',
+                handler:postView.openFavorites
             }
 //                element: 'div.message-tools .get-position',
 //                event: 'click',
@@ -46,6 +54,10 @@ define(['utils/appFunc',
 
             appFunc.bindEvents(bindings);
         },
+//        openFavorites: function(){
+//            mainView.loadPage('page/language.html');
+//            hiApp.closeModal('.send-popup');
+//        },
         openArchive: function(){
             mainView.loadPage('page/archive.html');
             hiApp.closeModal('.send-popup');

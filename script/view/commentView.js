@@ -1,4 +1,4 @@
-define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18n,TM){
+define(['utils/appFunc','i18n!nls/lang','utils/tplManager','GS'],function(appFunc,i18n,TM,GS){
 
     var commentView = {
 
@@ -7,6 +7,15 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
         },
 
         commentPopup: function(params){
+            log(GS.isLogin())
+            if(!GS.isLogin()){
+                log('nisi logiran!!');
+                hiApp.alert('Za komentiranje je prijava obvezna!', 'Opozorilo')
+                //mainView je globalna spremenljivka!
+                mainView.loadPage('page/login.html');
+                return false;
+            }
+
             var renderData = [];
             renderData.cancel = i18n.global.cancel;
             renderData.comment = i18n.timeline.comment;

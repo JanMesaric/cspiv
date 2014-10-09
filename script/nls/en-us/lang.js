@@ -41,11 +41,10 @@ define({
         current_version:'The current version is '
     },
     login: {
-        loginname_placeholder: 'Email/Username',
-        password_placeholder: 'Password',
-        login_btn: 'Sign In',
-        sign_up: 'Sign Up',
-        forgot_pwd: 'Forgot password',
+        loginname_placeholder: 'E-mail',
+        password_placeholder: 'Geslo',
+        login_btn: 'Vpiši se',
+        sign_up: 'Registriraj se',
         err_empty_input: 'Please enter login name and password',
         err_illegal_email: 'Username must be Email',
         login: 'Loading, please wait...'

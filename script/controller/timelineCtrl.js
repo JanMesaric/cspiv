@@ -5,7 +5,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
         init: function(){
 
             VM.module('timelineView').init();
-            setTimeout(function(){$('.page-content').scrollTop(44);},30);
+            setTimeout(function(){$('.page-content').scrollTop(44);},100);
             this.getTimelineForCurrEdition();
         },
 
@@ -44,8 +44,8 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
               },{
                 element: '#ourView',
                 selector: '.time-line-content .item-content .click-content,' +
-                    '.time-line-content .item-tools .click-content,' +
-                    '.time-line-content .item-header,.time-line-content .detail',
+                        '.time-line-content .item-tools .click-content,' +
+                        '.time-line-content .item-header,.time-line-content .detail',
                 event: 'click',
                 handler: VM.module('timelineView').openItemPage
             },{
@@ -75,6 +75,7 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 event: 'click',
                 handler: function(){
                     VM.module('timelineView').getTimeline(appFunc.getCurrEditionArticles(window.appData));
+                    $('.page-content').scrollTop(44);
                 }
             }
             ];
@@ -87,6 +88,8 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 window.appData = '';
                 xhr.simpleCall({func:'pivar'}, function(data){
                     window.appData = data;
+                    var dw = window.appData[localStorage.getItem('currEdition')].info;
+                    $('.current-edition-js').text(dw.number + ' ' + dw.dddate.replace(new RegExp(' ', 'g'),''))
                     var articles = appFunc.getCurrEditionArticles(data);
                     //ustvarim prvo stran
                     VM.module('timelineView').getTimeline(articles);
@@ -98,9 +101,23 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
         },
 
         refreshTimeline: function(cat){
-            var cat = cat || 'Nazaj-na-številko';
+            var cat = cat || 'Nazaj-na-trenutno-številko';
             VM.module('timelineView').refreshTimeline(appFunc.getAllArticles(window.appData), cat);
             log('refreshing timeline')
+        },
+        refreshTimelineForFavorites: function(){
+            var data = appFunc.getAllArticles(window.appData),
+                fav = JSON.parse(localStorage.getItem('favoriteObj')),
+                arr = [];
+            data.forEach(function(res){
+                fav.forEach(function(favs){
+                    if(res.idEdition == favs.edition && res.id == favs.id){
+                        arr.push(res);
+                    }
+                });
+            });
+            log(arr)
+            VM.module('timelineView').refreshTimeline(arr, 'favorites');
         },
         openEdition: function(id){
             localStorage.setItem('currEdition', id);

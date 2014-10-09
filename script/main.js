@@ -604,6 +604,7 @@ var App = {
                     //TODO: PREPROCESS ZA ROUTER!!!
                     preprocess:router.preprocess
                 });
+
                 //initi za spodnje menuje, vezani so globalno!
                 window.mainView = hiApp.addView('#ourView', {
                     dynamicNavbar: true
@@ -616,6 +617,8 @@ var App = {
                 window.settingView = hiApp.addView('#settingView', {
                     dynamicNavbar: true
                 });
+
+
                 if(!localStorage.getItem('currEdition')){
                     localStorage.setItem('currEdition', 2);
                 }

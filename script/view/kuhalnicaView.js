@@ -169,9 +169,10 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
         },
 
         openKuhalnicaItemPage: function(e){
-            if(e.target.nodeName !== 'DIV'){
-                return false;
-            }
+            log('WAAAAAAAA')
+//            if(e.target.nodeName !== 'DIV'){
+//                return false;
+//            }
             var itemId = $$(this).parents('.item-content').data('id');
             contatcView.loadPage('page/itemKuhalnica.html?id=' + itemId);
         },
