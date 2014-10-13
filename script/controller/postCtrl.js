@@ -26,6 +26,13 @@ define(['utils/appFunc',
                 selector: '.open-favorites',
                 event: 'click',
                 handler: postCtrl.filterByFavorites
+            },{
+                element: document,
+                selector: '.modal-overlay-visible',
+                event: 'click',
+                handler: function(){
+                    hiApp.closeModal('.send-popup')
+                }
             }];
 
             appFunc.bindEvents(bindings);

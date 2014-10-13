@@ -629,9 +629,7 @@ var App = {
                 router.init();
             }
         };
-
         app.initialize();
-
     });
 })();
 function debounce(fn, delay) {

@@ -4,6 +4,11 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager','GS'],function(appFun
 
         init: function(params){
             appFunc.bindEvents(params.bindings);
+            setTimeout(function(){
+                $('.none-comment').on('click', function(){
+                    commentView.commentPopup();
+                });
+            }, 2000);
         },
 
         commentPopup: function(params){
