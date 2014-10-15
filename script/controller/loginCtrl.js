@@ -52,6 +52,7 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
                         log('happen2')
 //                        mainView.loadPage('index.html');
                         mainView.goBack();
+                        $('.signupee-hidden').css('display', 'block');
                         log('happen3')
                     },
                     error: function(e,p,m){

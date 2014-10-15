@@ -30,15 +30,11 @@ define(['GS','controller/module'],function(GS,CM) {
                         </li>')
                     }
             })*/
-//            if(!GS.isLogin()){
-//                //mainView je globalna spremenljivka!
-//                mainView.loadPage('page/login.html');
-//            }else{
-//                mainView.loadPage('index.html',false);
-//            }
+
             mainView.loadPage('index.html',false);
             //remove 'hidden-navbar' class
             $$('div.views').removeClass('hidden-navbar');
+
 
 
 
@@ -54,6 +50,7 @@ define(['GS','controller/module'],function(GS,CM) {
             if(name === 'ourView' || name === 'contatcView' || name === 'setting' ){
                 if(from === 'left' && swipeBack){
                     CM.module('appCtrl').showToolbar();
+
                 }
             }
         },
@@ -75,6 +72,18 @@ log(name)
                     CM.module('timelineCtrl').init();
                     CM.module('contactCtrl').init();
                     CM.module('settingCtrl').init();
+
+                    $$('.tab-link').on('click', function(){
+
+                        if(localStorage.getItem('user')){
+                            $$('.signupee-hidden').css('display', 'block');
+                            $$('.signupee-name').text(JSON.parse(localStorage.getItem('user')).name);
+                            $$('.signupee-date').html(timeConverter(JSON.parse(localStorage.getItem('user')).login));
+                        }
+                    })
+
+
+
                     break;
                 case 'about':
                     CM.module('aboutCtrl').init();
@@ -164,6 +173,7 @@ log(name)
                 default :
                     return content;
             }
+
             //dobim url, primerjam poti in pišem kateri view želim za katerega odpret in to feedam v i18next
             //http://www.idangero.us/framework7/docs/init-app.html#.VA3FOvmSww0 za preprocess AJAX callback
             //module vrne vse metode viewa in ctrl-jev

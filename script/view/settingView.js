@@ -43,11 +43,10 @@ define(['utils/appFunc','utils/tplManager','GS','i18n!nls/lang'],function(appFun
         },
 
         logOut: function(){
-            hiApp.confirm(i18n.setting.confirm_logout,function(){
+            hiApp.confirm('Ste prepričani da se želite izpisati?',function(){
                 GS.removeCurrentUser();
+                $('.signupee-hidden').css('display', 'none');
 
-                mainView.loadPage('page/login.html');
-                hiApp.showTab('#ourView');
             });
         },
 

@@ -6,8 +6,31 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
 
         startUpload: function(fileUrl){
             //alert(fileUrl);
+            $.ajax({
+                type: "POST",
+                url: "http://connectsocial.si/pivar/uploadRecipe.php",
+                data: {
+                    credits: 'izpostavljen recept'
+//                    title: $("#title").val(),
+//                    author: $("#yourName").val(),
+//                    email: $("#yourEmail").val(),
+//                    timeSum: $("#preparingTime").val() + $("#cookingTime").val(),
+//                    descLong: $("#recipe").val(),
+//                    difficulty: App.recipeDifficulty,
+//                    timeCreating: $("#preparingTime").val(),
+//                    timeCooking: $("#cookingTime").val(),
+//                    ingredientsTitle: 'Sestavine:',
+//                    ingredients: 'tu so sestavine, ki jih potrebujemo',
+                },
+                success: function(){
+                    alert('win')
+                },
+                error: function(){
+                    alert('fail')
+                }
+            });
 
-            var uploadServer = 'http://up.qiniu.com/';
+            var uploadServer = encodeURI("http://connectsocial.si/pivar/imageUpload.php");
 
             //Upload progress
             var text = '<div id="progress" class="progress"><span class="progress-bar"></span></div>';
