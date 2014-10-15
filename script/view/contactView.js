@@ -38,7 +38,8 @@ define(['utils/appFunc','utils/tplManager'],function(appFunc,TM){
                     $$(this).hide();
                 }
             });
-        }
+        },
+
 
     };
 

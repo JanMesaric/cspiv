@@ -143,6 +143,11 @@ define(['utils/appFunc','utils/tplManager','i18n!nls/lang'],function(appFunc,TM,
             //var itemTitleDesc = $$(this).parents('.item-content').data('titleDesc');
             window.plugins.socialsharing.share('Prebiram članek z naslovom • ' + itemTitle + ' • ' + 'Preberi več v mobilni aplikaciji Pivar - glasilo skupine Laško!', null, null, 'http://www.lasko.eu/pivar')
         },
+        bigLetters: function(){
+            $( '#itemContent .item-content' ).toggleClass( "big-letters" );
+            $( '#itemContent .big-letters-controller' ).toggleClass( "big-letters-controller-color" );
+
+        },
         createSectionListview: function(data){
             if(!window.catReplaced){
                 var arr = [];

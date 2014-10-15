@@ -36,7 +36,14 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 selector: '.time-line-content .item-content .share-article, #itemContent .share-article',
                 event: 'click',
                 handler: VM.module('timelineView').shareArticle
-              },{
+              },
+              {
+                element: '#ourView',
+                selector: '#itemContent .big-letters-controller',
+                event: 'click',
+                handler: VM.module('timelineView').bigLetters
+                },
+              {
                 element: '#ourView',
                 selector: '.js-favorite',
                 event: 'click',

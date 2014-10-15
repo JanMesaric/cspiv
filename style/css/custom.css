@@ -241,7 +241,12 @@
 .current-edition-js{
     color:rgb(204, 204, 204) !important;
 }
-
+.big-letters{
+    font-size:17px;
+}
+.big-letters-controller-color{
+    color:#4fb950;
+}
 /*Tablet styles*/
 
 @media only screen and (min-device-width : 768px) {
