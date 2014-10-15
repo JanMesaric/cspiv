@@ -77,7 +77,7 @@ log(name)
 
                         if(localStorage.getItem('user')){
                             $$('.signupee-hidden').css('display', 'block');
-                            $$('.signupee-name').text(JSON.parse(localStorage.getItem('user')).name);
+                            $$('.signupee-name').text(JSON.parse(localStorage.getItem('user')).name.trunc(15));
                             $$('.signupee-date').html(timeConverter(JSON.parse(localStorage.getItem('user')).login));
                         }
                     })

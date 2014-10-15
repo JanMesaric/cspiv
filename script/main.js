@@ -1,7 +1,7 @@
 var log = console.log.bind(console);
 String.prototype.trunc = String.prototype.trunc ||
     function(n){
-        return this.length>n ? this.substr(0,n-1)+'&hellip;' : this;
+        return this.length>n ? this.substr(0,n-1)+'...' : this;
     };
 function timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp*1000);
