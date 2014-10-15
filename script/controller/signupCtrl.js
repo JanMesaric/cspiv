@@ -38,10 +38,10 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
                     url: "http://connectsocial.si/drupaltest/ajax/createUser.php",
                     type: "post",
                     dataType: "json",
-                    data: {"name":loginName,"pass":password, "mail": loginName},
+                    data: {"name":loginName,"pass":password, "email": loginName},
                     success: function(data){
                         log(data)
-                        if(!data.user){
+                        if(!data.uid){
                             //napačni vhodni podatki
                             log('napačni login podatki');
                             log(hiApp)
@@ -51,9 +51,11 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
                             hiApp.hidePreloader();
                             return false;
                         }
-                        GS.setCurrentUser(password,data.user);
+                        //GS.setCurrentUser(password,data.user);
                         hiApp.hidePreloader();
-                        mainView.loadPage('index.html');
+                        $$('input.register-name, input.register-password').val('');
+                        //mainView.loadPage('index.html');
+                        hiApp.alert('Uporabnik je uspešno registriran. Sedaj se lahko prijavite.', 'Uspeh');
                     },
                     error: function(e,p,m){
                         hiApp.alert("Preverite vnešeno uporabniško ime in geslo ter poizkusite znova!", "Napaka");

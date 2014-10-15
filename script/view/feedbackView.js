@@ -10,10 +10,23 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
 
         sendFeedback: function(){
             hiApp.showPreloader(i18n.index.sending);
-            setTimeout(function(){
-                hiApp.hidePreloader();
-                hiApp.alert(i18n.setting.feed_back_result);
-            },1000);
+            var data = {
+                password: $("#krizankaMessageText").val(),
+                email: $("#krizankaMailMessageText").val()
+            };
+
+            $.ajax({
+                type: "POST",
+                url: "http://connectsocial.si/pivar/crosswordResult.php",
+                data: data,
+                success: function(res){
+                    hiApp.alert('Vsebina je bila uspešno sprejeta', 'Uspeh');
+                    hiApp.hidePreloader();
+                },
+                error: function(){
+                    hiApp.alert('Prišlo je do napake, prosimo poizkusite ponovno pozneje', 'Napaka');
+                }
+            });
         },
 
         i18next: function(content){

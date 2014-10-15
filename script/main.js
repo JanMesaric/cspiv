@@ -56,17 +56,7 @@ var App = {
             }
 
         };
-        if(App.getCityFired){//če je kliknjen gumb v #weather
-            navigator.notification.alert(
-                App.messages.getCityResult + ' ' + nameof, //message
-                alertDismissed,         // callback
-                'Vreme',            // title
-                'OK'                  // buttonName
-            );
-            function alertDismissed(){}
-            App.getCityFired = false;
-        }
-        $("#currCity").text(nameof);
+       alert(nameof);
         //alert('Začenjam z iskanjem podatkov vremena'); //do kle
         localStorage.setItem('currentCity', nameof);
 
