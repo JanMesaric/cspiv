@@ -188,7 +188,7 @@
 .message-content .upload-pic-preview {
     position: relative;
     overflow: hidden;
-    width: 94%;
+    width: 96%;
     margin-top: 10px;
     display: none;
     height: auto;
@@ -237,6 +237,9 @@
 }
 .movies-listview{
     background: white!important;
+}
+.current-edition-js{
+    color:rgb(204, 204, 204) !important;
 }
 
 /*Tablet styles*/

@@ -47,7 +47,7 @@ define({
         sign_up: 'Registriraj se',
         err_empty_input: 'Please enter login name and password',
         err_illegal_email: 'Username must be Email',
-        login: 'Loading, please wait...'
+        login: 'Prosimo počakajte...'
     },
     timeline:{
         forward:'Deli',

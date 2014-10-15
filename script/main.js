@@ -411,7 +411,7 @@ var App = {
     },
     /*podatki za vreme*/
     cities: function(){
-        var cities = ['ljubljana', 'kranj', 'novo&mesto', 'koper', 'lasko', 'maribor', 'murska&sobota', 'nova&gorica'];
+        var cities = ['ljubljana', 'kranj', 'novo&mesto', 'koper', 'maribor', 'murska&sobota', 'nova&gorica'];
         App.citiesTemperatures = [];
 
         function citiess(){
