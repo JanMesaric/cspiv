@@ -26,11 +26,9 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
     //                    ingredients: 'tu so sestavine, ki jih potrebujemo',
                     },
                     success: function(){
-                        alert('win')
                         App.alreadyRunning = false;
                     },
                     error: function(){
-                        alert('fail')
                     }
                 });
 
@@ -45,13 +43,13 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
                 });
 
                 var uri = encodeURI("http://connectsocial.si/pivar/imageUpload.php");
-                function win() {
-                    alert('win 2')
-                    App.alreadyRunning = false;
-                }
-                function fail() {
-                    alert('fail 2')
-                }
+//                function win() {
+//                    alert('win 2')
+//                    App.alreadyRunning = false;
+//                }
+//                function fail() {
+//                    alert('fail 2')
+//                }
                 var options = new FileUploadOptions();
                 options.fileKey="file";
                 options.fileName=fileUrl.substr(fileUrl.lastIndexOf('/')+1);
@@ -69,10 +67,10 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
                         loadingStatus.increment();
                     }
                 };
-                ft.upload(fileUrl, uri, win, fail, options);
+                ft.upload(fileUrl, uri, fileTransfer.uploadSuccess, fail, options);
                 function fail(error) {
                     //alert("An error has occurred: Code = " + error.code);
-                    ft.upload(fileUrl, uri, win, fail, options);
+                    ft.upload(fileUrl, uri, fileTransfer.uploadSuccess, fileTransfer.uploadFail, options);
                 }
                 ft.onprogress = fileTransfer.onprogress;
 
@@ -100,8 +98,8 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
             navigator.camera.cleanup();
 
             var response = r.response ? JSON.parse(r.response) : '';
+            App.alreadyRunning = false;
 
-            //hiApp.alert(response);
         },
 
         uploadFail: function (error) {
