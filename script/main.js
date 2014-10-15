@@ -15,59 +15,59 @@ function timeConverter(UNIX_timestamp){
     var time = date + '.' + month + ' ' + year;
     return time;
 }
-
+var cities = {}
+cities.cities = [
+    {
+        name: 'ljubljana',
+        lon: 14.5031,
+        lat: 46.0513,
+        region: 1
+    },
+    {
+        name: 'maribor',
+        lon: 15.64667,
+        lat: 46.554722,
+        region: 2
+    },
+    {
+        name: 'lasko',
+        lon: 15.2332,
+        lat: 46.1688,
+        region: 3
+    },
+    {
+        name: 'kranj',
+        lon: 14.35561,
+        lat: 46.238869,
+        region: 4
+    },
+    {
+        name: 'koper',
+        lon: 13.72944,
+        lat: 45.54694,
+        region: 5
+    },
+    {
+        name: 'novo mesto',
+        lon: 15.16886,
+        lat: 45.80397,
+        region: 6
+    },
+    {
+        name: 'murska sobota',
+        lon: 16.162,
+        lat: 46.6611,
+        region: 7
+    },
+    {
+        name: 'nova gorica',
+        lon: 13.6503,
+        lat: 45.9598,
+        region: 8
+    }
+];
 
 var App = {
-        cities: [
-        {
-            name: 'ljubljana',
-            lon: 14.5031,
-            lat: 46.0513,
-            region: 1
-        },
-        {
-            name: 'maribor',
-            lon: 15.64667,
-            lat: 46.554722,
-            region: 2
-        },
-        {
-            name: 'lasko',
-            lon: 15.2332,
-            lat: 46.1688,
-            region: 3
-        },
-        {
-            name: 'kranj',
-            lon: 14.35561,
-            lat: 46.238869,
-            region: 4
-        },
-        {
-            name: 'koper',
-            lon: 13.72944,
-            lat: 45.54694,
-            region: 5
-        },
-        {
-            name: 'novo mesto',
-            lon: 15.16886,
-            lat: 45.80397,
-            region: 6
-        },
-        {
-            name: 'murska sobota',
-            lon: 16.162,
-            lat: 46.6611,
-            region: 7
-        },
-        {
-            name: 'nova gorica',
-            lon: 13.6503,
-            lat: 45.9598,
-            region: 8
-        }
-    ],
     getGeolocation: function(){
         alert('geolocation fired')
         navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError, {enableHighAccuracy: true, timeout: 10000});
@@ -81,7 +81,7 @@ var App = {
         alert(position.coords.longitude + ' ' + position.coords.latitude);
         //alert(App.currentPos.lon + ' ' + App.currentPos.lat) //do kle
         var cityBounds = [],
-            cities = App.cities;
+            cities = window.cities.cities;
         for(var i = 0, len = cities.length; i < len; i++){
             var negLon = Math.abs(cities[i].lon - App.currentPos.lon);
             var negLat = Math.abs(cities[i].lat - App.currentPos.lat);
