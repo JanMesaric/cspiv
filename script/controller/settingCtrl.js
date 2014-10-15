@@ -8,7 +8,8 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 element:'#settingView',
                 event: 'show',
                 handler: settingCtrl.renderSetting
-            }];
+            }
+            ];
 
             VM.module('settingView').init({
                 bindings:bindings

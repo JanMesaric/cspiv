@@ -35,7 +35,13 @@ define(['utils/appFunc','utils/tplManager','GS','i18n!nls/lang'],function(appFun
                 element: '#settingView .update-button',
                 event: 'click',
                 handler: settingView.checkVersion
-            }];
+            },{
+                element:'#settingView .kontaktiraj-urednistvo',
+                event: 'click',
+                handler: settingView.emailUrednistvo
+            }
+
+            ];
 
             appFunc.bindEvents(bindings);
 
@@ -49,7 +55,16 @@ define(['utils/appFunc','utils/tplManager','GS','i18n!nls/lang'],function(appFun
 
             });
         },
-
+        emailUrednistvo: function(){
+            window.plugin.email.open({
+                to:      ['pivar@pivo-lasko.si'],
+                cc:      [''],
+                bcc:     [''],
+                subject: 'Kontakt uredništva internega glasila Pivar',
+                body:    '',
+                isHtml:   true
+            });
+        },
         checkVersion: function(){
             var version = $CONFIG.version;
             var releaseTime = $CONFIG.release_time;
