@@ -34,7 +34,9 @@ define(['GS','controller/module'],function(GS,CM) {
             mainView.loadPage('index.html',false);
             //remove 'hidden-navbar' class
             $$('div.views').removeClass('hidden-navbar');
-
+            setTimeout(function(){
+                $$('.city-text').text(localStorage.getItem('currentCity'));
+            },5000);
 
 
 
@@ -81,6 +83,8 @@ log(name)
                             $$('.signupee-date').html(timeConverter(JSON.parse(localStorage.getItem('user')).login));
                         }
                     })
+                    $$('.city-text').text(localStorage.getItem('currentCity'));
+
 
 
 

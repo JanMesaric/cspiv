@@ -15,7 +15,7 @@ function timeConverter(UNIX_timestamp){
     var time = date + '.' + month + ' ' + year;
     return time;
 }
-var cities = {}
+var cities = {};
 cities.cities = [
     {
         name: 'ljubljana',
@@ -69,17 +69,14 @@ cities.cities = [
 
 var App = {
     getGeolocation: function(){
-        alert('geolocation fired')
         navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError, {enableHighAccuracy: true, timeout: 10000});
     },
     geolocationSuccess: function(position){
-        alert('geolocation succ')
-        App.currentPos = {
+         App.currentPos = {
             lon: position.coords.longitude,
             lat: position.coords.latitude
         };
-        alert(position.coords.longitude + ' ' + position.coords.latitude);
-        //alert(App.currentPos.lon + ' ' + App.currentPos.lat) //do kle
+          //alert(App.currentPos.lon + ' ' + App.currentPos.lat) //do kle
         var cityBounds = [],
             cities = window.cities.cities;
         for(var i = 0, len = cities.length; i < len; i++){
@@ -92,8 +89,7 @@ var App = {
             };
             cityBounds.push(obj);
         }
-        alert('122');
-        var final = [],
+         var final = [],
             first = cityBounds[0].comparator,
             newcomparator,
             nameof;
@@ -115,7 +111,9 @@ var App = {
             }
 
         };
-       alert(nameof);
+         if(!nameof){
+            localStorage.setItem('currentCity', 'lasko');
+        }
         //alert('Začenjam z iskanjem podatkov vremena'); //do kle
         localStorage.setItem('currentCity', nameof);
 
@@ -155,8 +153,7 @@ var App = {
                     localStorage.setItem('weatherWind', '['+dayswind+']');
                     localStorage.setItem('weatherForecast', '['+daystemp+']');
                     // self.setWeather();
-                    App.Vent.trigger("weatherUpdate");
-
+                    $$('.city-temp2').text(daystemp);
                 },
                 error:function(){
                     //console.log('Weather does not work!');
@@ -284,8 +281,7 @@ var App = {
                     };
 
                     localStorage.setItem('currWeather', JSON.stringify(currWeather));
-                    App.Vent.trigger("currWeatherUpdate");
-                    // self.setCurrWeather();
+                    $$('.city-temp2').text(currWeather.temp);                    // self.setCurrWeather();
                 },
                 error:function(){
 
@@ -295,8 +291,6 @@ var App = {
         }, 10000); //na 30 sekund dobi weather
     },
     geolocationError: function(){
-        alert('geolocation err')
-
         hiApp.alert('Pri iskanju mesta je prišlo do napake, preverite svoje GPS nastavitev.', 'Napaka ');
         function alertDismissed(){}
         localStorage.setItem('currentCity', 'lasko');
@@ -336,7 +330,7 @@ var App = {
                     localStorage.setItem('weatherWind', '['+dayswind+']');
                     localStorage.setItem('weatherForecast', '['+daystemp+']');
                     // self.setWeather();
-                    App.Vent.trigger("weatherUpdate");
+                    $$('.city-temp2').text(daystemp)
                 },
                 error:function(){
                     //console.log('Weather does not work!');
@@ -458,7 +452,7 @@ var App = {
                     };
 
                     localStorage.setItem('currWeather', JSON.stringify(currWeather));
-                    App.Vent.trigger("currWeatherUpdate");
+                    $$('.city-temp2').text(currWeather.temp);
                     // self.setCurrWeather();
                 },
                 error:function(){
@@ -469,7 +463,7 @@ var App = {
     },
     /*podatki za vreme*/
     cities: function(){
-        var cities = ['ljubljana', 'kranj', 'novo&mesto', 'koper', 'maribor', 'murska&sobota', 'nova&gorica'];
+        var cities = ['ljubljana', 'lasko', 'kranj', 'novo&mesto', 'koper', 'maribor', 'murska&sobota', 'nova&gorica'];
         App.citiesTemperatures = [];
 
         function citiess(){
