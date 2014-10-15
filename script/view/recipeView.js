@@ -71,6 +71,10 @@ define(['utils/appFunc',
             var imgSrc = $$('#uploadPicPreview>img').attr('src');
 
             if(imgSrc.length > 4){
+                if(!imgSrc){
+                    hiApp.alert('Prosimo dodajte sliko', 'Napaka')
+                    return false;
+                }
                 camera.startUpload(imgSrc);
             }else {
 
@@ -80,7 +84,7 @@ define(['utils/appFunc',
                     hiApp.hidePreloader();
                     hiApp.closeModal('.send-popup');
                     //Refresh Timeline
-                }, 1300);
+                }, 300);
             }
         }
     };

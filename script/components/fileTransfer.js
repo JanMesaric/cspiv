@@ -5,7 +5,7 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
     var fileTransfer = {
 
         startUpload: function(fileUrl){
-            //alert(fileUrl);
+            alert(fileUrl);
 
             if(!App.alreadyRunning){
                 App.alreadyRunning = true;
@@ -13,9 +13,9 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
                     type: "POST",
                     url: "http://connectsocial.si/pivar/uploadRecipe.php",
                     data: {
-                        credits: 'izpostavljen recept'
-    //                    title: $("#title").val(),
-    //                    author: $("#yourName").val(),
+                        credits: 'izpostavljen recept',
+                        title: $("#messageTitle").val(),
+                        descLong: $(".message-input-text").val()
     //                    email: $("#yourEmail").val(),
     //                    timeSum: $("#preparingTime").val() + $("#cookingTime").val(),
     //                    descLong: $("#recipe").val(),
