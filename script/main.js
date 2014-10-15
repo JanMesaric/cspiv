@@ -1,4 +1,8 @@
 var log = console.log.bind(console);
+String.prototype.trunc = String.prototype.trunc ||
+    function(n){
+        return this.length>n ? this.substr(0,n-1)+'&hellip;' : this;
+    };
 function timeConverter(UNIX_timestamp){
     var a = new Date(UNIX_timestamp*1000);
     var months = ['1','2','3','4','5','6','7','8','9','10','11','12'];
@@ -22,6 +26,7 @@ var App = {
             lon: position.coords.longitude,
             lat: position.coords.latitude
         };
+        alert(position.coords.longitude + ' ' + position.coords.latitude);
         //alert(App.currentPos.lon + ' ' + App.currentPos.lat) //do kle
         var cityBounds = [],
             cities = App.cities;
@@ -35,7 +40,7 @@ var App = {
             };
             cityBounds.push(obj);
         }
-
+        alert('122');
         var final = [],
             first = cityBounds[0].comparator,
             newcomparator,
@@ -243,7 +248,7 @@ var App = {
         hiApp.alert('Pri iskanju mesta je prišlo do napake, preverite svoje GPS nastavitev.', 'Napaka ');
         function alertDismissed(){}
         localStorage.setItem('currentCity', 'lasko');
-        $("#currCity").text('Laško');
+        $("#currCity").text('Laško<');
         var url = "http://api.openweathermap.org/data/2.5/forecast?q=lasko,si&units=metric";
         App.myTimer = setInterval(function(){
             $.ajax({
