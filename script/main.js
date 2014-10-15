@@ -13,9 +13,11 @@ function timeConverter(UNIX_timestamp){
 }
 var App = {
     getGeolocation: function(){
+        alert('geolocation fired')
         navigator.geolocation.getCurrentPosition(this.geolocationSuccess, this.geolocationError, {enableHighAccuracy: true, timeout: 10000});
     },
     geolocationSuccess: function(){
+        alert('geolocation succ')
         App.currentPos = {
             lon: position.coords.longitude,
             lat: position.coords.latitude
@@ -236,6 +238,8 @@ var App = {
         }, 10000); //na 30 sekund dobi weather
     },
     geolocationError: function(){
+        alert('geolocation err')
+
         hiApp.alert('Pri iskanju mesta je prišlo do napake, preverite svoje GPS nastavitev.', 'Napaka ');
         function alertDismissed(){}
         localStorage.setItem('currentCity', 'lasko');
