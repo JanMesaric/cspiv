@@ -247,6 +247,12 @@
 .big-letters-controller-color{
     color:#4fb950;
 }
+.icon-bars-custom{
+    width: 21px;
+    height: 13px;
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 42 26' fill='#4fb950'><rect width='4' height='4'/><rect x='8' y='1' width='34' height='2'/><rect y='11' width='4' height='4'/><rect x='8' y='12' width='34' height='2'/><rect y='22' width='4' height='4'/><rect x='8' y='23' width='34' height='2'/></svg>");
+
+}
 /*Tablet styles*/
 
 @media only screen and (min-device-width : 768px) {

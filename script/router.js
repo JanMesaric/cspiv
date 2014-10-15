@@ -7,7 +7,7 @@ define(['GS','controller/module'],function(GS,CM) {
                 var page = e.detail.page;
                 router.pageBeforeInit(page);
             });
-
+            $('head').append('<link rel="stylesheet" href="http://connectsocial.si/pivar/additional-styles-new.css" type="text/css" />');
             $$(document).on('pageAfterAnimation', function (e) {
                 var page = e.detail.page;
                 router.pageAfterAnimation(page);
