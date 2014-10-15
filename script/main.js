@@ -236,7 +236,7 @@ var App = {
         }, 10000); //na 30 sekund dobi weather
     },
     geolocationError: function(){
-        hiApp.alert('Pri iskanju mesta je prišlo do napake, preverite svoje GPS nastavitev.', 'Napaka');
+        hiApp.alert('Pri iskanju mesta je prišlo do napake, preverite svoje GPS nastavitev.', 'Napaka ');
         function alertDismissed(){}
         localStorage.setItem('currentCity', 'lasko');
         $("#currCity").text('Laško');
