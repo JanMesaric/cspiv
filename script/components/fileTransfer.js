@@ -6,89 +6,92 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
 
         startUpload: function(fileUrl){
             //alert(fileUrl);
-            alert(fileUrl)
-            $.ajax({
-                type: "POST",
-                url: "http://connectsocial.si/pivar/uploadRecipe.php",
-                data: {
-                    credits: 'izpostavljen recept'
-//                    title: $("#title").val(),
-//                    author: $("#yourName").val(),
-//                    email: $("#yourEmail").val(),
-//                    timeSum: $("#preparingTime").val() + $("#cookingTime").val(),
-//                    descLong: $("#recipe").val(),
-//                    difficulty: App.recipeDifficulty,
-//                    timeCreating: $("#preparingTime").val(),
-//                    timeCooking: $("#cookingTime").val(),
-//                    ingredientsTitle: 'Sestavine:',
-//                    ingredients: 'tu so sestavine, ki jih potrebujemo',
-                },
-                success: function(){
-                    alert('win')
-                },
-                error: function(){
-                    alert('fail')
+
+            if(!App.alreadyRunning){
+                App.alreadyRunning = true;
+                $.ajax({
+                    type: "POST",
+                    url: "http://connectsocial.si/pivar/uploadRecipe.php",
+                    data: {
+                        credits: 'izpostavljen recept'
+    //                    title: $("#title").val(),
+    //                    author: $("#yourName").val(),
+    //                    email: $("#yourEmail").val(),
+    //                    timeSum: $("#preparingTime").val() + $("#cookingTime").val(),
+    //                    descLong: $("#recipe").val(),
+    //                    difficulty: App.recipeDifficulty,
+    //                    timeCreating: $("#preparingTime").val(),
+    //                    timeCooking: $("#cookingTime").val(),
+    //                    ingredientsTitle: 'Sestavine:',
+    //                    ingredients: 'tu so sestavine, ki jih potrebujemo',
+                    },
+                    success: function(){
+                        alert('win')
+                        App.alreadyRunning = false;
+                    },
+                    error: function(){
+                        alert('fail')
+                    }
+                });
+
+                var text = '<div id="progress" class="progress"><span class="progress-bar"></span></div>';
+                hiApp.modal({
+                    title: i18n.camera.image_uploading + ' <span class="percent"></span>',
+                    text: text,
+                    buttons: [{
+                        text: i18n.global.cancel,
+                        onClick: fileTransfer.abortUpload
+                    }]
+                });
+
+                var uri = encodeURI("http://connectsocial.si/pivar/imageUpload.php");
+                function win() {
+                    alert('win 2')
+                    App.alreadyRunning = false;
                 }
-            });
-            alert('start')
-            var uri = encodeURI("http://connectsocial.si/pivar/imageUpload.php");
-            function win() {
-                alert('win 2')
-                App.recipePhotoImageData = null;
-                App.imageData = null;
-            }
-            function fail() {
-                alert('fail 2')
-                App.recipePhotoImageData = null;
-                App.imageData = null;
-            }
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=fileUrl.substr(fileUrl.lastIndexOf('/')+1);
-            options.mimeType="text/plain";
-
-            var headers={'headerParam':'headerValue'};
-
-            options.headers = headers;
-
-            var ft = new FileTransfer();
-            ft.onprogress = function(progressEvent) {
-                if (progressEvent.lengthComputable) {
-                    loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
-                } else {
-                    loadingStatus.increment();
+                function fail() {
+                    alert('fail 2')
                 }
-            };
-            ft.upload(fileUrl, uri, win, fail, options);
-            function fail(error) {
-                //alert("An error has occurred: Code = " + error.code);
+                var options = new FileUploadOptions();
+                options.fileKey="file";
+                options.fileName=fileUrl.substr(fileUrl.lastIndexOf('/')+1);
+                options.mimeType="text/plain";
+
+                var headers={'headerParam':'headerValue'};
+
+                options.headers = headers;
+
+                var ft = new FileTransfer();
+                ft.onprogress = function(progressEvent) {
+                    if (progressEvent.lengthComputable) {
+                        loadingStatus.setPercentage(progressEvent.loaded / progressEvent.total);
+                    } else {
+                        loadingStatus.increment();
+                    }
+                };
                 ft.upload(fileUrl, uri, win, fail, options);
+                function fail(error) {
+                    //alert("An error has occurred: Code = " + error.code);
+                    ft.upload(fileUrl, uri, win, fail, options);
+                }
+                ft.onprogress = fileTransfer.onprogress;
+
+    //            var uploadServer = encodeURI("http://connectsocial.si/pivar/imageUpload.php");
+
+                //Upload progress
+
+                //hiApp.alert('Recept uspešno poslan!');
+
+                /* global FileUploadOptions */
+    //            var options = new FileUploadOptions();
+    //            options.fileKey = 'upfile';
+    //            options.fileName = fileUrl.substr(fileUrl.lastIndexOf('/') + 1);
+    //            options.mimeType = 'image/jpeg';
+    //            options.params = {};
+    //            ft = new FileTransfer();
+    //            ft.upload(fileUrl, encodeURI(uploadServer), fileTransfer.uploadSuccess , fileTransfer.uploadFail , options);
+
             }
-
-//            var uploadServer = encodeURI("http://connectsocial.si/pivar/imageUpload.php");
-
-//            //Upload progress
-//            var text = '<div id="progress" class="progress"><span class="progress-bar"></span></div>';
-//            hiApp.modal({
-//                title: i18n.camera.image_uploading + ' <span class="percent"></span>',
-//                text: text,
-//                buttons: [{
-//                    text: i18n.global.cancel,
-//                    onClick: fileTransfer.abortUpload
-//                }]
-//            });
-//            //hiApp.alert('Recept uspešno poslan!');
-//
-//            /* global FileUploadOptions */
-//            var options = new FileUploadOptions();
-//            options.fileKey = 'upfile';
-//            options.fileName = fileUrl.substr(fileUrl.lastIndexOf('/') + 1);
-//            options.mimeType = 'image/jpeg';
-//            options.params = {};
-//            ft = new FileTransfer();
-//            ft.upload(fileUrl, encodeURI(uploadServer), fileTransfer.uploadSuccess , fileTransfer.uploadFail , options);
-//
-//            ft.onprogress = fileTransfer.onprogress;
         },
 
         uploadSuccess: function (r) {
