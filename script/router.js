@@ -84,7 +84,7 @@ log(name)
                         }
                     })
                     $$('.city-text').text(localStorage.getItem('currentCity'));
-
+                    $$('.city-text').text(window.cities.awsm)
 
 
 

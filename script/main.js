@@ -116,6 +116,8 @@ var App = {
         }
         //alert('Začenjam z iskanjem podatkov vremena'); //do kle
         localStorage.setItem('currentCity', nameof);
+        $('.city-text').text(nameof);
+        window.cities.awsm = nameof;
 
         /* get forecast */
         App.myTimer = setInterval(function(){
