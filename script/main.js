@@ -156,6 +156,7 @@ var App = {
                     localStorage.setItem('weatherForecast', '['+daystemp+']');
                     // self.setWeather();
                     $$('.city-temp2').text(daystemp);
+
                 },
                 error:function(){
                     //console.log('Weather does not work!');
@@ -284,6 +285,7 @@ var App = {
 
                     localStorage.setItem('currWeather', JSON.stringify(currWeather));
                     $$('.city-temp2').text(currWeather.temp);                    // self.setCurrWeather();
+                    $$('.city-weather').text(currWeather.name);
                 },
                 error:function(){
 
@@ -455,6 +457,7 @@ var App = {
 
                     localStorage.setItem('currWeather', JSON.stringify(currWeather));
                     $$('.city-temp2').text(currWeather.temp);
+                    $$('.city-weather').text(currWeather.name);
                     // self.setCurrWeather();
                 },
                 error:function(){

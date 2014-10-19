@@ -93,15 +93,18 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
         getTimelineForCurrEdition: function(){
             if(appFunc.isAppDataAvailable()){
                 window.appData = '';
-                xhr.simpleCall({func:'pivar'}, function(data){
-                    window.appData = data;
+                xhr.simpleCall({func:'pivar', special:'http://connectsocial.si/pivar/pivar.php'}, function(data){
+                    log(JSON.parse(data))
+                    window.appData = JSON.parse(data);
                     var dw = window.appData[localStorage.getItem('currEdition')].info;
+                    log(dw)
+
                     $('.current-edition-js').text('Št:'+dw.number + ' ' + dw.dddate.replace(new RegExp(' ', 'g'),''))
-                    var articles = appFunc.getCurrEditionArticles(data);
+                    var articles = appFunc.getCurrEditionArticles(window.appData);
                     //ustvarim prvo stran
                     VM.module('timelineView').getTimeline(articles);
                     //ustvarim data za postView.js oz. rubrike popup
-                    VM.module('timelineView').createSectionListview(data);
+                    VM.module('timelineView').createSectionListview(window.appData);
                     log(window.appData);
                 });
             }

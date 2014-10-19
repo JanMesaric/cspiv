@@ -106,16 +106,17 @@ define(['utils/appFunc',
         simpleCall: function(options,callback){
             options = options || {};
             options.data = options.data ? options.data : '';
+log(options)
 
             //If you access your server api ,please user `post` method.
             options.method = options.method || 'GET';
             //options.method = options.method || 'POST';
-
+            log( xhr.getRequestURL(options))
             this.checkIfOnline();
             $$ = Dom7;
             $$.ajax({
                 //url: 'api/pivar.json' ,
-                url: xhr.getRequestURL(options),
+                url: options.special ? options.special : xhr.getRequestURL(options),
                 method: options.method,
                 data: options.data,
                 success:function(data){

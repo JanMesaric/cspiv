@@ -293,3 +293,7 @@
 .language-page li{
     list-style-type:none;
 }
+
+.city-text{
+    text-transform: capitalize;
+}
