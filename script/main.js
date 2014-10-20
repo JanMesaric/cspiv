@@ -679,9 +679,6 @@ var App = {
                 }); /**/
 
 
-                if(!localStorage.getItem('currEdition')){
-                    localStorage.setItem('currEdition', 3);
-                }
                 //zaženi router
                 router.init();
             }

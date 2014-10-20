@@ -25,13 +25,14 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager','GS'],function(appFun
             renderData.cancel = i18n.global.cancel;
             renderData.comment = i18n.timeline.comment;
             renderData.send = i18n.global.send;
-
-            if(params.name){
-                renderData.title = i18n.comment.reply_comment;
-                renderData.placeholder = i18n.comment.reply + '@' + params.name + ':';
-            }else {
-                renderData.title = i18n.timeline.comment;
-                renderData.placeholder = i18n.comment.placeholder;
+            if(params){
+                if(params.name){
+                    renderData.title = i18n.comment.reply_comment;
+                    renderData.placeholder = i18n.comment.reply + '@' + params.name + ':';
+                }else {
+                    renderData.title = i18n.timeline.comment;
+                    renderData.placeholder = i18n.comment.placeholder;
+                }
             }
 
             var output = TM.renderTplById('commentPopupTemplate', renderData);
@@ -57,8 +58,8 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager','GS'],function(appFun
             hiApp.showPreloader(i18n.comment.commenting);
 
             var data = {
-                "username": "admin", //TODO: to more bit aktivno
-                "password": "bjforall",
+                "username": JSON.parse(localStorage.getItem('user')).name, //TODO: to more bit aktivno
+                "password": localStorage.getItem('sid'),
                 "articleId": window.currArticleId, //odvisen od article
                 "articleEdition": localStorage.getItem('currEdition'), //odvisen od id
                 "body": $('#commentText').val()

@@ -96,6 +96,10 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                 xhr.simpleCall({func:'pivar', special:'http://connectsocial.si/pivar/pivar.php'}, function(data){
                     log(JSON.parse(data))
                     window.appData = JSON.parse(data);
+
+
+                        localStorage.setItem('currEdition', window.appData.length - 1);
+
                     var dw = window.appData[localStorage.getItem('currEdition')].info;
                     log(dw)
 
