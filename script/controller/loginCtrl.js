@@ -21,8 +21,8 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
         },
 
         loginSubmit: function(){
-            var loginName = $$('input.login-name').val();
-            var password = $$('input.password').val();
+            var loginName = $$('input.login-name-js').val();
+            var password = $$('input.login-password-js').val();
             if(loginName === '' || password === ''){
                 hiApp.alert(i18n.login.err_empty_input);
 //            }else if(!appFunc.isEmail(loginName)){
@@ -54,6 +54,8 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
                         mainView.goBack();
                         $('.signupee-hidden').css('display', 'block');
                         log('happen3')
+                        hiApp.alert('Prijava uspešna.', 'Uspeh');
+
                     },
                     error: function(e,p,m){
                         hiApp.alert("Preverite vnešeno uporabniško ime in geslo ter poizkusite znova!", "Napaka");

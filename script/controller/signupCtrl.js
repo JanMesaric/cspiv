@@ -18,6 +18,7 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
         loginSubmit: function(){
             var loginName = $$('input.register-name').val();
             var password = $$('input.register-password').val();
+            var username = $$('input.register-username').val();
             if(loginName === '' || password === ''){
                 hiApp.alert(i18n.login.err_empty_input);
 //            }else if(!appFunc.isEmail(loginName)){
@@ -38,7 +39,7 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
                     url: "http://connectsocial.si/drupaltest/ajax/createUser.php",
                     type: "post",
                     dataType: "json",
-                    data: {"name":loginName,"pass":password, "email": loginName},
+                    data: {"name":username,"pass":password, "email": loginName},
                     success: function(data){
                         log(data)
                         if(!data.uid){
