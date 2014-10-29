@@ -33,8 +33,9 @@ define(['utils/appFunc',
         },
         fetchComments: function(options, callback){
             var url = options.url;
-            $$.ajax({
+            $.ajax({
                 url: url,
+                cache: false,
                 method: 'get',
                 dataType: 'json',
                 success: callback,

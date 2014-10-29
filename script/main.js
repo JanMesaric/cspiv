@@ -602,6 +602,7 @@ var App = {
         }
     }
 };
+
 (function() {
     var lang = localStorage.getItem('lang') || 'en-us';
     //TODO: http://requirejs.org/docs/api.html
@@ -638,6 +639,9 @@ var App = {
             },
             onDeviceReady: function() {
                 app.receivedEvent('deviceready');
+
+
+
             },
             receivedEvent: function(event) {
                 switch (event) {
@@ -649,6 +653,7 @@ var App = {
 
                 }
             },
+
             initMainView:function(){
                 window.$$ = Dom7;
                 window.hiApp = new Framework7({

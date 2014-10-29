@@ -26,7 +26,7 @@ define({
         sen_tweet: 'New Tweet',
         send_placeholder: 'What\'s new with you.',
         sending:'Pošiljam...',
-        err_text_too_short:'Ah,Content is too short'
+        err_text_too_short:'Tekst je prekratek...'
     },
     setting: {
         feed_back: 'Feedback',
@@ -45,7 +45,7 @@ define({
         password_placeholder: 'Geslo',
         login_btn: 'Vpiši se',
         sign_up: 'Registriraj se',
-        err_empty_input: 'Please enter login name and password',
+        err_empty_input: 'Vpišite uporabniško ime in geslo',
         err_illegal_email: 'Username must be Email',
         login: 'Prosimo počakajte...'
     },

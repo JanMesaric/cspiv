@@ -5,7 +5,6 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
     var fileTransfer = {
 
         startUpload: function(fileUrl){
-            alert(fileUrl);
 
             if(!App.alreadyRunning){
                 App.alreadyRunning = true;
@@ -27,6 +26,8 @@ define(['GS','i18n!nls/lang'],function(GS,i18n){
                     },
                     success: function(){
                         App.alreadyRunning = false;
+                        hiApp.alert('Vsebina uspešno prenesena! Vaš recept bo pregledan in objavljen v kratkem.');
+
                     },
                     error: function(){
                     }
