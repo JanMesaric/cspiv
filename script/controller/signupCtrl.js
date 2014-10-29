@@ -34,7 +34,7 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
 //                    'field_user_display_name[und][0][value]' => "wat",
 //                    'field_user_display_name[und][0][format]' => NULL,
 //                    'field_user_display_name[und][0][safe_value]' => "wat",
-
+/**/
                 $.ajax({
                     url: "http://connectsocial.si/drupaltest/ajax/createUser.php",
                     type: "post",

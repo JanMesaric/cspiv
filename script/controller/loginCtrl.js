@@ -19,7 +19,7 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
                 bindings:bindings
             });
         },
-
+/**/
         loginSubmit: function(){
             var loginName = $$('input.login-name-js').val();
             var password = $$('input.login-password-js').val();
