@@ -109,11 +109,16 @@ var App = {
             if(i == 7){
                 nameof = final.pop().name
             }
+        }
+        alert(nameof);
+        alert(localStorage.getItem('currentCity'));
 
-        };
-         if(!nameof){
+        if(!nameof){
             localStorage.setItem('currentCity', 'lasko');
         }
+        setTimeout(function(){
+            $('.city-text').text(nameof);
+        },200);
         //alert('Začenjam z iskanjem podatkov vremena'); //do kle
         localStorage.setItem('currentCity', nameof);
         $('.city-text').text(nameof);
@@ -155,7 +160,8 @@ var App = {
                     localStorage.setItem('weatherWind', '['+dayswind+']');
                     localStorage.setItem('weatherForecast', '['+daystemp+']');
                     // self.setWeather();
-                    $$('.city-temp2').text(daystemp);
+
+                    $$('.city-temp2').text(Math.round(daystemp[0]));
 
                 },
                 error:function(){
@@ -334,7 +340,7 @@ var App = {
                     localStorage.setItem('weatherWind', '['+dayswind+']');
                     localStorage.setItem('weatherForecast', '['+daystemp+']');
                     // self.setWeather();
-                    $$('.city-temp2').text(daystemp)
+                    $$('.city-temp2').text(Math.round(daystemp[0]))
                 },
                 error:function(){
                     //console.log('Weather does not work!');
