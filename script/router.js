@@ -36,10 +36,24 @@ define(['GS','controller/module'],function(GS,CM) {
             $$('div.views').removeClass('hidden-navbar');
             setTimeout(function(){
                 $$('.city-text').text(localStorage.getItem('currentCity'));
+            },6000);
+            setTimeout(function(){
+                $$('.city-text').text(localStorage.getItem('currentCity'));
             },5000);
+            setTimeout(function(){
+                $$('.city-text').text(localStorage.getItem('currentCity'));
+            },4000);
+            setTimeout(function(){
+                $$('.city-text').text(localStorage.getItem('currentCity'));
+            },3000);
+            setTimeout(function(){
+                $$('.city-text').text(localStorage.getItem('currentCity'));
+            },2000);
+            setTimeout(function(){
+                $$('.city-text').text(localStorage.getItem('currentCity'));
+            },1000);
 
             $$('.tab-link').on('click', function(){
-log('wat')
                 $('.city-text').text(localStorage.getItem('currentCity'));
                 setTimeout(function(){
                     $('.city-text').text(localStorage.getItem('currentCity'));
