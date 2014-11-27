@@ -282,12 +282,12 @@
         display: inline-block;
         width: 100%;
     }
-    /*.card-content .item-header .detailed-avatar {*/
-        /*float: left;*/
-        /*width: 50%;*/
-        /*margin-right: 15px;*/
-        /*height: auto;*/
-    /*}*/
+    .card-content .item-header .detailed-avatar {
+        float:left;
+        width: 50%;
+        margin-right: 15px;
+        height: auto;
+    }
 }
 .weather-by-city li,
 .language-page li{
@@ -297,3 +297,25 @@
 .city-text{
     text-transform: capitalize;
 }
+
+.interaktivno-li-custom-kuhalnica{
+    height: 33%;
+    background: url('../img/kuhalnica-img.jpg');
+    background-size: 100%;
+}
+.interaktivno-li-custom-krizanka{
+    height: 33%;
+    background: url('../img/krizanka-img.jpg');
+    background-size: 100%;
+}
+.interaktivno-li-custom-kino{
+    height: 33%;
+    background: url('../img/kino-img.jpg');
+    background-size: 100%;
+}
+.interaktivno-a-custom{
+    height:100%;
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 25%,rgba(255,255,255,0.35) 74%,rgba(255,255,255,0) 100%);
+
+}
+
