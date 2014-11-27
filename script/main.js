@@ -84,32 +84,39 @@ var App = {
             var negLat = Math.abs(cities[i].lat - App.currentPos.lat);
             // console.log(negLon)
             var obj = {
-                comparator: Math.sqrt(negLon^2+negLat^2), //za testirat sqrt(a^2+b^2)
+                comparator: Math.sqrt(Math.pow(negLon,2)+Math.pow(negLat,2)), //za testirat sqrt(a^2+b^2)
                 name: cities[i].name
             };
             cityBounds.push(obj);
         }
-         var final = [],
-            first = cityBounds[0].comparator,
-            newcomparator,
-            nameof;
-        for(var i = 1, len = cityBounds.length; i < len; i++){
-            if(newcomparator == undefined){
-                if(cityBounds[i].comparator < first){
-                    final.push(cityBounds[i]);
-                    newcomparator = cityBounds[i].comparator
-                }else{
-                    final.push(cityBounds[0]);
-                    newcomparator = cityBounds[0].comparator
-                }
-            }
-            if(cityBounds[i].comparator < newcomparator){
-                final.push(cityBounds[i])
-            }
-            if(i == 7){
-                nameof = final.pop().name
-            }
-        }
+
+        log(cityBounds)
+        var sorted = _.sortBy(cityBounds, function(obj){
+            return obj.comparator;
+        });
+        var nameof = sorted[0].name;
+//         var final = [],
+//            first = cityBounds[0].comparator,
+//            newcomparator,
+//            nameof;
+//        for(var i = 1, len = cityBounds.length; i < len; i++){
+//            if(newcomparator == undefined){
+//                if(cityBounds[i].comparator < first){
+//                    final.push(cityBounds[i]);
+//                    newcomparator = cityBounds[i].comparator
+//                }else{
+//                    final.push(cityBounds[0]);
+//                    newcomparator = cityBounds[0].comparator
+//                }
+//            }
+//            if(cityBounds[i].comparator < newcomparator){
+//                final.push(cityBounds[i])
+//            }
+//            log(final)
+//            if(i == 7){
+//                nameof = final.pop().name
+//            }
+//        }
         alert(nameof);
         alert(localStorage.getItem('currentCity'));
 
@@ -123,7 +130,8 @@ var App = {
         localStorage.setItem('currentCity', nameof);
         $('.city-text').text(nameof);
         window.cities.awsm = nameof;
-
+        alert(nameof);
+        alert(localStorage.getItem('currentCity'));
         /* get forecast */
         App.myTimer = setInterval(function(){
             $.ajax({

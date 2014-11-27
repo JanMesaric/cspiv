@@ -77,10 +77,9 @@ log(name)
 
                     $$('.tab-link').on('click', function(){
 
-                        $('.city-text').text(localStorage.getItem('currentCity'))
+                        $('.city-text').text(localStorage.getItem('currentCity'));
                 setTimeout(function(){
-                 
-                        $('.city-text').text(localStorage.getItem('currentCity'))
+                        $('.city-text').text(localStorage.getItem('currentCity'));
                         if(localStorage.getItem('user')){
                             $$('.signupee-hidden').css('display', 'block');
                             $$('.signupee-name').text(JSON.parse(localStorage.getItem('user')).name.trunc(15));
