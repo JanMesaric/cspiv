@@ -108,7 +108,7 @@ define(['utils/appFunc',
             options = options || {};
             options.data = options.data ? options.data : '';
 log(options)
-
+            $('.city-text').text(localStorage.getItem('currentCity'));
             //If you access your server api ,please user `post` method.
             options.method = options.method || 'GET';
             //options.method = options.method || 'POST';

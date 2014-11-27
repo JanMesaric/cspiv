@@ -58,6 +58,7 @@ define(['GS','controller/module'],function(GS,CM) {
         },
 
         pageBeforeInit: function(page) {
+            $$('.city-text').text(localStorage.getItem('currentCity'));
             //initiam vse controllerje!
             var name = page.name;
             var query = page.query;
@@ -132,6 +133,7 @@ log(name)
 
         preprocess: function(content,url){
             //TO JE CONTENT IZ INDEX.HTML
+            $$('.city-text').text(localStorage.getItem('currentCity'));
             if(!url) return false;
 
             url = url.split('?')[0] ;
