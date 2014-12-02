@@ -300,6 +300,7 @@ var App = {
                     $$('.city-temp2').text(currWeather.temp);                    // self.setCurrWeather();
                     $$('.city-weather').text(currWeather.name);
                     $$('.city-text').text(localStorage.getItem('currentCity'));
+                    $$('.weather-img').attr('src', currWeather.src);
                 },
                 error:function(){
 
@@ -473,11 +474,10 @@ var App = {
                     $$('.city-temp2').text(currWeather.temp);
                     $$('.city-weather').text(currWeather.name);
                     $$('.city-text').text(localStorage.getItem('currentCity'));
-
+                    $$('.weather-img').attr('src', currWeather.src);
                     // self.setCurrWeather();
                 },
                 error:function(){
-                    //console.log('Weather does not work!');
                 }
             });
         }, 2000);
