@@ -270,26 +270,31 @@
 
 <script id="settingTemplate" type="text/template">
     <div class="page-content">
-        <div class="setting-page list-block">
-            <ul>
+        <div class="setting-page list-block" style="margin:0px; height:100%">
+            <ul style="height:100%">
                 <!--<li>-->
                     <!--<div class="content-block">-->
                         <!--<div class="logo">{{appName}}</div>-->
                     <!--</div>-->
                 <!--</li>-->
-                <li>
-                    <a href="page/weather.html" class="item-link">
-                        <div class="item-content">
-                            <div class="item-media weather-icon-main"><img src="style/img/weatherIcons/7.png" alt=""/></div>
+                <li class="weather-custom-li">
+                    <a href="page/weather.html" class="item-link weather-custom-link">
+                        <div style="width:50%; height:12em; background:grey; float:left; background:#4fb950"><img class="weather-img" src="style/img/weatherIcons/7.png" alt=""/></div>
+                        <div style="width:50%; height:6em; background:white; float:left;"><span style="font-size:70px; color:#4fb950; padding: .2em;" class="city-temp2">-</span>° <span class="city-weather"></span></div>
+                        <div style="width:50%; height:6em; background:white; float:left; border-top: 1px solid #ccc;"><span style="margin: 1.2em; display:block" class="city-text"></span></div>
+
+
+                        <!--<div class="item-content">
+                            <div class="item-media weather-icon-main" style="background:#4fb950"><img src="style/img/weatherIcons/7.png" alt=""/></div>
                             <div class="item-inner" style="height:88px">
                                 <div class="item-title"><span class="city-text"></span> <br /><span class="city-temp2">-</span>° <span class="city-weather"></span></div>
 
                             </div>
-                        </div>
+                        </div>-->
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="item-link kontaktiraj-urednistvo">
+                    <a href="#" class="item-link kontaktiraj-urednistvo" style="background: white;">
                         <div class="item-content">
                             <div class="item-media feedback spring"></div>
                             <div class="item-inner">
@@ -322,7 +327,7 @@
                     </a>
                 </li>-->
                 <li>
-                    <a href="page/about.html" class="item-link">
+                    <a href="page/about.html" class="item-link" style="background: white;">
                         <div class="item-content">
                             <div class="item-media about spring"></div>
                             <div class="item-inner">
