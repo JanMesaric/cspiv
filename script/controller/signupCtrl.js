@@ -43,13 +43,11 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
                     success: function(data){
                         log(data)
                         if(!data.uid){
+                            hiApp.hidePreloader();
                             //napačni vhodni podatki
                             log('napačni login podatki');
-                            log(hiApp)
-                            $$('.login-input-content').find('input').css('border', '1px solid red');
-                            $$('.multi-language').css('color', 'red').text('Podatki za prijavo se ne ujemajo z zapisi v bazi.')
-                            hiApp.alert('Uporabnik ne obstaja, prosimo preverite uporabniško ime in geslo.', 'Napaka');
-                            hiApp.hidePreloader();
+                            hiApp.alert('Prišlo je do napake pri registraciji, prosimo preverite vnešene podatke.', 'Napaka');
+                            $$('.signup-input-content').find('input').css('border', '1px solid red');
                             return false;
                         }
                         //GS.setCurrentUser(password,data.user);
