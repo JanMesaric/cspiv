@@ -52,8 +52,9 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
                         }
                         //GS.setCurrentUser(password,data.user);
                         hiApp.hidePreloader();
-                        $$('input.register-name, input.register-password').val('');
+                        $$('input.register-name, input.register-password, input.register-username').val('');
                         //mainView.loadPage('index.html');
+                        $$('.signup-input-content').find('input').css('border', '0');
                         hiApp.alert('Uporabnik je uspešno registriran. Sedaj se lahko prijavite.', 'Uspeh');
                     },
                     error: function(e,p,m){
