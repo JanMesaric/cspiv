@@ -300,19 +300,20 @@ var App = {
                     localStorage.setItem('currWeather', JSON.stringify(currWeather));
                     $$('.city-temp2').text(currWeather.temp);                    // self.setCurrWeather();
                     $$('.city-weather').text(currWeather.name);
+                    $$('.city-text').text(localStorage.getItem('currentCity'));
                 },
                 error:function(){
 
                     //console.log('Weather does not work!');
                 }
             });
-        }, 10000); //na 30 sekund dobi weather
+        }, 2000); //na 30 sekund dobi weather
     },
     geolocationError: function(){
         hiApp.alert('Pri iskanju mesta je prišlo do napake, preverite svoje GPS nastavitev.', 'Napaka ');
         function alertDismissed(){}
         localStorage.setItem('currentCity', 'lasko');
-        $("#currCity").text('Laško<');
+        $("#currCity").text('Laško');
         var url = "http://api.openweathermap.org/data/2.5/forecast?q=lasko,si&units=metric";
         App.myTimer = setInterval(function(){
             $.ajax({
@@ -472,13 +473,15 @@ var App = {
                     localStorage.setItem('currWeather', JSON.stringify(currWeather));
                     $$('.city-temp2').text(currWeather.temp);
                     $$('.city-weather').text(currWeather.name);
+                    $$('.city-text').text(localStorage.getItem('currentCity'));
+
                     // self.setCurrWeather();
                 },
                 error:function(){
                     //console.log('Weather does not work!');
                 }
             });
-        }, 10000);
+        }, 2000);
     },
     /*podatki za vreme*/
     cities: function(){
