@@ -90,7 +90,6 @@ var App = {
             cityBounds.push(obj);
         }
 
-        log(cityBounds)
         var sorted = _.sortBy(cityBounds, function(obj){
             return obj.comparator;
         });
@@ -117,8 +116,8 @@ var App = {
 //                nameof = final.pop().name
 //            }
 //        }
-        alert(nameof);
-        alert(localStorage.getItem('currentCity'));
+        //alert(nameof);
+        //alert(localStorage.getItem('currentCity'));
 
         if(!nameof){
             localStorage.setItem('currentCity', 'lasko');
@@ -130,8 +129,8 @@ var App = {
         localStorage.setItem('currentCity', nameof);
         $('.city-text').text(nameof);
         window.cities.awsm = nameof;
-        alert(nameof);
-        alert(localStorage.getItem('currentCity'));
+        //alert(nameof);
+        //alert(localStorage.getItem('currentCity'));
         /* get forecast */
         App.myTimer = setInterval(function(){
             $.ajax({

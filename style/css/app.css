@@ -5219,6 +5219,11 @@ img {
   font-size: 13px;
   color: #818080;
 }
+.contacts-list .contact-item .item-link:active {
+    -webkit-transition-duration: 0ms;
+    transition-duration: 0ms;
+    background-color: transparent !important;
+}
 .about-page .content-block {
   color: #666;
 }
@@ -5409,7 +5414,7 @@ img {
 .contacts-list .contact-item .item-link:active {
   -webkit-transition-duration: 0ms;
   transition-duration: 0ms;
-  background-color: #e9e9e9 !important;
+  background-color: transparent !important;
 }
 .contacts-list .item-subtitle {
   font-size: 13px;
