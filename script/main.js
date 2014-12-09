@@ -189,7 +189,7 @@ var App = {
                         day0 = json.weather[0].description,
                         src = '',
                         srcmain = '';
-
+log(day0)
                     switch (day0){
                         case 'sky is clear':
                         case 'Sky is Clear':
@@ -226,6 +226,7 @@ var App = {
                         case 'haze':
                         case 'Sand/Dust Whirls':
                         case 'Fog':
+                        case 'fog':
                             name = 'oblačno';
                             src = 'style/img/weatherIcons/10.png';
                             srcmain = 'style/img/weatherIcons/blck/4.png';
@@ -402,6 +403,7 @@ var App = {
                         case 'haze':
                         case 'Sand/Dust Whirls':
                         case 'Fog':
+                        case 'fog':
                             name = 'oblačno';
                             src = 'style/img/weatherIcons/10.png';
                             srcmain = 'style/img/weatherIcons/blck/4.png';
@@ -542,6 +544,7 @@ var App = {
                         case 'haze':
                         case 'Sand/Dust Whirls':
                         case 'Fog':
+                        case 'fog':
                             name = 'oblačno';
                             src = 'style/img/weatherIcons/4.png';
                             srcmain = 'style/img/weatherIcons/4.png';
