@@ -194,28 +194,28 @@ log(day0)
                         case 'sky is clear':
                         case 'Sky is Clear':
                             name = 'sončno';
-                            src = 'style/img/weatherIcons/7.png';
+                            src = 'style/img/weatherIcons/1.png';
                             srcmain = 'style/img/weatherIcons/blck/1.png';
                             break;
                         case 'few clouds':
                         case 'proximity shower rain':
                             name = 'delno oblačno';
-                            src = 'style/img/weatherIcons/8.png';
+                            src = 'style/img/weatherIcons/2.png';
                             srcmain = 'style/img/weatherIcons/blck/2.png';
                             break;
                         case 'scattered clouds':
                             name = 'delno oblačno';
-                            src = 'style/img/weatherIcons/8.png';
+                            src = 'style/img/weatherIcons/2.png';
                             srcmain = 'style/img/weatherIcons/blck/2.png';
                             break;
                         case 'broken clouds':
                             name = 'delno oblačno';
-                            src = 'style/img/weatherIcons/8.png';
+                            src = 'style/img/weatherIcons/2.png';
                             srcmain = 'style/img/weatherIcons/blck/2.png';
                             break;
                         case 'overcast clouds':
                             name = 'oblačno';
-                            src = 'style/img/weatherIcons/8.png';
+                            src = 'style/img/weatherIcons/2.png';
                             srcmain = 'style/img/weatherIcons/blck/2.png';
                             break;
                         //konec oblakov

@@ -271,38 +271,29 @@
 <script id="settingTemplate" type="text/template">
     <div class="page-content">
         <div class="setting-page list-block" style="margin:0px; height:100%">
-            <ul style="height:100%">
-                <!--<li>-->
-                    <!--<div class="content-block">-->
-                        <!--<div class="logo">{{appName}}</div>-->
-                    <!--</div>-->
-                <!--</li>-->
+            <ul>
+
                 <li class="weather-custom-li">
                     <a href="page/weather.html" class="item-link weather-custom-link">
-                        <div style="width:50%; height:12em; background:grey; float:left; background:#4fb950"><img class="weather-img" src="style/img/weatherIcons/7.png" alt=""/></div>
-                        <div style="width:50%; height:6em; background:white; float:left;"><span style="font-size:70px; color:#4fb950; padding: .2em;" class="city-temp2">-</span>° <span class="city-weather"></span></div>
-                        <div style="width:50%; height:6em; background:white; float:left; border-top: 1px solid #ccc;"><span style="margin: 1.2em; display:block" class="city-text"></span></div>
+                        <div style="width:50%; height:12em; float:left; background:rgba(255, 255, 255, .7); border-bottom-right-radius: 50px;"><img class="weather-img" src="style/img/weatherIcons/1.png" alt=""/></div>
+                        <div style="width:50%; height:6em; float:left;"><span style="font-size:70px; color:#007aff; padding: .2em; font-weight:100" class="city-temp2">-</span>° <span class="city-weather"></span></div>
+                        <div style="width:50%; height:6em; float:left; border-top: 1px solid #ccc;"><span style="margin: 1.2em; display:block" class="city-text"></span></div>
 
-
-                        <!--<div class="item-content">
-                            <div class="item-media weather-icon-main" style="background:#4fb950"><img src="style/img/weatherIcons/7.png" alt=""/></div>
-                            <div class="item-inner" style="height:88px">
-                                <div class="item-title"><span class="city-text"></span> <br /><span class="city-temp2">-</span>° <span class="city-weather"></span></div>
-
-                            </div>
-                        </div>-->
                     </a>
                 </li>
-                <li>
-                    <a href="#" class="item-link kontaktiraj-urednistvo" style="background: white;">
-                        <div class="item-content">
-                            <div class="item-media feedback spring"></div>
+                <li style="width: 50%; float: left; padding:10px">
+                    <a href="#" class="item-link kontaktiraj-urednistvo" style="background: white; border-radius: 4px;">
+                        <i class="icon ios7-at-outline" style="display:block; width:100%; font-size:40px; text-align:center; color:#4fb950"></i>
+
+                        <div class="item-content" style="border:none">
+
                             <div class="item-inner">
                                 <div class="item-title">Kontaktiraj uredništvo</div>
                             </div>
                         </div>
                     </a>
                 </li>
+
 
                 <!--<li>-->
                     <!--<a href="https://itunes.apple.com/us/app/pivar-za-ipad/id884046558?mt=8" class="external item-link" target="_blank">-->
@@ -326,10 +317,11 @@
                         </div>
                     </a>
                 </li>-->
-                <li>
-                    <a href="page/about.html" class="item-link" style="background: white;">
-                        <div class="item-content">
-                            <div class="item-media about spring"></div>
+                <li style="width: 50%; float: left; padding:10px">
+                    <a href="page/about.html" class="item-link" style="background: white; border-radius: 4px;">
+                        <div style="display:block; width:100%; font-size:40px; text-align:center; font-weight:light; color:#4fb950">i</div>
+                        <div class="item-content" style="border:none">
+                            <!--<div class="item-media about spring"></div>-->
                             <div class="item-inner">
                                 <div class="item-title">O Pivarju</div>
                             </div>
@@ -337,9 +329,9 @@
                     </a>
                 </li>
 
-                <li class="signupee-hidden" style="display:none;">
-                    <div class="item-content">
-                        <div class="item-inner user-info">
+                <li class="signupee-hidden" style="display:none; background:white; clear:both">
+                    <div class="item-content" style="padding-left:0">
+                        <div class="item-inner user-info" style="padding:10px!important">
                             <div class="avatar">
                                 <img src="style/img/avatar-placeholder.svg" alt="">
                             </div>
@@ -351,8 +343,9 @@
                     </div>
                 </li>
             </ul>
-            <a style="display:none;" href="#" class="button button-big button-cancel logout-button  color-white signupee-hidden">Odjavi se</a>
+            <a style="display:none;" href="#" class="button button-big button-cancel logout-button  color-white signupee-hidden" style="padding: 0 20px">Odjavi se</a>
         </div>
+
     </div>
 </script>
 
