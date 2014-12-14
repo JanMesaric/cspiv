@@ -326,10 +326,10 @@
 .weather-custom-link{
     height: 100%;
     width:100%;
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 25%,rgba(255,255,255,0.35) 74%,rgba(255,255,255,0) 100%);
+    background: rgba(0,0,0,.5);
 }
 .weather-custom-li{
-    height: 16em;
+    height: 14em;
     background: url('../img/vreme-img.jpg');
     background-size: 100%;
     background-repeat: no-repeat;
@@ -339,4 +339,7 @@
     background: none;
     display: block;
     margin: 0 auto;
+}
+.swiper-slide{
+    background-repeat:no-repeat;
 }
