@@ -39,6 +39,11 @@ define(['utils/appFunc','utils/tplManager','GS','i18n!nls/lang'],function(appFun
                 element:'#settingView .kontaktiraj-urednistvo',
                 event: 'click',
                 handler: settingView.emailUrednistvo
+            },{
+                element:'.prijava-btn',
+                event: 'click',
+//                    handler:VM.module('commentView').commentPopup
+                handler: settingView.login
             }
 
             ];
@@ -47,7 +52,11 @@ define(['utils/appFunc','utils/tplManager','GS','i18n!nls/lang'],function(appFun
 
             hiApp.hideIndicator();
         },
+        login: function(){
+            log('bb');
+//            window.mainView.loadPage('page/login.html');
 
+        },
         logOut: function(){
             hiApp.confirm('Ste prepričani da se želite izpisati?',function(){
                 GS.removeCurrentUser();

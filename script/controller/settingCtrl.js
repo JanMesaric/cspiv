@@ -4,10 +4,18 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
 
         init: function(){
 
+
             var bindings = [{
                 element:'#settingView',
                 event: 'show',
                 handler: settingCtrl.renderSetting
+            },{
+                element:'.prijava-btn',
+                event: 'click',
+//                    handler:VM.module('commentView').commentPopup
+                handler:function(){
+                    log('waeafweaf')
+                }
             }
             ];
 
@@ -26,8 +34,9 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
             },function(response) {
                 if (response.err_code === 0) {
                     var user = response.data.user;
-
                     VM.module('settingView').renderSetting(user);
+
+
                 }
             });
         }

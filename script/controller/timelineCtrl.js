@@ -55,7 +55,16 @@ define(['utils/appFunc','utils/xhr','view/module'],function(appFunc,xhr,VM){
                         '.time-line-content .item-header,.time-line-content .detail',
                 event: 'click',
                 handler: VM.module('timelineView').openItemPage
-            },{
+            },
+                {
+                    element:'.prijava-btn',
+                    event: 'click',
+//                    handler:VM.module('commentView').commentPopup
+                    handler:function(){
+                        log('waeafweaf')
+                    }
+                },
+                {
                 element: '#ourView',
                 selector: '.searchbar-input input',
                 event: 'keyup',
