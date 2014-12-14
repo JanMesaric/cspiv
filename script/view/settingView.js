@@ -54,7 +54,7 @@ define(['utils/appFunc','utils/tplManager','GS','i18n!nls/lang'],function(appFun
         },
         login: function(){
             log('bb');
-//            window.mainView.loadPage('page/login.html');
+            window.settingView.loadPage('page/login.html');
 
         },
         logOut: function(){
