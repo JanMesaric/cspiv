@@ -46,6 +46,7 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager'],function(appFunc,i18
         },
 
         showToolbar: function(){
+            log(settingView.history); //TODO: is it working orwhat
             appFunc.showToolbar('.views');
 
         },

@@ -3,7 +3,14 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
     var loginCtrl = {
 
         init: function(){
-            var bindings = [{
+
+            var bindings = [
+                {
+                element: '.back2home',
+                event: 'click',
+                handler: VM.module('appView').showToolbar
+            },
+            {
                 element: '.login-submit',
                 event: 'click',
                 handler: loginCtrl.loginSubmit
@@ -52,7 +59,10 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
                         log('happen2')
 //                        mainView.loadPage('index.html');
                         mainView.goBack();
+                        settingView.goBack();
+                        appFunc.showToolbar('.views');
                         $('.signupee-hidden').css('display', 'block');
+                        $('.prijava-btn').css('display', 'none');
                         log('happen3')
                         hiApp.alert('Prijava uspešna.', 'Uspeh');
 

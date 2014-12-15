@@ -59,10 +59,11 @@ define(['GS','controller/module'],function(GS,CM) {
                     $('.city-text').text(localStorage.getItem('currentCity'));
                     if(localStorage.getItem('user')){
                         $$('.signupee-hidden').css('display', 'block');
+                        $$('.prijava-btn').css('display', 'none');
                         $$('.signupee-name').text(JSON.parse(localStorage.getItem('user')).name.trunc(15));
                         $$('.signupee-date').html(timeConverter(JSON.parse(localStorage.getItem('user')).login));
                     }
-                },100)
+                },100);
             })
             $$('.city-text').text(localStorage.getItem('currentCity'));
             $$('.city-text').text(window.cities.awsm)

@@ -302,6 +302,7 @@ log(day0)
                     $$('.city-weather').text(currWeather.name);
                     $$('.city-text').text(localStorage.getItem('currentCity'));
                     $$('.weather-img').attr('src', currWeather.src);
+                    $$('.weather-icon-main-detailed').find('img').attr('src', currWeather.src);
                 },
                 error:function(){
 
@@ -477,6 +478,7 @@ log(day0)
                     $$('.city-weather').text(currWeather.name);
                     $$('.city-text').text(localStorage.getItem('currentCity'));
                     $$('.weather-img').attr('src', currWeather.src);
+                    $$('.weather-icon-main-detailed').find('img').attr('src', currWeather.src);
                     // self.setCurrWeather();
                 },
                 error:function(){
