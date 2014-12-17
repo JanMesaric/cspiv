@@ -84,6 +84,7 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager','GS'],function(appFun
 
                 },
                 error: function(e,p,m){
+
                     hiApp.alert('Prišlo je do napake pri prenosu sporočila, poizkusite ponovno!', 'Napaka');
                 }
             });
