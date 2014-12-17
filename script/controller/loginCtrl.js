@@ -64,6 +64,8 @@ define(['utils/appFunc','utils/xhr','view/module','GS','i18n!nls/lang'],function
                         $('.signupee-hidden').css('display', 'block');
                         $('.prijava-btn').css('display', 'none');
                         log('happen3')
+                        $$('.signupee-name').text(JSON.parse(localStorage.getItem('user')).name.trunc(15));
+                        $$('.signupee-date').html(timeConverter(JSON.parse(localStorage.getItem('user')).login));
                         hiApp.alert('Prijava uspešna.', 'Uspeh');
 
                     },

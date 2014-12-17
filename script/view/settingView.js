@@ -60,6 +60,8 @@ define(['utils/appFunc','utils/tplManager','GS','i18n!nls/lang'],function(appFun
                 GS.removeCurrentUser();
                 $('.signupee-hidden').css('display', 'none');
                 $('.prijava-btn').css('display', 'block');
+                $('.signupee-name').text('niste prijavljeni');
+                $('.signupee-date').text('/');
 
             });
         },

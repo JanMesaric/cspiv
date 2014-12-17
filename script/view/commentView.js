@@ -64,12 +64,14 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager','GS'],function(appFun
                 "articleEdition": localStorage.getItem('currEdition'), //odvisen od id
                 "body": $('#commentText').val()
             };
+            log(data)
             $.ajax({
                 url: "http://connectsocial.si/drupaltest/ajax/createTopic.php",
                 type: "post",
                 dataType: "json",
                 data: data,
                 success: function(res){
+                    log(res);
                     $('#commentContent').prepend('<li class="comment-item">\
                         <div class="comment-detail">\
                             <div class="name">'+data.username+'</div>\
@@ -82,7 +84,7 @@ define(['utils/appFunc','i18n!nls/lang','utils/tplManager','GS'],function(appFun
 
                 },
                 error: function(e,p,m){
-                    myApp.alert('Prišlo je do napake pri prenosu sporočila, poizkusite ponovno!', 'Napaka');
+                    hiApp.alert('Prišlo je do napake pri prenosu sporočila, poizkusite ponovno!', 'Napaka');
                 }
             });
         },
